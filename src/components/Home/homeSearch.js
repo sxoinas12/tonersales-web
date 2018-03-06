@@ -63,7 +63,6 @@ export class HomeSearch extends React.Component {
   render() {
     return (
       <div>
-      <div className="container">
           <h1 className="header">Tonersales </h1>
 
           <center>
@@ -82,10 +81,12 @@ export class HomeSearch extends React.Component {
             </Button>
             </form>
           </center>
+      
           <ProductList data = {this.state.list} />
-       
+   
+  
         </div>
-      </div>
+      
     );
   }
 }

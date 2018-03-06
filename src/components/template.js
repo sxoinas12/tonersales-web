@@ -14,13 +14,15 @@ export class Template extends React.Component{
 
 	render(){
 		return(
+	
 		<Router>
-			<div className="main">
+			<div>
 				<Route path="/" component={Home} />
 				<Route path="/register" component={Register} />
 				<Route path="/login" component={Login} />
 			</div>
 		</Router>	
+
 			);
 	}
 }

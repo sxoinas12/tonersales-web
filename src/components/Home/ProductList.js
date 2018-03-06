@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
-import {ListGroupItem} from 'react-bootstrap';
+import {code,Row,Col,Grid,ListGroupItem} from 'react-bootstrap';
+
+
 
 export class ProductList extends React.Component {
   
@@ -18,11 +20,23 @@ export class ProductList extends React.Component {
       Price:{item.price}</ListGroupItem>
       )
     return (
-      <div>
+      <div className="row">
+    <div className="col">
+      {nameList.slice(1,9)}
+    </div>
+    <div className="col">
+      {nameList.slice(1,9)}
+    </div>
+    <div className="col">
+      {nameList.slice(1,9)}
+    </div>
+  </div>
+
         
-          {nameList} 
-        
-      </div>
+      
+      
+
+      
     );
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './homeSearch.css';
 //import './App.css';
+import { Button } from 'react-bootstrap';
 import {ProductList} from './ProductList.js';
 const url = "http://192.168.1.5:5000/products/specific?val=";
 
@@ -61,7 +62,7 @@ export class HomeSearch extends React.Component {
  
   render() {
     return (
-      <div id="wrapper" className="main">
+      <div>
       <div className="container">
           <h1 className="header">Tonersales </h1>
 
@@ -76,9 +77,9 @@ export class HomeSearch extends React.Component {
           onClick = {this.handleClick}
           />
           
-          <button type="submit">
+          <Button  bsStyle="primary" type="submit">
               Search
-            </button>
+            </Button>
             </form>
           </center>
           <ProductList data = {this.state.list} />

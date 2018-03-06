@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-
-
+import { Button } from 'react-bootstrap';
+import {ListGroupItem} from 'react-bootstrap';
 
 export class ProductList extends React.Component {
   
@@ -13,16 +13,14 @@ export class ProductList extends React.Component {
 
     const {data} = this.props;
     const nameList = data.map((item)=>
-      <li key={item.id}>Name:{item.name} <br />
+      <ListGroupItem key={item.id}>Name:{item.name} <br />
       Description:{item.description} <br /> 
-      Price:{item.price}</li> 
+      Price:{item.price}</ListGroupItem>
       )
     return (
       <div>
-        <ol>
-          <center>{nameList} </center>
-        </ol>
         
+          {nameList} 
         
       </div>
     );

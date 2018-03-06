@@ -1,6 +1,7 @@
 import React, {component} from 'react';
 //import {Bootstrap} from 'react-boostrap';
 import 'bootstrap/dist/css/bootstrap.css';
+import './template.css';
 
 import {Register} from './register';
 import {Login} from './login';
@@ -14,8 +15,7 @@ export class Template extends React.Component{
 	render(){
 		return(
 		<Router>
-			<div>
-				
+			<div className="main">
 				<Route path="/" component={Home} />
 				<Route path="/register" component={Register} />
 				<Route path="/login" component={Login} />

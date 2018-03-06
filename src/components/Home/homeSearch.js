@@ -3,11 +3,14 @@ import './homeSearch.css';
 //import './App.css';
 const url = "http://192.168.1.173:5000/products/specific?val=";
 
+
+
 export class HomeSearch extends React.Component {
   constructor(){
     super();
     this.state={
-      toner:"Find toner for your printer"
+      toner:"Find toner for your printer",
+      list:[]
     }
   }
 
@@ -36,7 +39,7 @@ export class HomeSearch extends React.Component {
     e.preventDefault();
     let reqBody = this.state.toner;
     let tempUrl = url + reqBody;
-    console.log(tempUrl);
+    //console.log(tempUrl);
     fetch(tempUrl,{
       method:"GET",
       headers:{
@@ -44,7 +47,12 @@ export class HomeSearch extends React.Component {
       }
     })
     .then(response => response.json())
-    .catch(error => error);
+    .catch(error => error)
+    .then(res => {
+      this.setState({list:res.data});
+   
+
+    });
 
   }
 
@@ -71,7 +79,7 @@ export class HomeSearch extends React.Component {
             </button>
             </form>
           </center>
-        
+        {this.state.list.map((item) =>  <h3>{item.name}</h3>)}
         </div>
       </div>
     );

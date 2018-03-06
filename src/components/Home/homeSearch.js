@@ -51,6 +51,7 @@ export class HomeSearch extends React.Component {
     .catch(error => error)
     .then(res => {
       this.setState({list:res.data});
+      console.log(this.state.list);
    
 
     });

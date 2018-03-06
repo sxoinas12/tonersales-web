@@ -13,12 +13,15 @@ export class ProductList extends React.Component {
 
     const {data} = this.props;
     const nameList = data.map((item)=>
-      <li key={item.id}>{item.name}</li> )
+      <li key={item.id}>Name:{item.name} <br />
+      Description:{item.description} <br /> 
+      Price:{item.price}</li> 
+      )
     return (
       <div>
-        <ul>
+        <ol>
           <center>{nameList} </center>
-        </ul>
+        </ol>
         
         
       </div>

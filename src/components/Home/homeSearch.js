@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './homeSearch.css';
 //import './App.css';
-const url = "http://192.168.1.173:5000/products/specific?val=";
+import {ProductList} from './ProductList.js';
+const url = "http://192.168.1.5:5000/products/specific?val=";
 
 
 
@@ -79,7 +80,8 @@ export class HomeSearch extends React.Component {
             </button>
             </form>
           </center>
-        {this.state.list.map((item) =>  <h3>{item.name}</h3>)}
+          <ProductList data = {this.state.list} />
+       
         </div>
       </div>
     );

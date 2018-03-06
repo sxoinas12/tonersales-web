@@ -1,0 +1,26 @@
+.user{
+	 /* Fallback for older browsers without RGBA-support */
+    background-color: #F2F2FF;
+    opacity:0.5;
+	
+}
+
+.container {
+position: fixed;
+width: 340px;
+height: 280px;
+
+}
+
+.form{
+	border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+
+.B {
+	position: center;
+	margin-top: 10px;
+	
+}

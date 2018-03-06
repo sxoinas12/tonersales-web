@@ -1,0 +1,36 @@
+html {
+        height: 100%;
+        margin: 0;
+        background-color: #888551;
+           
+        }
+
+
+#wrapper {
+    min-height: 100%; 
+         }
+
+
+.main{
+	height: 100%;
+    margin: 0;
+
+}
+
+
+
+.inp{
+	width:40%;
+	margin-top: 5%;
+	margin-right: 30%;
+	margin-left: 30%;
+}
+
+
+.container {
+	width: 100%;
+}
+
+
+
+

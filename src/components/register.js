@@ -59,7 +59,7 @@ export class Register extends React.Component{
 	}
 	render(){
 		return(
-				<div className ="container">
+				<div className="reg">
 				<form className = "form" onSubmit={this.handleSubmit}>
 					 <input 
 					 className="user"

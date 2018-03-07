@@ -58,7 +58,7 @@ export class Login extends React.Component{
 	render(){
 
 		return(
-			<div className="container">
+			<div className="log">
 
 				<form className="form" onSubmit = {this.handleSubmit}> 
 					 <input

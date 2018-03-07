@@ -3,15 +3,17 @@ import './homeSearch.css';
 //import './App.css';
 import { Button } from 'react-bootstrap';
 import {ProductList} from './ProductList.js';
-const url = "http://192.168.1.5:5000/products/specific?val=";
+const url = "http://192.168.1.121:5000/products/specific?val=";
 
+
+// 192.168.1.121
 
 
 export class HomeSearch extends React.Component {
   constructor(){
     super();
     this.state={
-      toner:"Find toner for your printer",
+      toner:"",
       list:[]
     }
   }
@@ -63,29 +65,59 @@ export class HomeSearch extends React.Component {
   render() {
     return (
       <div>
-          <h1 className="header">Tonersales </h1>
+        <div className="container">
 
-          <center>
-          <form onSubmit={this.handleSubmit}>
-          <input
-          className="inp"
-          value={this.state.toner}
-          type="text"
-          name={"toner"}
-          onChange={this.change}
-          onClick = {this.handleClick}
-          />
+          <div className="row">
+            <div className="col-xs-12"><center>Logo will go here</center> </div>
+          </div>
+
+          <div className="row">
+            <div className="col-xs-12">
+            <center><h1>TonerSales</h1></center>
+            </div>
+          </div>
+
+
+
+        <div className="row">
+
+          <div className="col-xs-12">        
+            <div className="input-group">
+              <input 
+
+                value={this.state.toner}
+                type="text"
+                name={"toner"}
+                onChange={this.change}
+                placeholder="Find your toner"
+                className="form-control" id="inlineFormInputGroup" placeholder="Username"/>
+
+
+                <div className="input-group-addon btn" onClick = {this.handleSubmit}>
+                  <i  className="fas fa-search"></i>
+                </div>
+            </div>  
+       
+            
+          </div>
           
-          <Button  bsStyle="primary" type="submit">
-              Search
-            </Button>
-            </form>
-          </center>
-      
-          <ProductList data = {this.state.list} />
-   
-  
+
         </div>
+
+
+
+     
+            <ProductList data = {this.state.list} />
+         
+        </div>
+      </div>
+
+
+    
+
+
+   
+   
       
     );
   }

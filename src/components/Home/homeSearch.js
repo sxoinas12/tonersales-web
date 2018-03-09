@@ -30,6 +30,7 @@ export class HomeSearch extends React.Component {
 
   handleSubmit = (e) =>{
     e.preventDefault();
+    console.log("here");
     let reqBody = this.state.toner;
     let tempUrl = Net.Url.products + reqBody;
     Methods.Get(tempUrl)
@@ -43,7 +44,7 @@ export class HomeSearch extends React.Component {
   render() {
     return (
           <div>
-            <div className="input-group main">
+            <div className="input-group">
               <input 
                 value={this.state.toner}
                 type="text"

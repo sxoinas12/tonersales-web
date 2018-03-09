@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './home.css';
 import {HomeSearch} from './homeSearch';
-
+import {Entrance} from './entrance';
 
 export class Home extends React.Component {
   constructor(){
@@ -12,8 +12,11 @@ export class Home extends React.Component {
     return (
      <div>
         <div className="container-fluid" >
-
           <div className="row">
+            <div className="col-md-offset-10 col-lg-offset-10"><Entrance />  </div>
+          </div> 
+          <div className="row">
+            
             <div className="col-xs-12"><center><img src={require('./toner-sales-logo.jpg')} /></center> </div>
           </div>
 

@@ -12,9 +12,9 @@ export class Home extends React.Component {
     return (
      <div>
         <div className="container-fluid" >
-        
+
           <div className="row">
-            <div className="col-xs-12"><center>Logo will go here</center> </div>
+            <div className="col-xs-12"><center><img src={require('./toner-sales-logo.jpg')} /></center> </div>
           </div>
 
          <div className="row">

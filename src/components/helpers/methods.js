@@ -17,7 +17,7 @@ var post = function(url,reqBody){
 		headers:{
 			"Content-Type":"application/json"
 		},
-		body:reqBody
+		body:JSON.stringify(reqBody)
 	}).then(response => response.json())
 	.catch(error => error)
 }
@@ -28,7 +28,7 @@ var update = function(url,reqBody){
 		headers:{
 			"Content-Type":"application/json"
 		},
-		body:reqBody
+		body:JSON.stringify(reqBody)
 	}).then(response => response.json())
 	.catch(error => error)
 
@@ -42,7 +42,7 @@ var del = function(url,id){
 		headers:{
 			"Content-Type":"application/json"
 		},
-		body:id
+		body:JSON.stringify(id)
 	}).then(response => response.json())
 	.catch(error => error)
 }

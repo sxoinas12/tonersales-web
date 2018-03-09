@@ -6,6 +6,10 @@ a:hover {
     color: #333333;
 }
 
+.selector{
+	color:#707070;
+}
+
 ul {
   list-style-type: none;
 

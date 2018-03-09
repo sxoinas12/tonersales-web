@@ -7,17 +7,18 @@ export class Entrance extends React.Component {
     super();
   }
 
+  
   render() {
   return(
 
       <div>
           <ul>
             <li>
-              <a>Συνδεση </a>
+              <a href="http://localhost:3000/login">Συνδεση </a>
             </li>
-            <li> | </li>
+            <li class="selector"> | </li>
             <li> 
-              <a>Γίνε Μέλος</a>
+              <a href="http://localhost:3000/register">Γίνε Μέλος</a>
             </li>
           </ul>
       </div>

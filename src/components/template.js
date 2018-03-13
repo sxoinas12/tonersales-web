@@ -6,9 +6,10 @@ import './template.css';
 import {Register} from './register';
 import {Login} from './login';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {Redirect} from 'react-router';
 import {Navbar} from './navbar';
 import {Home} from './Home/home';
-
+import {Search} from './Home/search';
 
 export class Template extends React.Component{
 
@@ -20,7 +21,8 @@ export class Template extends React.Component{
 				<Route path="/home" component={Home} />
 				<Route path="/register" component={Register} />
 				<Route path="/login" component={Login} />
-			</div>
+				<Route path="/search" component={Search} />
+ 			</div>
 		</Router>	
 		</div>
 			);

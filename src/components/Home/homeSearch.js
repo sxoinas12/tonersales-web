@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap';
 import {ProductList} from './ProductList.js';
 import {Entrance} from './entrance.js';
 
+import {Route , Redirect } from 'react-router'
 
 const Net = require('../helpers/net.js');
 const Methods = require('../helpers/methods.js');
@@ -16,7 +17,8 @@ export class HomeSearch extends React.Component {
     super();
     this.state={
       toner:"",
-      list:[]
+      list:[],
+      redirect:false
     }
   }
 
@@ -32,18 +34,26 @@ export class HomeSearch extends React.Component {
 
   handleSubmit = (e) =>{
     e.preventDefault();
-    console.log("here");
+    //console.log("here");
     let reqBody = this.state.toner;
     let tempUrl = Net.Url.products + reqBody;
     Methods.Get(tempUrl)
     .then(res => {
-      this.setState({list:res.data});
-      console.log(this.state.list);
+      this.setState({list:res.data,redirect:true});
+      
     });
   }
 
  
   render() {
+    
+    if( this.state.redirect === true){
+
+      return <Redirect to={{
+        pathname:'/search',
+        state :{referrer : this.state.list}
+      }} /> 
+    }
     return (
           <div>
             
@@ -63,7 +73,7 @@ export class HomeSearch extends React.Component {
                   <i  className="fas fa-search"></i>
                 </div>
             </div>   
-            <ProductList data = {this.state.list} />
+            
             </div> 
             <div> <Entrance /> </div>
          

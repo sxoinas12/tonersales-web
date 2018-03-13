@@ -6,7 +6,7 @@ const urlRegister = "/user/register";
 
 //this is the local ip 
 //it will change from network to network
-const ip = "http://192.168.1.5:5000" ;
+const ip = "http://192.168.1.173:5000" ;
 
 
 

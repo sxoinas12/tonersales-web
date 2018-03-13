@@ -34,7 +34,7 @@ change = (e) =>{
 
 	render(){
 		return(
-				<div className="reg">
+			<div>
 				<form className = "form" onSubmit={this.handleSubmit}>
 					 <input 
 					 className="user"
@@ -69,7 +69,7 @@ change = (e) =>{
 				    </button>
 
 				</form>
-				</div>
+			</div>
 			);
 	}
 }

@@ -14,7 +14,7 @@ export class Template extends React.Component{
 
 	render(){
 		return(
-	
+		<div>
 		<Router>
 			<div className="template">
 				<Route path="/" component={Home} />
@@ -22,7 +22,7 @@ export class Template extends React.Component{
 				<Route path="/login" component={Login} />
 			</div>
 		</Router>	
-
+		</div>
 			);
 	}
 }

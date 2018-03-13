@@ -1,21 +1,32 @@
-a{
+
+.pos {
+	position: absolute;
+	right:10px;
+	font-size:20px;
+}
+
+
+
+.pos a {
 	color: #707070;
 }
 
-a:hover {
-    color: #333333;
+.pos a:hover{
+	color:#333333;
 }
+
+
 
 .selector{
 	color:#707070;
 }
 
-ul {
+.pos ul {
   list-style-type: none;
 
 }
 
-li{
+.pos li{
 	float:left;
 	margin:5px;
 }

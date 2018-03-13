@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './entrance.css';
-import {Register} from './../register';
-import {Login} from './../login';
 
 
 
@@ -13,18 +11,17 @@ export class Entrance extends React.Component {
     super();
   }
 
-  
   render() {
   return(
 
-      <div>
+      <div className= "pos">
           <ul>
             <li>
-            
+              <a href="/login">Σύνδεση</a>
             </li>
-            <li class="selector"> | </li>
+            <li className="selector"> | </li>
             <li> 
-             
+             <a href="/register">Γίνε Μέλος </a>
             </li>
           </ul>
       </div>

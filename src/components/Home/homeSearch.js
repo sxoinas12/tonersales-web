@@ -3,6 +3,8 @@ import './homeSearch.css';
 
 import { Button } from 'react-bootstrap';
 import {ProductList} from './ProductList.js';
+import {Entrance} from './entrance.js';
+
 
 const Net = require('../helpers/net.js');
 const Methods = require('../helpers/methods.js');
@@ -44,6 +46,11 @@ export class HomeSearch extends React.Component {
   render() {
     return (
           <div>
+            
+
+            <div className="col-xs-12 text-center"> <a href="http://localhost:3000/"> <img src={require('./toner-sales-logo.jpg')} /> </a>  </div>
+            <div className="col-xs-12 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">        
+
             <div className="input-group">
               <input 
                 value={this.state.toner}
@@ -57,7 +64,8 @@ export class HomeSearch extends React.Component {
                 </div>
             </div>   
             <ProductList data = {this.state.list} />
-            
+            </div> 
+            <div> <Entrance /> </div>
          
         </div>
 

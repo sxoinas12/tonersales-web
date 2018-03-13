@@ -16,16 +16,13 @@ export class Home extends React.Component {
         <div className="container-fluid main" >
 
 	        <div className="row fullScreen">
-            <div className="col-xs-12"><center> <a href="http://localhost:3000/"> <img src={require('./toner-sales-logo.jpg')} /> </a> </center> </div>
-		        <div className="col-xs-12 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">        
-		            <HomeSearch />
-		        </div> 
+            <HomeSearch />
 	        </div>
 
           <div className="row">
-              <div className="footer">
+             
               <Footer />
-              </div>
+              
           </div>
         </div>
         

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './homeSearch.css';
+import { withRouter } from 'react-router-dom'
 
 import { Button } from 'react-bootstrap';
 import {ProductList} from './ProductList.js';
@@ -12,11 +13,11 @@ const Methods = require('../helpers/methods.js');
 
 
 
-export class HomeSearch extends React.Component {
+class HomeSearch extends React.Component {
   constructor(){
     super();
     this.state={
-      toner:"",
+      searchQuery:"",
       list:[],
       redirect:false
     }
@@ -34,26 +35,22 @@ export class HomeSearch extends React.Component {
 
   handleSubmit = (e) =>{
     e.preventDefault();
-    //console.log("here");
-    let reqBody = this.state.toner;
-    let tempUrl = Net.Url.products + reqBody;
-    Methods.Get(tempUrl)
-    .then(res => {
-      this.setState({list:res.data,redirect:true});
-      
-    });
+  
+    this.props.history.push({
+      pathname:'/search',
+      state: {searchQuery:this.state.searchQuery}
+      });
+    console.log(this.props);
+
+    
+
   }
 
  
   render() {
     
-    if( this.state.redirect === true){
+    
 
-      return <Redirect to={{
-        pathname:'/search',
-        state :{referrer : this.state.list}
-      }} /> 
-    }
     return (
           <div>
             
@@ -63,9 +60,9 @@ export class HomeSearch extends React.Component {
 
             <div className="input-group">
               <input 
-                value={this.state.toner}
+                value={this.state.searchQuery}
                 type="text"
-                name={"toner"}
+                name={"searchQuery"}
                 onChange={this.change}
                 placeholder="Find your toner"
                 className="form-control" id="inlineFormInputGroup"/>
@@ -75,18 +72,19 @@ export class HomeSearch extends React.Component {
             </div>   
             
             </div> 
+
             <div> <Entrance /> </div>
+           
          
         </div>
-
-
-
-    
-
-
    
-   
-      
+  
     );
   }
 }
+
+export default withRouter(HomeSearch);
+
+
+
+

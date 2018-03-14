@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './home.css';
-import {HomeSearch} from './homeSearch';
+import HomeSearch from './homeSearch';
 import {Entrance} from './entrance';
 import {Footer} from './footer';
 
 
 export class Home extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
   }
 
   render() {

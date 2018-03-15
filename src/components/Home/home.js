@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './home.css';
-import HomeSearch from './homeSearch';
+import HomeSearch from '../Search/homeSearch';
 import {Entrance} from './entrance';
 import {Footer} from './footer';
 

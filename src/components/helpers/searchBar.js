@@ -1,25 +1,17 @@
 import React, { Component } from 'react';
-import './homeSearch.css';
+
 import { withRouter } from 'react-router-dom'
 
-import { Button } from 'react-bootstrap';
-import {ProductList} from './ProductList.js';
-import {Entrance} from './entrance.js';
-
-import {Route , Redirect } from 'react-router'
-
-const Net = require('../helpers/net.js');
-const Methods = require('../helpers/methods.js');
+import {ProductList} from '../Products/ProductList.js';
+import {Entrance} from '../Home/entrance';
 
 
-
-class HomeSearch extends React.Component {
+class SearchBar extends React.Component {
   constructor(){
     super();
     this.state={
       searchQuery:"",
       list:[],
-      redirect:false
     }
   }
 
@@ -53,10 +45,8 @@ class HomeSearch extends React.Component {
 
     return (
           <div>
-            
-
-            <div className="col-xs-12 text-center"> <a href="http://localhost:3000/"> <img src={require('./toner-sales-logo.jpg')} /> </a>  </div>
-            <div className="col-xs-12 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">        
+      
+            <div className="col-xs-12 col-md-offset-1 col-md-6 col-lg-offset-3 col-lg-6">        
 
             <div className="input-group">
               <input 
@@ -72,10 +62,7 @@ class HomeSearch extends React.Component {
             </div>   
             
             </div> 
-
-            <div> <Entrance /> </div>
-           
-         
+            <div> <Entrance /> </div>   
         </div>
    
   
@@ -83,8 +70,6 @@ class HomeSearch extends React.Component {
   }
 }
 
-export default withRouter(HomeSearch);
-
-
+export default withRouter(SearchBar);
 
 

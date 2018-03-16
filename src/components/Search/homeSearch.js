@@ -73,7 +73,7 @@ class HomeSearch extends React.Component {
             
             </div> 
 
-            <div> <Entrance /> </div>
+            
            
          
         </div>

@@ -14,15 +14,18 @@ export class Home extends React.Component {
     return (
      <div className="main">
         <div className="container-fluid main" >
-
+          <div className="row"> 
+            <div className="col-xs-12 col-md-offset-9 col-md-3 col-lg-offset-10 col-lg-2">
+              <Entrance /> 
+            </div>
+          </div>
 	        <div className="row fullScreen">
             <HomeSearch />
+
 	        </div>
 
           <div className="row">
-             
               <Footer />
-              
           </div>
         </div>
         

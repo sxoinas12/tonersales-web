@@ -1,4 +1,19 @@
+.first{
+	padding-bottom: 50px;
+}
 
+.title{
+	padding-left: 55px;
+}
+
+.title h3{
+	display: inline-block;
+}
+
+.bar{
+	margin-top: 20px;
+	margin-right:  100px;
+}
 
 
 .fullscreen {

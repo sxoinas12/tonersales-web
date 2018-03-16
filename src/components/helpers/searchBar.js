@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 
 import {ProductList} from '../Products/ProductList.js';
 import {Entrance} from '../Home/entrance';
-
+import './searchBar.css';
 
 class SearchBar extends React.Component {
   constructor(){
@@ -44,9 +44,9 @@ class SearchBar extends React.Component {
     
 
     return (
-          <div>
+          <div className="searchBar">
       
-            <div className="col-xs-12 col-md-offset-1 col-md-6 col-lg-offset-3 col-lg-6">        
+        
 
             <div className="input-group">
               <input 
@@ -61,8 +61,8 @@ class SearchBar extends React.Component {
                 </div>
             </div>   
             
-            </div> 
-            <div> <Entrance /> </div>   
+             
+             
         </div>
    
   

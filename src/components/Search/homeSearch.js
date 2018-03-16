@@ -55,7 +55,7 @@ class HomeSearch extends React.Component {
           <div>
             
 
-            <div className="col-xs-12 text-center"> <a href="http://localhost:3000/"> <img src={require('./toner-sales-logo.jpg')} /> </a>  </div>
+            <div className="col-xs-12 text-center"> <a href="http://localhost:3000/home"> <img src={require('./toner-sales-logo.jpg')} /> </a>  </div>
             <div className="col-xs-12 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">        
 
             <div className="input-group">

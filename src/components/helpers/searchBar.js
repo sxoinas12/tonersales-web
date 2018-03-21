@@ -2,21 +2,21 @@ import React, { Component } from 'react';
 
 import { withRouter } from 'react-router-dom'
 
-import {ProductList} from '../Products/ProductList.js';
-import {Entrance} from '../Home/entrance';
 import './searchBar.css';
 
 class SearchBar extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
+  
     this.state={
-      searchQuery:"",
-      list:[],
+      searchQuery:this.props.initialValue,
+      list:[]
     }
   }
 
 
  change = (e) =>{
+
     const target = e.target;
     const value = target.value;
     const name = target.name;
@@ -25,38 +25,21 @@ class SearchBar extends React.Component {
           });
   }
 
-  handleSubmit = (e) =>{
-    e.preventDefault();
+
   
-    this.props.history.push({
-      pathname:'/search',
-      state: {searchQuery:this.state.searchQuery}
-      });
-    console.log(this.props);
-
-    
-
-  }
-
- 
   render() {
-    
-    
-
     return (
           <div className="searchBar">
       
-        
-
-            <div className="input-group">
+            <div className="input-group" >
               <input 
                 value={this.state.searchQuery}
                 type="text"
                 name={"searchQuery"}
                 onChange={this.change}
-                placeholder="Find your toner"
+                placeholder={this.state.searchQuery}
                 className="form-control" id="inlineFormInputGroup"/>
-                <div className="input-group-addon btn" onClick = {this.handleSubmit}>
+                <div className="input-group-addon btn" onClick =  {() => this.props.onSubmit(this.state.searchQuery)}>
                   <i  className="fas fa-search"></i>
                 </div>
             </div>   
@@ -67,9 +50,9 @@ class SearchBar extends React.Component {
    
   
     );
+
   }
+  
 }
 
 export default withRouter(SearchBar);
-
-

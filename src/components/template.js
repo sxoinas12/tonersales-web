@@ -11,6 +11,8 @@ import {Navbar} from './navbar';
 import {Home} from './Home/home';
 import {Search} from './Search/search';
 
+
+
 export class Template extends React.Component{
 
 	render(){
@@ -18,8 +20,8 @@ export class Template extends React.Component{
 		<div>
 		<Router>
 			<div className="template">
-				
-				<Route path="/home" component={Home} />
+			
+				<Route exact path="/" component={Home} />
 				<Route path="/register" component={Register} />
 				<Route path="/login" component={Login} />
 				<Route path="/search" component={Search} />

@@ -6,8 +6,8 @@ const Methods = require('./helpers/methods.js');
 
 
 export class Register extends React.Component{
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
 		this.state ={
 		email:"",
 		username:"",

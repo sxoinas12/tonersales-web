@@ -1,15 +1,15 @@
 .user{
 	 /* Fallback for older browsers without RGBA-support */
-    background-color: #F2F2FF;
+  
     opacity:0.5;
 	
 }
 
 .log {
-position: fixed;
+/*position: fixed;
 width: 340px;
 height: 280px;
-
+*/
 }
 
 .form{

@@ -3,6 +3,7 @@ import './home.css';
 import HomeSearch from '../Search/homeSearch';
 import {Entrance} from './entrance';
 import {Footer} from './footer';
+import {Mod} from '../tools/modal';
 
 
 export class Home extends React.Component {
@@ -12,7 +13,9 @@ export class Home extends React.Component {
 
   render() {
     return (
+
      <div className="main">
+    
         <div className="container-fluid main" >
           <div className="row"> 
             <div className="col-xs-12 col-md-offset-9 col-md-3 col-lg-offset-10 col-lg-2">
@@ -21,7 +24,7 @@ export class Home extends React.Component {
           </div>
 	        <div className="row fullScreen">
             <HomeSearch />
-
+      
 	        </div>
 
           <div className="row">
@@ -31,9 +34,7 @@ export class Home extends React.Component {
         
      </div>
 
-   
-        
-      
+     
     );
   }
 }

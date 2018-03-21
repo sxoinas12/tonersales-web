@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 import { Button } from 'react-bootstrap';
 import {ProductList} from '../Products/ProductList';
 import {Entrance} from '../Home/entrance';
-
+import SearchBar from '../helpers/searchBar';
 import {Route , Redirect } from 'react-router'
 
 const Net = require('../helpers/net.js');
@@ -18,31 +18,20 @@ class HomeSearch extends React.Component {
     super();
     this.state={
       searchQuery:"",
-      list:[],
-      redirect:false
+      list:[]
+      
     }
   }
 
 
- change = (e) =>{
-    const target = e.target;
-    const value = target.value;
-    const name = target.name;
-    this.setState({
-      [name]:value
-          });
-  }
-
   handleSubmit = (e) =>{
-    e.preventDefault();
+
   
     this.props.history.push({
       pathname:'/search',
-      state: {searchQuery:this.state.searchQuery}
+      state: {searchQuery:e}
       });
-    console.log(this.props);
-
-    
+   
 
   }
 
@@ -53,23 +42,10 @@ class HomeSearch extends React.Component {
 
     return (
           <div>
-            
-
-            <div className="col-xs-12 text-center"> <a href="http://localhost:3000/home"> <img src={require('./toner-sales-logo.jpg')} /> </a>  </div>
+            <div className="col-xs-12 text-center"> <a href="http://localhost:3000/"> <img src={require('./toner-sales-logo.jpg')} /> </a>  </div>
             <div className="col-xs-12 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">        
 
-            <div className="input-group">
-              <input 
-                value={this.state.searchQuery}
-                type="text"
-                name={"searchQuery"}
-                onChange={this.change}
-                placeholder="Find your toner"
-                className="form-control" id="inlineFormInputGroup"/>
-                <div className="input-group-addon btn" onClick = {this.handleSubmit}>
-                  <i  className="fas fa-search"></i>
-                </div>
-            </div>   
+            <SearchBar initialValue = {""} onSubmit = {this.handleSubmit} />
             
             </div> 
 

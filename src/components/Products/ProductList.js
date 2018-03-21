@@ -12,22 +12,32 @@ export class ProductList extends React.Component {
   }
 
   render() {
-   
+         
+
+
     const {data} = this.props;
     const nameList = data.map((item)=>
-      <ListGroupItem className="col-xs-12 col-md-4" key={item.id}>
 
-      Name:{item.name} <br />
-      Description:{item.description} <br /> 
-      Price:{item.price}
-      </ListGroupItem>
+        
+        <div className="col-xs-12 col-md-3" key={item.id}>
+        <a  href="#" className="thumbnail">
+          <img src={require('./first.jpeg')} />
+          Name:{item.name} <br />
+          Description:{item.description} <br /> 
+          Price:{item.price}
+        </a>
+        </div>
+  
+   
+
+      
       )
     return (
-    <div>
+
       <div className="row">
         {nameList}
       </div>
-    </div>
+
 
       
     );

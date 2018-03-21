@@ -48,7 +48,7 @@ export class Entrance extends React.Component {
 
   afterOpenModal = () =>{
     
-    this.isLog ? (
+    this.state.isLog ? (
         this.subtitle.style.color = '#f00'
       ) :(
         this.subtitle.style.color = 'blue'

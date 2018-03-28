@@ -9,6 +9,10 @@ import {Mod} from '../tools/modal';
 export class Home extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      isLogged:false
+
+    }
   }
 
   render() {

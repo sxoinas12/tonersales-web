@@ -29,13 +29,30 @@ export class Login extends React.Component{
 		Methods.Post(Net.Url.login);
 	}
 
+	handleGoogleSubmit = () => {
+		console.log(Net.Url.google);
+		window.location.href= Net.Url.google;
+	}
+
 	render(){
 
 		return(
 			<div className="log">
 
 				<form className="form" onSubmit = {this.handleSubmit}> 
+					
+					<button onClick={this.handleGoogleSubmit} className="btn btn-danger google_button"> 
+						<div className=" bord">
+							<i class="fab fa-google-plus-g"></i>
+						</div>
+						<div>
+							Sign in with Google
+						</div>
+					</button>
+		
+					<br />
 					 <input
+
 					 value={this.state.email}
 					 type="text"
 					 placeholder="email"

@@ -58,28 +58,10 @@ export class Entrance extends React.Component {
   closeModal = () => {
     this.setState({modalIsOpen:false});
   }
-  componentWillMount(){
+  componentDidMount(){
     Modal.setAppElement('body');
   }
 
-  handleLogingClick = () =>{
-    this.setState({isLog:true});
-  }
-
-  handleRegisterClick = () =>{
-    this.setState({isLog:false});
-  }
-  
-
-  onclickLog = () =>{
-    this.openModal();
-    this.handleLogingClick();
-  }
-
-  onClickReg = () =>{
-    this.openModal();
-    this.handleRegisterClick();
-  }
 
 
 
@@ -97,11 +79,15 @@ export class Entrance extends React.Component {
       <div className= "pos">
           <ul>
             <li>
-              <a onClick={this.onclickLog} >Σύνδεση</a>
+              <a onClick={() => this.setState({isLog:true, modalIsOpen:true})} >Σύνδεση</a>
             </li>
             <li className="selector"> | </li>
             <li> 
-             <a onClick={this.onClickReg} >Γίνε Μέλος </a>
+             <a onClick={() => this.setState({isLog:false, modalIsOpen:true})} >Γίνε Μέλος </a>
+            </li>
+            <li>
+
+              <a onClick= {() => console.log("clicked")}><i class="fas fa-shopping-cart"></i></a>
             </li>
           </ul>
           

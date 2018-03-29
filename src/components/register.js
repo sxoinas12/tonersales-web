@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './register.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const Net = require('./helpers/net.js');
 const Methods = require('./helpers/methods.js');
@@ -30,44 +31,54 @@ change = (e) =>{
 		Methods.Post(Net.Url.login);
 	}
 
-	
+  handleGoogleSubmit = () => {
+		console.log(Net.Url.google);
+		window.location.href= Net.Url.google;
+	}
 
 	render(){
 		return(
-			<div>
+			<div className="log">
+
 				<form className = "form" onSubmit={this.handleSubmit}>
+					 <button onClick={this.handleGoogleSubmit} className="btn btn-danger google_button"> 
+						<div className="bord">
+							<i className="fab fa-google-plus-g"></i>
+						</div>
+						<div>
+							Sign in with Google
+						</div>
+					</button>
+					<br />
+					
 					 <input 
-					 className="user"
+					 
 					 value = {this.state.username}
 					 type="text" 
-					 name={"username"}
 					 placeholder="username" 
-					 onChange={this.change}/>
-					 
+					 name="username"
+					 onChange={this.change}
+					 /> 
 					 <br />
-
-					 <input 
-					 className="user"
+					 <input  
 					 value = {this.state.email}
 					 type="text"
-					 name={"email"}
 					 placeholder="email"
-					 onChange={this.change} />
+					 name="email"
+					 onChange={this.change} 
+					 />
 					 <br />
-
 					 <input 
-					 className="user"
 					 value = {this.state.password}
 					 type="text" 
-					 name={"password"} 
-					 placeholder ="password" 
-					 onChange={this.change}/>
-
+					 placeholder ="password"
+					 name="password"
+					 onChange={this.change}
+					 />
 					 <br />
 					 <button className = "B" type="submit">
 				      Register
 				    </button>
-
 				</form>
 			</div>
 			);

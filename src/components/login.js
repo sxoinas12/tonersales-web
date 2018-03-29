@@ -42,8 +42,8 @@ export class Login extends React.Component{
 				<form className="form" onSubmit = {this.handleSubmit}> 
 					
 					<button onClick={this.handleGoogleSubmit} className="btn btn-danger google_button"> 
-						<div className=" bord">
-							<i class="fab fa-google-plus-g"></i>
+						<div className="bord">
+							<i className="fab fa-google-plus-g"></i>
 						</div>
 						<div>
 							Sign in with Google
@@ -69,7 +69,7 @@ export class Login extends React.Component{
 					 />
 					 <br />
 					 <button className = "B" type="submit">
-				      Register
+				     Login
 				    </button>
 				</form>
 			</div>

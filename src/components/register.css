@@ -1,15 +1,41 @@
+.google_button{
+	color:#fff;
+	border:1px solid #fff;
+
+	margin-bottom:10px;
+	border-radius: 0;
+	z-index: 1;
+	width: 100%;
+}
+.google_button div{
+	display: inline-block;
+}
+
+
+.bord {
+	border-right:1px solid #fff;
+	margin-right: 5px;
+	padding-right: 5px;
+}
+
+.log input {
+	padding:5px;
+	margin-bottom: 5px;
+	width: 100%;
+}
+
 .user{
 	 /* Fallback for older browsers without RGBA-support */
-    background-color: #F2F2FF;
+  
     opacity:0.5;
 	
 }
 
-.reg {
-position: fixed;
+.log {
+/*position: fixed;
 width: 340px;
 height: 280px;
-
+*/
 }
 
 .form{

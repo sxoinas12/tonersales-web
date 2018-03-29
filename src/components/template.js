@@ -7,7 +7,7 @@ import {Register} from './register';
 import {Login} from './login';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {Redirect} from 'react-router';
-import {Navbar} from './navbar';
+
 import {Home} from './Home/home';
 import {Search} from './Search/search';
 

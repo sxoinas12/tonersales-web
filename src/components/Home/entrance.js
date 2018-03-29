@@ -38,7 +38,8 @@ export class Entrance extends React.Component {
 
     this.state = {
       isLog:false,
-      modalIsOpen:false
+      modalIsOpen:false,
+      subtitle:''
     };
   }
 
@@ -49,9 +50,11 @@ export class Entrance extends React.Component {
   afterOpenModal = () =>{
     
     this.state.isLog ? (
-        this.subtitle.style.color = 'blue'
+        this.subtitle.style.color = 'blue',
+        this.subtitle = 'Συνδεση'
       ) :(
         this.subtitle.style.color = 'blue'
+     
       )
   } 
 
@@ -62,6 +65,7 @@ export class Entrance extends React.Component {
     Modal.setAppElement('body');
   }
 
+ 
 
 
 
@@ -101,7 +105,9 @@ export class Entrance extends React.Component {
               >
              
               <div>
-                <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
+                <h2 ref={subtitle => this.subtitle = subtitle}> {subtitle}</h2>
+                <br />
+    
                 <button onClick={this.closeModal} style={divstyle}>&times;</button>
                 {select}
               </div>

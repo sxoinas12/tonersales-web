@@ -68,7 +68,7 @@ export class Login extends React.Component{
 					 onChange={this.change}
 					 />
 					 <br />
-					 <button className = "B" type="submit">
+					 <button className = " btn login_button" type="submit">
 				     Login
 				    </button>
 				</form>

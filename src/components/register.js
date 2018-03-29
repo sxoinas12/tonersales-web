@@ -76,7 +76,7 @@ change = (e) =>{
 					 onChange={this.change}
 					 />
 					 <br />
-					 <button className = "B" type="submit">
+					 <button className = " btn register_button" type="submit">
 				      Register
 				    </button>
 				</form>

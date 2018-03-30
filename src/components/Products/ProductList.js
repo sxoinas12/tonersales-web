@@ -45,11 +45,24 @@ export class ProductList extends React.Component {
 
         
         <div className="col-xs-12 col-md-3" key={item.id}>
-          <a onClick={() => this.setState({selectedProduct: item, modalIsOpen:true}) } className="thumbnail">
-            <img src={require('./first.jpeg')} />
-            Name:{item.name} <br />
-            Price:{item.price}
-          </a>
+          <div  className="thumbnail back">
+            <div className='card_img'>
+             
+            </div>
+            <div className="caption card_body">
+              <h3 >Thumbnail label</h3>
+              <div>
+                Name:{item.name} <br />
+                Price:{item.price}
+              </div>
+              <p>
+                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+              </p>
+              <p> <a  onClick={() => this.setState({selectedProduct: item, modalIsOpen:true}) }
+              className="btn btn-default" role="button">Προσθηκη</a></p>
+            </div>
+
+          </div>
         </div>);
 
     return (

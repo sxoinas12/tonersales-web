@@ -1,3 +1,25 @@
 .wrapper {
 	margin-top: 20px;
 }
+
+.card_img{
+	height: 206px;
+	width: 100%;
+	background-image: url('/images/first.jpeg');
+	background-size: cover;
+	
+	border-bottom:1px solid;
+	border-bottom-color:rgb(221, 221, 221); 
+	
+}
+
+.back{
+
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+}
+
+.card_body{
+	background-color: #F8F8F8;
+}

@@ -24,7 +24,8 @@ export class ProductList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalIsOpen:false
+      modalIsOpen:false,
+      selectedProduct:null
     };
   }
   
@@ -44,31 +45,22 @@ export class ProductList extends React.Component {
 
         
         <div className="col-xs-12 col-md-3" key={item.id}>
-        <a onClick={() => this.setState({modalIsOpen:true}) } className="thumbnail">
-          <img src={require('./first.jpeg')} />
-          Name:{item.name} <br />
-          Price:{item.price}
-        </a>
+          <a onClick={() => this.setState({selectedProduct: item, modalIsOpen:true}) } className="thumbnail">
+            <img src={require('./first.jpeg')} />
+            Name:{item.name} <br />
+            Price:{item.price}
+          </a>
+        </div>);
 
-        <Modal 
-          isOpen={this.state.modalIsOpen}
-            style={customStyles}
-          onRequestClose={this.closeModal}
-          
-              >
-        <ProductModal />
-        </Modal>
-
-        </div>
-  
-   
-
-      
-      )
     return (
-
       <div className="row">
         {nameList}
+        <Modal 
+          isOpen={this.state.modalIsOpen}
+          style={customStyles}
+          onRequestClose={this.closeModal}>
+          <ProductModal product={this.state.selectedProduct}/>
+        </Modal>
       </div>
 
 

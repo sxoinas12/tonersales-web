@@ -19,7 +19,7 @@ export class ProductModal extends React.Component {
     <div className="">
       <div className="panel panel-default">
         <div className="panel-title">
-        img will go here
+        img will go here this {this.props.product.name}
         </div>
         <div className="panel-body">
           Panel content

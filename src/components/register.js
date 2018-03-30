@@ -50,6 +50,15 @@ change = (e) =>{
 						</div>
 					</button>
 					<br />
+					<button onClick={this.handleFacebookSubmit} className="btn btn-primary google_button"> 
+						<div className="bord">
+							<i className="fab fa-facebook-f"></i>
+						</div>
+						<div>
+							Sign in with Facebook
+						</div>
+					</button>
+					<br />
 					
 					 <input 
 					 

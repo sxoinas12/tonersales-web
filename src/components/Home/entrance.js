@@ -50,10 +50,10 @@ export class Entrance extends React.Component {
   afterOpenModal = () =>{
     
     this.state.isLog ? (
-        this.subtitle.style.color = 'blue',
-        this.subtitle = 'Συνδεση'
+        this.subtitle.style.color= 'black'
+        
       ) :(
-        this.subtitle.style.color = 'blue'
+        this.subtitle.style.color = 'black'
      
       )
   } 
@@ -71,6 +71,12 @@ export class Entrance extends React.Component {
 
   render() {
   const isLog = this.state.isLog;
+  const sub = isLog ? (
+      this.sub = 'Συνδεση'
+    ) :
+    (
+      this.sub = 'Γινε μέλος'
+      )
 
   const select = isLog ? (
     <Login />
@@ -105,7 +111,7 @@ export class Entrance extends React.Component {
               >
              
               <div>
-                <h2 ref={subtitle => this.subtitle = subtitle}> {subtitle}</h2>
+                <h2 ref={subtitle => this.subtitle = subtitle}> {sub}</h2>
                 <br />
     
                 <button onClick={this.closeModal} style={divstyle}>&times;</button>

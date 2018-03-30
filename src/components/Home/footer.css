@@ -1,3 +1,15 @@
+
+.footer h6 {
+	color:#719f41;
+}
+
+.footer ul{
+	list-style-type:none;
+}
+.footer a {
+	color:#777777;
+}
+
 .footer{
 	background: #333;
 	color:#eee;

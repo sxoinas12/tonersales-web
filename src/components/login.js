@@ -34,6 +34,12 @@ export class Login extends React.Component{
 		window.location.href= Net.Url.google;
 	}
 
+
+	handleFacebookSubmit = () =>{
+		//it do nothing atm missing back end funcitonality
+		console.log('hi');
+	}
+
 	render(){
 
 		return(
@@ -49,7 +55,15 @@ export class Login extends React.Component{
 							Sign in with Google
 						</div>
 					</button>
-		
+					<br />
+					<button onClick={this.handleFacebookSubmit} className="btn btn-primary google_button"> 
+						<div className="bord">
+							<i className="fab fa-facebook-f"></i>
+						</div>
+						<div>
+							Sign in with Facebook
+						</div>
+					</button>
 					<br />
 					 <input
 

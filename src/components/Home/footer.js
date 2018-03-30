@@ -28,11 +28,11 @@ export class Footer extends React.Component {
 
                 <div className="col-sm-2">
                   <h6>Navigation</h6>
-                  <ul className="unstyled">
-                    <li><a href="" >Home</a></li>
-                    <li><a href="" >Home</a></li>
-                    <li><a href="" >Home</a></li>
-                    <li><a href="" >Home</a></li>
+                  <ul>
+                    <li><a href="" >Προσφορές</a></li>
+                    <li><a href="" >Νεα Προϊόντα</a></li>
+                    <li><a href="" >Κορυφαίες πωλήσεις</a></li>
+                    <li><a href="" >Επικοινωνήστε μαζί μας</a></li>
 
                   </ul>
                 </div>

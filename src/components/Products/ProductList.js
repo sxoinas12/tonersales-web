@@ -18,6 +18,7 @@ const customStyles = {
   }
 };
 
+
 export class ProductList extends React.Component {
   
 
@@ -31,10 +32,10 @@ export class ProductList extends React.Component {
      this.addProduct = this.addProduct.bind(this);
   }
   
- addProduct = function() {
+ addProduct = function(item) {
               var arrayvar = this.state.selectedProducts.slice()
-              console.log(this.item)
-              arrayvar.push(this.item)
+              console.log(item)
+              arrayvar.push(item)
               this.setState({ selectedProducts: arrayvar })
 
             }
@@ -48,10 +49,6 @@ export class ProductList extends React.Component {
   componentDidMount(){
     Modal.setAppElement('body');
   }
-
-
-
-
 
 
   render() {
@@ -80,7 +77,7 @@ export class ProductList extends React.Component {
               
             </div>
 
-            <div className="add" onClick = {this.addProduct()}>
+            <div className="add" onClick = {() => this.addProduct(item)}>
                 <div className="add_but" >
                   Προσθηκη
                 </div>
@@ -91,9 +88,6 @@ export class ProductList extends React.Component {
 
     return (
       <div className="row">
-        <button onClick={console.log(this.state.selectedProducts)}>
-        Click me
-        </button>
         {nameList}
         <Modal 
           isOpen={this.state.modalIsOpen}

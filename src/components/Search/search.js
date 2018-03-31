@@ -6,6 +6,7 @@ import {ProductList} from '../Products/ProductList';
 import {Footer} from '../Home/footer';
 import {Entrance} from '../Home/entrance';
 import SearchBar from '../helpers/searchBar';
+import {Mini_Cart} from '../Products/mini-cart';
 
 const Net = require('../helpers/net.js');
 const Methods = require('../helpers/methods.js');
@@ -54,7 +55,8 @@ export class Search extends React.Component {
               <SearchBar initialValue={this.props.location.state.searchQuery} onSubmit={this.onSubmit} /> 
             </div>
             <div className="col-xs-12 col-md-offset-3 col-md-3 col-lg-offset-4 col-lg-2  ">
-             <Entrance />  
+             <Entrance /> 
+             <Mini_Cart /> 
             </div> 
          </div>
 

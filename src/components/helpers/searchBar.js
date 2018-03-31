@@ -37,7 +37,8 @@ class SearchBar extends React.Component {
                 onChange={this.change}
                 placeholder={this.state.searchQuery}
                 className="" id="search-bar-input"/>
-                <div className="input-group-addon btn" onClick =  {() => this.props.onSubmit(this.state.searchQuery)}>
+                <div className="input-group-addon btn" 
+                 onClick =  {() => this.props.onSubmit(this.state.searchQuery)}>
                   <i  className="fas fa-search"></i>
                 </div>
             </div>   

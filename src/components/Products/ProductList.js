@@ -25,16 +25,34 @@ export class ProductList extends React.Component {
     super(props);
     this.state = {
       modalIsOpen:false,
-      selectedProduct:null
+      selectedProduct:null,
+      selectedProducts:[]
     };
+     this.addProduct = this.addProduct.bind(this);
   }
   
+ addProduct = function() {
+              var arrayvar = this.state.selectedProducts.slice()
+              console.log(this.item)
+              arrayvar.push(this.item)
+              this.setState({ selectedProducts: arrayvar })
+
+            }
+
   closeModal = () => {
     this.setState({modalIsOpen:false});
   }
+
+ 
+
   componentDidMount(){
     Modal.setAppElement('body');
   }
+
+
+
+
+
 
   render() {
          
@@ -43,7 +61,7 @@ export class ProductList extends React.Component {
     const {data} = this.props;
     const nameList = data.map((item)=>
 
-        
+    
         <div className="col-xs-12 col-md-4 col-lg-3" key={item.id}>
           <div  className="thumbnail back">
             <div className='card_img'>
@@ -58,15 +76,24 @@ export class ProductList extends React.Component {
               <p>
                 Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
               </p>
-              <p> <a  onClick={() => this.setState({selectedProduct: item, modalIsOpen:true}) }
-              className="btn btn-default" role="button">Προσθηκη</a></p>
+
+              
             </div>
+
+            <div className="add" onClick = {this.addProduct()}>
+                <div className="add_but" >
+                  Προσθηκη
+                </div>
+              </div>
 
           </div>
         </div>);
 
     return (
       <div className="row">
+        <button onClick={console.log(this.state.selectedProducts)}>
+        Click me
+        </button>
         {nameList}
         <Modal 
           isOpen={this.state.modalIsOpen}
@@ -74,6 +101,7 @@ export class ProductList extends React.Component {
           onRequestClose={this.closeModal}>
           <ProductModal product={this.state.selectedProduct}/>
         </Modal>
+
       </div>
 
 

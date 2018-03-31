@@ -3,7 +3,7 @@ import './entrance.css';
 import Modal from 'react-modal';
 import {Login} from '../login';
 import {Register} from '../register';
-
+import {Mini_Cart} from '../Products/mini-cart';
 
 
 const divstyle = {
@@ -96,14 +96,8 @@ export class Entrance extends React.Component {
              <a onClick={() => this.setState({isLog:false, modalIsOpen:true})} >Γίνε Μέλος </a>
             </li>
             <li>
-              <div className="dropdown">
-              <a className= "dropbtn" onClick= {() => console.log("clicked")}><i class="fas fa-shopping-cart"></i></a>
-              <div class="dropdown-content">
-                <a>Link 1</a>
-                <a>Link 2</a>
-                <a>Link 3</a>
-              </div>
-              </div>
+              <Mini_Cart />
+
             </li>
           </ul>
           

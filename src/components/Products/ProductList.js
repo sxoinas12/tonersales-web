@@ -44,7 +44,7 @@ export class ProductList extends React.Component {
     const nameList = data.map((item)=>
 
         
-        <div className="col-xs-12 col-md-3" key={item.id}>
+        <div className="col-xs-12 col-md-4 col-lg-3" key={item.id}>
           <div  className="thumbnail back">
             <div className='card_img'>
              

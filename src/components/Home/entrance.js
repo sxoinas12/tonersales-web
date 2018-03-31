@@ -96,8 +96,14 @@ export class Entrance extends React.Component {
              <a onClick={() => this.setState({isLog:false, modalIsOpen:true})} >Γίνε Μέλος </a>
             </li>
             <li>
-
-              <a onClick= {() => console.log("clicked")}><i class="fas fa-shopping-cart"></i></a>
+              <div className="dropdown">
+              <a className= "dropbtn" onClick= {() => console.log("clicked")}><i class="fas fa-shopping-cart"></i></a>
+              <div class="dropdown-content">
+                <a>Link 1</a>
+                <a>Link 2</a>
+                <a>Link 3</a>
+              </div>
+              </div>
             </li>
           </ul>
           

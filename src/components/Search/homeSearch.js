@@ -6,7 +6,7 @@ import { Button } from 'react-bootstrap';
 import {ProductList} from '../Products/ProductList';
 import {Entrance} from '../Home/entrance';
 import SearchBar from '../helpers/searchBar';
-import {Route , Redirect } from 'react-router'
+import {Route , Redirect } from 'react-router';
 
 const Net = require('../helpers/net.js');
 const Methods = require('../helpers/methods.js');
@@ -46,7 +46,7 @@ class HomeSearch extends React.Component {
             <div className="col-xs-12 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">        
 
             <SearchBar initialValue = {""} onSubmit = {this.handleSubmit} />
-            
+      
             </div> 
 
             

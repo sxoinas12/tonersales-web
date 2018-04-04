@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
 import {code,Row,Col,Grid,ListGroupItem} from 'react-bootstrap';
 import './ProductList.css';
 import {ProductModal} from './productModal';
 import Modal from 'react-modal';
-
-
+import cartEmitter from '../Events/events';
 
 const customStyles = {
   content : {
@@ -26,17 +24,16 @@ export class ProductList extends React.Component {
     super(props);
     this.state = {
       modalIsOpen:false,
-      selectedProduct:null,
-      selectedProducts:[]
+      selectedProduct:{}
     };
-     this.addProduct = this.addProduct.bind(this);
+   
   }
   
- addProduct = function(item) {
-              var arrayvar = this.state.selectedProducts.slice()
-              console.log(item)
-              arrayvar.push(item)
-              this.setState({ selectedProducts: arrayvar })
+ addProduct = (item) =>{
+              
+              this.setState({ selectedProduct: item })
+              cartEmitter.emit('addProduct',this.state.selectedProduct)
+
 
             }
 
@@ -45,16 +42,17 @@ export class ProductList extends React.Component {
   }
 
  
+  
 
   componentDidMount(){
     Modal.setAppElement('body');
   }
 
 
+
+
   render() {
          
-
-
     const {data} = this.props;
     const nameList = data.map((item)=>
 
@@ -87,6 +85,8 @@ export class ProductList extends React.Component {
         </div>);
 
     return (
+      <div>
+     
       <div className="row">
         {nameList}
         <Modal 
@@ -97,7 +97,7 @@ export class ProductList extends React.Component {
         </Modal>
 
       </div>
-
+      </  div>
 
       
     );

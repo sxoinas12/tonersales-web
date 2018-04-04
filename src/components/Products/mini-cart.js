@@ -15,23 +15,27 @@ export class Mini_Cart extends React.Component {
     }
   }
 
+
+
   componentWillMount() {
-    Subscription = cartEmitter.addListener('addProduct', (data) => {
+     Subscription = cartEmitter.addListener('addProduct', (data) => {
       var arrayvar = this.state.products.slice()
       arrayvar.push(data)
-
-      this.setState({ products: arrayvar })
+      if (this.refs.myRef){
+        this.setState({ products: arrayvar })
+      }
+      
     });
   }
 
    componentWillUnmount() {
-    Subscription.remove()
+    
   }
   render() {
  
      const nameList = this.state.products.map((item)=>
         
-            <div key={item.id}>
+            <div key={Math.random()}>
             <a> 
               {item.name}
             </a>
@@ -41,8 +45,8 @@ export class Mini_Cart extends React.Component {
         );
 
     return (
-    <div className="dropdown">
-      <a className= "dropbtn" onClick= {() => console.log("clicked")}><i className="fas fa-shopping-cart"></i></a>
+    <div  ref="myRef" className="dropdown">
+      <a className= "dropbtn" onClick= {() => console.log('clicked') }><i className="fas fa-shopping-cart"></i></a>
       <div className="dropdown-content">
         {nameList}
       </div>

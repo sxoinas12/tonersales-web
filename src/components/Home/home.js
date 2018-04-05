@@ -3,7 +3,6 @@ import './home.css';
 import HomeSearch from '../Search/homeSearch';
 import {Entrance} from './entrance';
 import {Footer} from './footer';
-import {Mod} from '../tools/modal';
 
 export class Home extends React.Component {
   constructor(props){

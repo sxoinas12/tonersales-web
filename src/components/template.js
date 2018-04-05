@@ -20,7 +20,6 @@ export class Template extends React.Component{
 		<div>
 		<Router>
 			<div className="template">
-			
 				<Route exact path="/" component={Home} />
 				<Route path="/register" component={Register} />
 				<Route path="/login" component={Login} />

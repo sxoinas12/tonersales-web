@@ -4,6 +4,14 @@ import cartEmitter from '../Events/events';
 
 
 let Subscription = null
+const customLabel = {
+  content : {
+    border                   : 'solid 5px',
+    color                 : 'blue',
+  }
+};
+
+
 
 export class Mini_Cart extends React.Component {
   
@@ -19,11 +27,14 @@ export class Mini_Cart extends React.Component {
 
   componentWillMount() {
      Subscription = cartEmitter.addListener('addProduct', (data) => {
-      var arrayvar = this.state.products.slice()
-      arrayvar.push(data)
-      if (this.refs.myRef){
-        this.setState({ products: arrayvar })
+      if(data.name){
+        var arrayvar = this.state.products.slice()
+        arrayvar.push(data)
+        if (this.refs.myRef){
+          this.setState({ products: arrayvar })
+          }
       }
+      
       
     });
   }
@@ -36,9 +47,9 @@ export class Mini_Cart extends React.Component {
      const nameList = this.state.products.map((item)=>
         
             <div key={Math.random()}>
-            <a> 
-              {item.name}
-            </a>
+              <li>
+                {item.name} <label style={customLabel}>+</label>
+              </li>
           </div>
           
           
@@ -48,7 +59,9 @@ export class Mini_Cart extends React.Component {
     <div  ref="myRef" className="dropdown">
       <a className= "dropbtn" onClick= {() => console.log('clicked') }><i className="fas fa-shopping-cart"></i></a>
       <div className="dropdown-content">
+        <ol className="cart_list">
         {nameList}
+        </ol>
       </div>
      </div>
     

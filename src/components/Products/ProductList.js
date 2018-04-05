@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {code,Row,Col,Grid,ListGroupItem} from 'react-bootstrap';
 import './ProductList.css';
 import {ProductModal} from './productModal';
 import Modal from 'react-modal';
@@ -31,8 +30,10 @@ export class ProductList extends React.Component {
   
  addProduct = (item) =>{
               
-              this.setState({ selectedProduct: item })
-              cartEmitter.emit('addProduct',this.state.selectedProduct)
+            this.setState({ selectedProduct: item })
+            cartEmitter.emit('addProduct',item)
+         
+              
 
 
             }
@@ -60,7 +61,6 @@ export class ProductList extends React.Component {
         <div className="col-xs-12 col-md-4 col-lg-3" key={item.id}>
           <div  className="thumbnail back">
             <div className='card_img'>
-             
             </div>
             <div className="caption card_body">
               <h3 >Thumbnail label</h3>
@@ -71,10 +71,7 @@ export class ProductList extends React.Component {
               <p>
                 Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
               </p>
-
-              
             </div>
-
             <div className="add" onClick = {() => this.addProduct(item)}>
                 <div className="add_but" >
                   Προσθηκη

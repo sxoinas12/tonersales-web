@@ -46,6 +46,7 @@ export class Search extends React.Component {
     
     return (
     <div className="container-fluid main ">
+    
       <div className="row ">
           <div className="row first">
             <div className= "col-xs-12 col-md-2 col-lg-2 title">
@@ -56,7 +57,6 @@ export class Search extends React.Component {
             </div>
             <div className="col-xs-12 col-md-offset-3 col-md-3 col-lg-offset-4 col-lg-2  ">
              <Entrance /> 
-           
             </div> 
          </div>
 
@@ -65,7 +65,6 @@ export class Search extends React.Component {
             <ProductList data = {this.state.list} />
             </div>
          </div>
-        
     </div>
 
       <div className="row">

@@ -11,7 +11,9 @@
     border: none;
 
 }
-
+.cart-title{
+    border: solid 1px;
+}
 .dropdown {
 
     color:#707070;

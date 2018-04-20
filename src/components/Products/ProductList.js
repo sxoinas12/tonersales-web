@@ -32,8 +32,6 @@ export class ProductList extends React.Component {
               
             this.setState({ selectedProduct: item })
             cartEmitter.emit('addProduct',item)
-         
-              
 
 
             }

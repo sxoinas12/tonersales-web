@@ -14,19 +14,23 @@ const customLabel = {
 
 export class Mini_Cart extends React.Component {
   
-
   constructor(props) {
     super(props);
     this.state = {
-      selector:false,
       products:[]
     }
   }
-
-
+  
+  saveToLocal() {
+       const local = this.state.products;
+       localStorage.setItem('cart_state', JSON.stringify(local));
+       console.log(local);
+   }
+   componentDidUpdate() {
+    this.saveToLocal();
+   }
 
   componentWillMount() {
-     state = this.state;
      Subscription = cartEmitter.addListener('addProduct', (data) => {
       if(data.name){
         var arrayvar = this.state.products.slice()
@@ -37,14 +41,20 @@ export class Mini_Cart extends React.Component {
           this.setState({ products: arrayvar })
           }
       }
-      
-      
     });
+
+    var local = localStorage.getItem('cart_state');
+    if(local){
+      this.setState({products:JSON.parse(local)});
+    }
+    
+    //this.setState({products:prod});
   }
 
-   componentWillUnmount() {
-    
+  componentWillUnmount() {
+      this.saveToLocal();
   }
+
   render() {
     const nameList = this.state.products.map((item)=>
         
@@ -57,7 +67,7 @@ export class Mini_Cart extends React.Component {
           
         );
 
-     const selector = this.state.selector;
+     const selector = this.state.products.length;
      const CartLayout = selector ? 
      (
       <div>

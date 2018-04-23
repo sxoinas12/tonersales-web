@@ -39,6 +39,7 @@ change = (e) =>{
 	render(){
 		return(
 			<div className="log">
+				Εγγραφή
 				<form className = "form" onSubmit={this.handleSubmit}>
 					 <button onClick={this.handleGoogleSubmit} className="btn btn-danger google_button"> 
 						<div className="bord">

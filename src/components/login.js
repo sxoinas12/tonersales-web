@@ -15,13 +15,13 @@ export class Login extends React.Component{
 		}
 	}
 	change = (e) =>{
-    const target = e.target;
-    const value = target.value;
-    const name = target.name;
-    this.setState({
-      [name]:value
-          });
-  }
+	    const target = e.target;
+	    const value = target.value;
+	    const name = target.name;
+	    this.setState({
+	      	[name]:value
+	    });
+	}
 
 	handleSubmit = (e) => {
 		e.preventDefault();
@@ -34,16 +34,15 @@ export class Login extends React.Component{
 		window.location.href= Net.Url.google;
 	}
 
-
 	handleFacebookSubmit = () =>{
 		//it do nothing atm missing back end funcitonality
 		console.log('hi');
 	}
 
 	render(){
-
 		return(
 			<div className="log">
+				Σύνδεση
 				<form className="form" onSubmit = {this.handleSubmit}> 
 					<button onClick={this.handleGoogleSubmit} className="btn btn-danger google_button"> 
 						<div className="bord">
@@ -64,7 +63,6 @@ export class Login extends React.Component{
 					</button>
 					<br />
 					 <input
-
 					 value={this.state.email}
 					 type="text"
 					 placeholder="email"

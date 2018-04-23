@@ -4,9 +4,13 @@
   "private": true,
   "dependencies": {
     "bootstrap": "3.3.7",
+    "fbemitter": "^2.1.1",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.2.0",
+    "react-modal": "^3.4.2",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
     "set-default-browser": "^1.0.1"
   },

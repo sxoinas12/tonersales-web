@@ -48,76 +48,46 @@ export class Entrance extends React.Component {
   }
 
   afterOpenModal = () =>{
-    
-    this.state.isLog ? (
-        this.subtitle.style.color= 'black'
-        
-      ) :(
-        this.subtitle.style.color = 'black'
-     
-      )
   } 
 
   closeModal = () => {
     this.setState({modalIsOpen:false});
   }
+
   componentDidMount(){
     Modal.setAppElement('body');
   }
 
- 
-
-
-
   render() {
   const isLog = this.state.isLog;
-  const sub = isLog ? (
-      this.sub = 'Συνδεση'
-    ) :
-    (
-      this.sub = 'Γινε μέλος'
-      )
-
-  const select = isLog ? (
-    <Login />
-    ) : 
-    (
-    <Register  />
-    );
+  const selectModal = isLog ? (<Login />) : (<Register  />);
   return(
-
       <div className= "pos">
           <ul>
             <li>
-              <a onClick={() => this.setState({isLog:true, modalIsOpen:true})} >Σύνδεση</a>
+              <a onClick={() => this.setState({isLog:true, modalIsOpen:true})}>Σύνδεση</a>
             </li>
             <li className="selector"> | </li>
             <li> 
-             <a onClick={() => this.setState({isLog:false, modalIsOpen:true})} >Γίνε Μέλος </a>
+             <a onClick={() => this.setState({isLog:false, modalIsOpen:true})}>Γίνε Μέλος </a>
             </li>
             <li>
               <Mini_Cart />
             </li>
           </ul>
-          
-        
+
           <Modal 
-          isOpen={this.state.modalIsOpen}
-              onAfterOpen={this.afterOpenModal}
-              onRequestClose={this.closeModal}
-              style={customStyles}
-              contentLabel="Example Modal"
-              >
-             
-              <div>
-                <h2 ref={subtitle => this.subtitle = subtitle}> {sub}</h2>
-                <br />
-    
-                <button onClick={this.closeModal} style={divstyle}>&times;</button>
-                {select}
-              </div>
-              
-               </Modal>
+            isOpen={this.state.modalIsOpen}
+            onAfterOpen={this.afterOpenModal}
+            onRequestClose={this.closeModal}
+            style={customStyles}
+            contentLabel="Example Modal"
+            >
+            <div>
+              <button onClick={this.closeModal} style={divstyle}>&times;</button>
+              {selectModal}
+            </div>    
+          </Modal>
       </div>
     
    

@@ -23,7 +23,8 @@ export class ProductList extends React.Component {
     super(props);
     this.state = {
       modalIsOpen:false,
-      selectedProduct:{}
+      selectedProduct:{},
+      sProd: {}
     };
    
   }
@@ -56,7 +57,7 @@ export class ProductList extends React.Component {
     const nameList = data.map((item)=>
 
     
-        <div className="col-xs-12 col-md-4 col-lg-3 items" key={item.id}  onClick = { () => console.log("pop up window here")}>
+        <div className="col-xs-12 col-md-4 col-lg-3 items" key={item.id}  onClick = { () => this.setState({modalIsOpen:true,sProd:item})}>
           <div  className="thumbnail back">
             <div className='card_img'>
             </div>
@@ -88,7 +89,7 @@ export class ProductList extends React.Component {
           isOpen={this.state.modalIsOpen}
           style={customStyles}
           onRequestClose={this.closeModal}>
-          <ProductModal product={this.state.selectedProduct}/>
+          <ProductModal product={this.state.sProd}/>
         </Modal>
 
       </div>

@@ -6,7 +6,7 @@
 .dropbtn {
     
     color:#707070;
-    padding: 16px;
+    padding-left: 16px;
     font-size: 16px;
     border: none;
 
@@ -40,12 +40,33 @@
     display: block;
 }
 
-.dropdown-content a:hover {background-color: #ddd}
+
 
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
-.dropdown:hover .dropbtn {
-    background-color: #white;
+.dropdown-content a:hover{
+    background-color: #ddd;
 }
+
+.cart_title {
+    padding-left: 25px;
+    border-bottom: 1px solid;
+
+}
+.cart_items{
+
+}
+
+.cart_items a:hover {
+    background-color: #ddd;
+}
+
+
+
+
+
+
+
+

@@ -21,6 +21,14 @@ export class Mini_Cart extends React.Component {
     }
   }
   
+
+  handleClick = (e) =>{
+    this.props.history.push({
+      pathname:'/checkout',
+      state: {products:this.products}
+      });
+  }
+
   saveToLocal() {
        const local = this.state.products;
        localStorage.setItem('cart_state', JSON.stringify(local));
@@ -61,6 +69,10 @@ export class Mini_Cart extends React.Component {
             <div key={Math.random()}>
               <li>
                 {item.name} 
+                <label>
+                  <button type="button">&#43;</button> 
+                  <button type="button">&#8722;</button>
+                </label>
               </li>
           </div>
           
@@ -72,11 +84,11 @@ export class Mini_Cart extends React.Component {
      (
       <div>
           <div className="dropdown-content">
-            <div className="">
+            <div className="cart_title">
               Το καλάθι σου
             </div>
             <div>
-              <ol className="">
+              <ol className="cart_items">
                 {nameList}
               </ol>
             </div>
@@ -97,7 +109,7 @@ export class Mini_Cart extends React.Component {
 
     return (
     <div  ref="myRef" className="dropdown">
-      <a className= "dropbtn" onClick= {() => console.log('clicked') }><i className="fas fa-shopping-cart"></i></a>
+      <a className= "dropbtn" onClick= {this.handleClick}><i className="fas fa-shopping-cart"></i></a>
       
         {CartLayout}
       

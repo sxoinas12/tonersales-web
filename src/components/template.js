@@ -10,6 +10,7 @@ import {Redirect} from 'react-router';
 
 import {Home} from './Home/home';
 import {Search} from './Search/search';
+import {Checkout} from './Checkout/checkout';
 
 
 
@@ -24,6 +25,7 @@ export class Template extends React.Component{
 				<Route path="/register" component={Register} />
 				<Route path="/login" component={Login} />
 				<Route path="/search" component={Search} />
+				<Route path="/checkout" component={Checkout} />
  			</div>
 		</Router>	
 		</div>

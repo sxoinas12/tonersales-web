@@ -96,7 +96,7 @@ export class Entrance extends React.Component {
              <a onClick={() => this.setState({isLog:false, modalIsOpen:true})} >Γίνε Μέλος </a>
             </li>
             <li>
-              <Mini_Cart />
+              <Mini_Cart {...this.props} />
             </li>
           </ul>
           

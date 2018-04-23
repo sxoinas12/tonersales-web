@@ -7,6 +7,8 @@ import {Footer} from './footer';
 export class Home extends React.Component {
   constructor(props){
     super(props);
+
+    console.log(props);
     this.state = {
       isLogged:false
 
@@ -21,7 +23,7 @@ export class Home extends React.Component {
         <div className="container-fluid main" >
           <div className="row"> 
             <div className="col-xs-12 col-md-offset-9 col-md-3 col-lg-offset-10 col-lg-2">
-              <Entrance />
+              <Entrance {...this.props} />
               
             </div>
           </div>

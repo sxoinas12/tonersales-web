@@ -56,7 +56,7 @@ export class ProductList extends React.Component {
     const nameList = data.map((item)=>
 
     
-        <div className="col-xs-12 col-md-4 col-lg-3" key={item.id}>
+        <div className="col-xs-12 col-md-4 col-lg-3 items" key={item.id}  onClick = { () => console.log("pop up window here")}>
           <div  className="thumbnail back">
             <div className='card_img'>
             </div>
@@ -92,7 +92,7 @@ export class ProductList extends React.Component {
         </Modal>
 
       </div>
-      </  div>
+      </div>
 
       
     );

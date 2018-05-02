@@ -32,18 +32,25 @@ export class Mini_Cart extends React.Component {
   saveToLocal() {
        const local = this.state.products;
        localStorage.setItem('cart_state', JSON.stringify(local));
-       console.log(local);
+       
    }
+
+
+
+
    componentDidUpdate() {
     this.saveToLocal();
    }
 
   componentWillMount() {
+
      Subscription = cartEmitter.addListener('addProduct', (data) => {
       if(data.name){
+        console.log(data)
+        console.log(data.name);
         var arrayvar = this.state.products.slice()
         this.setState({selector:true});
-        console.log(this.selector);
+        //console.log(this.selector);
         arrayvar.push(data)
         if (this.refs.myRef){
           this.setState({ products: arrayvar })
@@ -64,14 +71,15 @@ export class Mini_Cart extends React.Component {
   }
 
   render() {
+    //const prods = this.state.products.map((id) => ProductService.getById(id));
     const nameList = this.state.products.map((item)=>
         
             <div key={Math.random()}>
               <li>
                 {item.name} 
                 <label>
-                  <button type="button">&#43;</button> 
-                  <button type="button">&#8722;</button>
+                  <button  onClick = { () => console.log("clicked")} type="button">&#43;</button> 
+                  <button  onClick = { () => console.log("clicked")}type="button">&#8722;</button>
                 </label>
               </li>
           </div>

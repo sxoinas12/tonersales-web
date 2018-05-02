@@ -57,22 +57,24 @@ export class ProductList extends React.Component {
     const nameList = data.map((item)=>
 
     
-        <div className="col-xs-12 col-md-4 col-lg-3 items" key={item.id}  onClick = { () => this.setState({modalIsOpen:true,sProd:item})}>
-          <div  className="thumbnail back">
-            <div className='card_img'>
-            </div>
-            <div className="caption card_body">
-              <h3 >Thumbnail label</h3>
-              <div>
-                Name:{item.name} <br />
-                Price:{item.price}
+        <div className="col-xs-12 col-md-4 col-lg-3 items" key={item.id}  >
+          <div  className="thumbnail back" >
+            <div onClick = { () => this.setState({modalIsOpen:true,sProd:item})}>
+              <div className='card_img'>
               </div>
-              <p>
-                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-              </p>
+              <div className="caption card_body">
+                <h3 >Thumbnail label</h3>
+                <div>
+                  Name:{item.name} <br />
+                  Price:{item.price}
+                </div>
+                <p>
+                  Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                </p>
+              </div>
             </div>
             <div className="add" onClick = {() => this.addProduct(item)}>
-                <div className="add_but" >
+                <div type="button" className="add_but" >
                   Προσθηκη
                 </div>
               </div>

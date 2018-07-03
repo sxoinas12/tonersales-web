@@ -3,6 +3,7 @@ import './home.css';
 import HomeSearch from '../Search/homeSearch';
 import {Entrance} from './entrance';
 import {Footer} from './footer';
+import {Card} from '../helpers/card';
 
 export class Home extends React.Component {
   constructor(props){
@@ -10,8 +11,11 @@ export class Home extends React.Component {
 
     console.log(props);
     this.state = {
-      isLogged:false
-
+      isLogged:false,
+      item: {
+        name:'not filled',
+        price:'not filled'
+      }
     }
   }
 
@@ -26,11 +30,24 @@ export class Home extends React.Component {
               <Entrance {...this.props} />
               
             </div>
-          </div>
-	        <div className="row fullScreen">
+            <div className="row fullScreen">
             <HomeSearch />
-             
-	        </div>
+          </div>
+          </div>
+	        
+          <div className="row HotProd">
+            <Card data= {this.state.item}  />
+            <Card data= {this.state.item}  />
+            <Card data= {this.state.item}   />
+          </div>
+          <div className="row HotProd">
+            <Card data= {this.state.item}  />
+            <Card data= {this.state.item}   />
+            <Card data= {this.state.item}   />
+          </div>
+          <div className="row HotProd">
+          </div>
+
 
           <div className="row">
               <Footer />

@@ -4,12 +4,26 @@
 	height: 100%;
 	overflow: auto;
 	
-	
+}
 
-	
+
+.page-header{
+
+	font-family:;
+	 border: none!important; 
+}
+
+.HotProd{
+	height: 40vh;
+	padding-left:12%;
+	padding-right: 12%;
 }
 
 .fullScreen {
+	background-image: url('page3.jpg');
+	background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center; 
 	width:100vw;
 	height:100vh;
 }

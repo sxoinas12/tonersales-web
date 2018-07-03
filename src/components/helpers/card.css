@@ -1,0 +1,32 @@
+.cont{
+	margin-top: 2%;
+	margin-left: 4%;
+}
+
+
+ .card {
+ 
+
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
+}
+
+
+.c_img {
+ 
+	height: 206px;
+	width: 100%;
+	background-image: url('/images/second.jpg');
+	
+	
+	
+
+}
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+

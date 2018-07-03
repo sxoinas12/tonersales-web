@@ -3,6 +3,8 @@ import './ProductList.css';
 import {ProductModal} from './productModal';
 import Modal from 'react-modal';
 import cartEmitter from '../Events/events';
+import {Card} from '../helpers/card';
+
 
 const customStyles = {
   content : {
@@ -30,7 +32,7 @@ export class ProductList extends React.Component {
   }
   
  addProduct = (item) =>{
-              
+          
             this.setState({ selectedProduct: item })
             cartEmitter.emit('addProduct',item)
 
@@ -55,32 +57,10 @@ export class ProductList extends React.Component {
          
     const {data} = this.props;
     const nameList = data.map((item)=>
+       
+        <Card data= {item}  key={item.id} />
 
-    
-        <div className="col-xs-12 col-md-4 col-lg-3 items" key={item.id}  >
-          <div  className="thumbnail back" >
-            <div onClick = { () => this.setState({modalIsOpen:true,sProd:item})}>
-              <div className='card_img'>
-              </div>
-              <div className="caption card_body">
-                <h3 >Thumbnail label</h3>
-                <div>
-                  Name:{item.name} <br />
-                  Price:{item.price}
-                </div>
-                <p>
-                  Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                </p>
-              </div>
-            </div>
-            <div className="add" onClick = {() => this.addProduct(item)}>
-                <div type="button" className="add_but" >
-                  Προσθηκη
-                </div>
-              </div>
-
-          </div>
-        </div>);
+        );
 
     return (
       <div>

@@ -30,3 +30,30 @@
 
 /* Add some padding inside the card container */
 
+.add{
+	background-color: #696969;
+	height: 25px;
+}
+
+.add_but{
+display: block;
+color: #000;
+background-color: #696969;
+border: 1px solid #696969;
+border-radius: 0;
+cursor: pointer;
+letter-spacing: 1px;
+outline: 0;
+outline-offset: 0;
+font-size: 15px;
+text-align: center;
+}
+
+.add_but:hover{
+	background-color:#505050;
+	border-color:#505050;
+}
+.add:hover{
+	color: #505050;
+	background-color: #505050;
+}

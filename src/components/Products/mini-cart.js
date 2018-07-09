@@ -6,8 +6,8 @@ import cartEmitter from '../Events/events';
 let Subscription = null
 const customLabel = {
   content : {
-    border                   : 'solid 5px',
-    color                 : 'blue',
+    border : 'solid 5px',
+    color: 'blue',
   }
 };
 
@@ -17,7 +17,8 @@ export class Mini_Cart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products:[]
+      products:[],
+
     }
   }
   
@@ -30,6 +31,8 @@ export class Mini_Cart extends React.Component {
   }
 
   saveToLocal() {
+     
+       
        const local = this.state.products;
        localStorage.setItem('cart_state', JSON.stringify(local));
        
@@ -39,21 +42,24 @@ export class Mini_Cart extends React.Component {
 
 
    componentDidUpdate() {
+
     this.saveToLocal();
    }
 
   componentWillMount() {
 
      Subscription = cartEmitter.addListener('addProduct', (data) => {
+      console.log('first')
+      console.log(data);
       if(data.name){
+        console.log('here')
         console.log(data)
-        console.log(data.name);
         var arrayvar = this.state.products.slice()
         this.setState({selector:true});
-        //console.log(this.selector);
         arrayvar.push(data)
         if (this.refs.myRef){
           this.setState({ products: arrayvar })
+          console.log('here');
           }
       }
     });

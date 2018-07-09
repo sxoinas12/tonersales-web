@@ -20,7 +20,7 @@ export class ProductList extends React.Component {
     const {data} = this.props;
     const nameList = data.map((item)=>
        
-        <Card data= {item}  key={item.id} />
+        <Card data= {item} info ={item.id} key={item.id}/>
       
         );
 
@@ -29,7 +29,6 @@ export class ProductList extends React.Component {
      
       <div className="row">
         {nameList}
-
       </div>
       </div>
 

@@ -22,10 +22,11 @@ export class Card extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+
       modalIsOpen:false,
       name:this.props.data.name,
       price:this.props.data.price,
-      key:this.props.key,
+      key:this.props.info,
       sProd: {}
     };
 
@@ -34,8 +35,11 @@ export class Card extends React.Component {
   }
 
    addProduct = (item) =>{
-            this.setState({ selectedProduct: this.state.key })
-            cartEmitter.emit('addProduct',this.state.key)
+
+            this.setState({ selectedProduct: this.state.key})
+            // we want to send the item in the cart here
+            // so we send the state
+            cartEmitter.emit('addProduct',this.state)
             }
 
    closeModal = () => {

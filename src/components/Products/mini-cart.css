@@ -55,9 +55,13 @@
     border-bottom: 1px solid;
 
 }
-.cart_items{
 
+.button{
+    margin:2px;
 }
+
+
+
 
 .cart_items a:hover {
     background-color: #ddd;

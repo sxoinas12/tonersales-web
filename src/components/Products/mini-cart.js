@@ -30,6 +30,16 @@ export class Mini_Cart extends React.Component {
       });
   }
 
+  addBut = (e) => {
+    console.log("simple click for start");
+    console.log(e);
+  }
+
+  minBut = (e) => {
+console.log("simple click for start");
+  }
+
+
   saveToLocal() {
      
        
@@ -49,10 +59,8 @@ export class Mini_Cart extends React.Component {
   componentWillMount() {
 
      Subscription = cartEmitter.addListener('addProduct', (data) => {
-      console.log('first')
-      console.log(data);
       if(data.name){
-        console.log('here')
+    
         console.log(data)
         var arrayvar = this.state.products.slice()
         this.setState({selector:true});
@@ -78,14 +86,17 @@ export class Mini_Cart extends React.Component {
 
   render() {
     //const prods = this.state.products.map((id) => ProductService.getById(id));
+     // <button  onClick = { () => console.log("clicked")} type="button">&#43;</button> 
+
+    //
     const nameList = this.state.products.map((item)=>
         
-            <div key={Math.random()}>
+            <div className="cart_item "key={Math.random()}>
               <li>
                 {item.name} 
                 <label>
-                  <button  onClick = { () => console.log("clicked")} type="button">&#43;</button> 
-                  <button  onClick = { () => console.log("clicked")}type="button">&#8722;</button>
+                  <button  className="button btn btn-primary btn-xs" onClick = { this.addBut } type="button">&#43;</button> 
+                  <button  className="button btn btn-danger btn-xs" onClick = { this.minBut } type="button">&#8722;</button>
                 </label>
               </li>
           </div>
@@ -102,7 +113,7 @@ export class Mini_Cart extends React.Component {
               Το καλάθι σου
             </div>
             <div>
-              <ol className="cart_items">
+              <ol>
                 {nameList}
               </ol>
             </div>

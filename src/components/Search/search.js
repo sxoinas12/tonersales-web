@@ -31,8 +31,9 @@ export class Search extends React.Component {
     let tempUrl = Net.Url.products + reqBody;
     Methods.Get(tempUrl)
     .then(res => {
-      this.setState({list:res.data});
       
+      console.log(res.message);
+      this.setState({list:res.data});
     });
   }
 

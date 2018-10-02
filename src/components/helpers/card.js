@@ -26,20 +26,22 @@ export class Card extends React.Component {
       modalIsOpen:false,
       name:this.props.data.name,
       price:this.props.data.price,
-      key:this.props.info,
-      sProd: {}
+      id:this.props.data.id,
+      quantity:1,
+      sProd:{}
+
     };
 
    
 
   }
 
-   addProduct = (item) =>{
-
-            this.setState({ selectedProduct: this.state.key})
-            // we want to send the item in the cart here
-            // so we send the state
+   addProduct = (info) =>{
+           
+           
             cartEmitter.emit('addProduct',this.state)
+            
+
             }
 
    closeModal = () => {
@@ -67,7 +69,7 @@ export class Card extends React.Component {
              
                   </div>
                 <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <div className="add" onClick = {() => this.addProduct(this.state.key)}>
+                <div className="add" onClick = {() => this.addProduct(this.state.info)}>
                 <div type="button" className="add_but" >
                   Προσθηκη
                 </div>

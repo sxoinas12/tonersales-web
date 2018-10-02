@@ -9,6 +9,7 @@ export class ProductList extends React.Component {
 
   constructor(props) {
     super(props);
+    //info ={item.id}
     this.state = {
       modalIsOpen:false,
     };
@@ -20,9 +21,11 @@ export class ProductList extends React.Component {
     const {data} = this.props;
     const nameList = data.map((item)=>
        
-        <Card data= {item} info ={item.id} key={item.id}/>
+        <Card data= {item}  id={item.id} key={item.id}/>
       
         );
+
+  
 
     return (
       <div>

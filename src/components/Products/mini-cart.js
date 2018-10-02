@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './mini-cart.css';
 import cartEmitter from '../Events/events';
 
-
 let Subscription = null
 const customLabel = {
   content : {
@@ -30,13 +29,34 @@ export class Mini_Cart extends React.Component {
       });
   }
 
-  addBut = (e) => {
-    console.log("simple click for start");
-    console.log(e);
+
+  _handleDelete(id){
+    this.setState(prevState => ({
+        products: prevState.products.filter(el => el != id )
+    }));
+}
+
+  addBut = (e,index) => {
+   
+    let products = this.state.products;
+    
+    console.log(index);
+    products[index].quantity +=1;
+    this.setState({products:products});
+   
+    
   }
 
-  minBut = (e) => {
-console.log("simple click for start");
+  minBut = (e,index) => {
+    console.log("simple click for start");
+    let products = this.state.products;
+    if(products[index].quantity != 1){
+      products[index].quantity -=1;
+    }
+    else if(products[index].quantity != 1){
+      this.state.products._handleDelete(index);
+
+    }
   }
 
 
@@ -59,9 +79,10 @@ console.log("simple click for start");
   componentWillMount() {
 
      Subscription = cartEmitter.addListener('addProduct', (data) => {
-      if(data.name){
+      //it was data.name with error
+      if(data){
     
-        console.log(data)
+       console.log(data)
         var arrayvar = this.state.products.slice()
         this.setState({selector:true});
         arrayvar.push(data)
@@ -81,7 +102,12 @@ console.log("simple click for start");
   }
 
   componentWillUnmount() {
+     //let arrayvar  =[];
+     //localStorage.clear();
       this.saveToLocal();
+    //this.setState({ products: arrayvar })
+
+
   }
 
   render() {
@@ -89,17 +115,21 @@ console.log("simple click for start");
      // <button  onClick = { () => console.log("clicked")} type="button">&#43;</button> 
 
     //
-    const nameList = this.state.products.map((item)=>
-        
-            <div className="cart_item "key={Math.random()}>
-              <li>
+    const nameList = this.state.products.map((item,index)=>
+            
+            <li key={item.id}>
+            <div className="cart_item" >
+                
                 {item.name} 
+                {item.quantity}
                 <label>
-                  <button  className="button btn btn-primary btn-xs" onClick = { this.addBut } type="button">&#43;</button> 
-                  <button  className="button btn btn-danger btn-xs" onClick = { this.minBut } type="button">&#8722;</button>
+                  <button  className="button btn btn-primary btn-xs" onClick = { () => {this.addBut(item,index) }} type="button">&#43;</button> 
+                  <br />
+                  <button  className="button btn btn-danger btn-xs" onClick = {() => { this.minBut(item,index) }} type="button">&#8722;</button>
                 </label>
-              </li>
+              
           </div>
+          </li>
           
           
         );

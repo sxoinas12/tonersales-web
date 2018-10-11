@@ -25,8 +25,6 @@ export class ProductList extends React.Component {
       
         );
 
-  
-
     return (
       <div>
      

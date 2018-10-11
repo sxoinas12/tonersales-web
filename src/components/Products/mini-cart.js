@@ -30,11 +30,7 @@ export class Mini_Cart extends React.Component {
   }
 
 
-  _handleDelete(id){
-    this.setState(prevState => ({
-        products: prevState.products.filter(el => el != id )
-    }));
-}
+  
 
   addBut = (e,index) => {
    
@@ -52,17 +48,17 @@ export class Mini_Cart extends React.Component {
     let products = this.state.products;
     if(products[index].quantity != 1){
       products[index].quantity -=1;
+      this.setState({products:products});
     }
-    else if(products[index].quantity != 1){
-      this.state.products._handleDelete(index);
+    else if(products[index].quantity === 1){
+      products.splice(index,1);
+      this.setState({products:products});
 
     }
   }
 
 
   saveToLocal() {
-     
-       
        const local = this.state.products;
        localStorage.setItem('cart_state', JSON.stringify(local));
        

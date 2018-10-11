@@ -29,16 +29,21 @@ export class Search extends React.Component {
 
     Search = (reqBody) =>{
     let tempUrl = Net.Url.products + reqBody;
+    console.log(tempUrl);
+    //debugger;
     Methods.Get(tempUrl)
     .then(res => {
-      
-      console.log(res.message);
-      this.setState({list:res.data});
+      //console.log(res);
+      //console.log(res.data);
+      //debugger;
+      this.setState({list:res});
     });
   }
 
 
   onSubmit = (e) => {
+    console.log(e);
+    console.log("here");
     const val = e;
     this.Search(val);
   }

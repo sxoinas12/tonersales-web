@@ -40,7 +40,7 @@ export class Card extends React.Component {
            
            
             cartEmitter.emit('addProduct',this.state)
-            
+            console.log("here");
 
             }
 

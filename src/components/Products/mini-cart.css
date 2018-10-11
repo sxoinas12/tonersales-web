@@ -1,4 +1,9 @@
-
+ol li{
+  list-style-type: none;
+  height:100%;
+margin:0;
+padding:0;
+}
 
 .cart_list ol {
     style:none;
@@ -40,9 +45,9 @@
     display: block;
 }
 
+/*.dropdown:hover*/
 
-
-.dropdown:hover .dropdown-content {
+ .dropdown-content {
     display: block;
 }
 

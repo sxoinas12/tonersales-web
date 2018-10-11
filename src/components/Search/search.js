@@ -43,7 +43,7 @@ export class Search extends React.Component {
 
   onSubmit = (e) => {
     console.log(e);
-    console.log("here");
+
     const val = e;
     this.Search(val);
   }

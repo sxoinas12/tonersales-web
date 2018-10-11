@@ -33,10 +33,10 @@ export class Mini_Cart extends React.Component {
   
 
   addBut = (e,index) => {
-   
+    console.log(this.props);
     let products = this.state.products;
     
-    console.log(index);
+    //console.log(index);
     products[index].quantity +=1;
     this.setState({products:products});
    
@@ -77,15 +77,34 @@ export class Mini_Cart extends React.Component {
      Subscription = cartEmitter.addListener('addProduct', (data) => {
       //it was data.name with error
       if(data){
-    
-       console.log(data)
-        var arrayvar = this.state.products.slice()
-        this.setState({selector:true});
-        arrayvar.push(data)
-        if (this.refs.myRef){
-          this.setState({ products: arrayvar })
-          console.log('here');
+        let products = this.state.products;
+        let index = null;
+        
+        for (let i=0; i<products.length; i++){
+          if(products[i].id === data.id){
+            index = i;
+            break;
           }
+          else{
+            continue;
+          }
+        }
+
+        if(index !== null){
+          products[index].quantity +=1;
+          this.setState({products:products});
+        }
+        else {
+          var arrayvar = this.state.products.slice()
+          this.setState({selector:true});
+          arrayvar.push(data)
+          if (this.refs.myRef){
+            console.log("not here");
+            this.setState({ products: arrayvar })
+            
+            }
+        }
+
       }
     });
 
@@ -107,20 +126,17 @@ export class Mini_Cart extends React.Component {
   }
 
   render() {
-    //const prods = this.state.products.map((id) => ProductService.getById(id));
-     // <button  onClick = { () => console.log("clicked")} type="button">&#43;</button> 
-
-    //
+    
     const nameList = this.state.products.map((item,index)=>
             
             <li key={item.id}>
-            <div className="cart_item" >
+            <div>
                 
-                {item.name} 
-                {item.quantity}
+                {item.name} : {item.quantity}
                 <label>
                   <button  className="button btn btn-primary btn-xs" onClick = { () => {this.addBut(item,index) }} type="button">&#43;</button> 
-                  <br />
+                </label>
+                <label>
                   <button  className="button btn btn-danger btn-xs" onClick = {() => { this.minBut(item,index) }} type="button">&#8722;</button>
                 </label>
               

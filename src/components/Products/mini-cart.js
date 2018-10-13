@@ -124,19 +124,28 @@ export class Mini_Cart extends React.Component {
     
     const nameList = this.state.products.map((item,index)=>
             
-            <li key={item.id}>
-            <div>
-                
-                {item.name} : {item.quantity}
-                <label>
-                  <button  className="button btn btn-primary btn-xs" onClick = { () => {this.addBut(item,index) }} type="button">&#43;</button> 
-                </label>
-                <label>
-                  <button  className="button btn btn-danger btn-xs" onClick = {() => { this.minBut(item,index) }} type="button">&#8722;</button>
-                </label>
-              
+        <li key={item.id} className="row cart_product">
+        
+          
+          <div className="col-xs-6 cart_name">
+            {index+1}. {item.name}
+          </div>        
+          <div className="col-xs-3 no-padding">
+            <span className="quantity_but" onClick = { () => {this.addBut(item,index) }} type="button">&#43;</span> 
+            <span className="quantity">
+              {item.quantity} 
+            </span>
+            <span  className="quantity_but" onClick = {() => { this.minBut(item,index) }} type="button">&#8722;</span>
           </div>
-          </li>
+          <div className="col-xs-3 text-right no-padding-left">
+          {item.quantity * item.price} €
+
+          </div>
+         
+          
+          
+   
+        </li>
           
           
         );
@@ -145,16 +154,28 @@ export class Mini_Cart extends React.Component {
      const CartLayout = selector ? 
      (
       <div>
-          <div className="dropdown-content">
+          <div className="dropdown-content cart">
             <div className="cart_title">
               Το καλάθι σου
             </div>
-            <div>
+            <div className="cart_products">
               <ol>
                 {nameList}
               </ol>
             </div>
-         </div>
+            <div className="cart_total">
+                <div className="row">
+                  <div className="col-xs-9 text-right" >
+                    Total 
+                  </div>
+                  <div className="col-xs-3 text-right price no-padding-left">
+                    240 €
+                  </div>
+                </div>
+
+            </div>
+          </div>
+        
         
       </div>
         

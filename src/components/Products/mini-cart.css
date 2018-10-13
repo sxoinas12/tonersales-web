@@ -45,9 +45,9 @@ padding:0;
     display: block;
 }
 
-/*.dropdown:hover*/
+/*.dropdown:hover.*/
 
- .dropdown-content {
+  .dropdown-content {
     display: block;
 }
 

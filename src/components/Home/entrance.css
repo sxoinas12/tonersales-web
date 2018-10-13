@@ -23,7 +23,7 @@
 
 }
 
-.pos li{
+.pos ul > li{
 	float:left;
 	margin:5px;
 }

@@ -19,6 +19,11 @@ export class Home extends React.Component {
     }
   }
 
+
+ componentWillMount() {
+  
+ }
+
   render() {
     return (
 

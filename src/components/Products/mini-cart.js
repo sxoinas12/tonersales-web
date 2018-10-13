@@ -17,7 +17,6 @@ export class Mini_Cart extends React.Component {
     super(props);
     this.state = {
       products:[],
-
     }
   }
   
@@ -33,10 +32,7 @@ export class Mini_Cart extends React.Component {
   
 
   addBut = (e,index) => {
-    console.log(this.props);
     let products = this.state.products;
-    
-    //console.log(index);
     products[index].quantity +=1;
     this.setState({products:products});
    
@@ -44,7 +40,6 @@ export class Mini_Cart extends React.Component {
   }
 
   minBut = (e,index) => {
-    console.log("simple click for start");
     let products = this.state.products;
     if(products[index].quantity != 1){
       products[index].quantity -=1;

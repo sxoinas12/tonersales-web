@@ -4,6 +4,9 @@ import HomeSearch from '../Search/homeSearch';
 import {Entrance} from './entrance';
 import {Footer} from './footer';
 import {Card} from '../helpers/card';
+import {ProductList} from '../Products/ProductList';
+const Net = require('../helpers/net.js');
+
 
 export class Home extends React.Component {
   constructor(props){
@@ -12,16 +15,21 @@ export class Home extends React.Component {
     console.log(props);
     this.state = {
       isLogged:false,
-      item: {
-        name:'not filled',
-        price:'not filled'
-      }
+      list:[],
     }
   }
+  Search = () =>{ 
+    Net.get(Net.urls.homeprod)
+    
+    .then(res => {
+      console.log(res);
+      this.setState({list:res})
+    });
 
+  }
 
  componentWillMount() {
-  
+    this.Search();
  }
 
   render() {
@@ -40,19 +48,14 @@ export class Home extends React.Component {
           </div>
           </div>
 	        
-          <div className="row HotProd">
-            <Card data= {this.state.item}  />
-            <Card data= {this.state.item}  />
-            <Card data= {this.state.item}   />
-          </div>
-          <div className="row HotProd">
-            <Card data= {this.state.item}  />
-            <Card data= {this.state.item}   />
-            <Card data= {this.state.item}   />
-          </div>
-          <div className="row HotProd">
-          </div>
 
+
+
+         <div className="container">
+            <div className="row">
+            <ProductList data = {this.state.list} />
+            </div>
+         </div>
 
           <div className="row">
               <Footer />

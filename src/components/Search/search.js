@@ -9,7 +9,7 @@ import SearchBar from '../helpers/searchBar';
 
 
 const Net = require('../helpers/net.js');
-const Methods = require('../helpers/methods.js');
+
 
 
 export class Search extends React.Component {
@@ -28,10 +28,10 @@ export class Search extends React.Component {
   }
 
     Search = (reqBody) =>{
-    let tempUrl = Net.Url.products + reqBody;
-    console.log(tempUrl);
+   // let tempUrl = Net.Url.products + reqBody;
+    //console.log(tempUrl);
     //debugger;
-    Methods.Get(tempUrl)
+    Net.get(Net.urls.products+ reqBody)
     .then(res => {
       //console.log(res);
       //console.log(res.data);

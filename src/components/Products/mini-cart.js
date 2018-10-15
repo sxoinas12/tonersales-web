@@ -17,6 +17,8 @@ export class Mini_Cart extends React.Component {
     super(props);
     this.state = {
       products:[],
+      total:0,
+
     }
   }
   
@@ -28,14 +30,14 @@ export class Mini_Cart extends React.Component {
       });
   }
 
-
+ 
   
 
   addBut = (e,index) => {
     let products = this.state.products;
     products[index].quantity +=1;
     this.setState({products:products});
-   
+    this.setState({total:this.state.total+products[index].price});
     
   }
 
@@ -44,31 +46,36 @@ export class Mini_Cart extends React.Component {
     if(products[index].quantity != 1){
       products[index].quantity -=1;
       this.setState({products:products});
+      this.setState({total:this.state.total-products[index].price});
+      
     }
     else if(products[index].quantity === 1){
+      this.setState({total:this.state.total-products[index].price})
       products.splice(index,1);
       this.setState({products:products});
+      //this.setState({total:this.state.total-products[index].price});
+      
 
     }
   }
 
 
   saveToLocal() {
+
        const local = this.state.products;
        localStorage.setItem('cart_state', JSON.stringify(local));
-       
    }
 
 
 
 
    componentDidUpdate() {
-
+    
     this.saveToLocal();
    }
 
   componentWillMount() {
-
+     
      Subscription = cartEmitter.addListener('addProduct', (data) => {
       //it was data.name with error
       if(data){
@@ -88,6 +95,8 @@ export class Mini_Cart extends React.Component {
         if(index !== null){
           products[index].quantity +=1;
           this.setState({products:products});
+          this.setState({total:this.state.total+products[index].price});
+
         }
         else {
           var arrayvar = this.state.products.slice()
@@ -96,6 +105,8 @@ export class Mini_Cart extends React.Component {
           if (this.refs.myRef){
             console.log("not here");
             this.setState({ products: arrayvar })
+            //this.setState({total:this.state.total-products[index].price});
+            this.setState({total:this.state.total + data.price});
             
             }
         }
@@ -138,8 +149,8 @@ export class Mini_Cart extends React.Component {
             <span  className="quantity_but" onClick = {() => { this.minBut(item,index) }} type="button">&#8722;</span>
           </div>
           <div className="col-xs-3 text-right no-padding-left">
-          {item.quantity * item.price} €
-
+         
+            {item.quantity *item.price} €
           </div>
          
           
@@ -151,6 +162,7 @@ export class Mini_Cart extends React.Component {
         );
 
      const selector = this.state.products.length;
+    // const total = 0;
      const CartLayout = selector ? 
      (
       <div>
@@ -169,7 +181,9 @@ export class Mini_Cart extends React.Component {
                     Total 
                   </div>
                   <div className="col-xs-3 text-right price no-padding-left">
-                    240 €
+                    
+                     {this.state.total} €
+                    
                   </div>
                 </div>
 

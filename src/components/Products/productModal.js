@@ -13,20 +13,31 @@ export class ProductModal extends React.Component {
   }
 
 
+
   render() {
          
 
       
     return (
-    <div className="">
-      <div className="panel panel-default">
-        <div className="panel-title">
-        img will go here this {this.props.product.name}
+    <div className="prod_modal">
+      <div className="row panel-header prod_name">
+        <div className="col-xs-9 col-md-9 col-lg-9 text-left">
+          Name: {this.props.product.name}
+
+
         </div>
-        <div className="panel-body">
-          Panel content
+      </div>
+      <div className="row description panel-body description">
+        <div className="col-xs-9 col-md-9 col-lg-9 text-left">
+          Description: {this.props.product.description}
+
         </div>
-        <div className="panel-footer">Panel footer</div>
+      </div>
+      <div className="row foot">
+        <div className="col-xs-3 col-md-3 col-lg-3 text-right">
+          Price: {this.props.product.price}
+        </div>
+
       </div>
     </div>
 

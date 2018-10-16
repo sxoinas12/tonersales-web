@@ -18,9 +18,6 @@
 	height: 206px;
 	width: 100%;
 	background-image: url('/images/second.jpg');
-	
-	
-	
 
 }
 /* On mouse-over, add a deeper shadow */
@@ -56,9 +53,6 @@ text-align: center;
 .add:hover{
 	color: #505050;
 	background-color: #505050;
-}
-
-.close {
 }
 
 

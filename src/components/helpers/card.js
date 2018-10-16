@@ -6,7 +6,6 @@ import {ProductModal} from '../Products/productModal';
 
 const customStyles = {
   content : {
-    overflow              : 'hidden',
     top                   : '50%',
     left                  : '50%',
     right                 : 'auto',
@@ -14,7 +13,8 @@ const customStyles = {
     marginRight           : '-50%',
     transform             : 'translate(-50%, -50%)',
     border                : 'solid 1px',
-    padding               : '2px'
+    padding               : '2px',
+    width                 : '40%'
   }
 };
 
@@ -95,10 +95,8 @@ export class Card extends React.Component {
             isOpen={this.state.modalIsOpen}
             style={customStyles}
             onRequestClose={this.closeModal}>
-            <div className="row close" onClick={this.closeModal}>
-                  x &#x2715; 
-            </div>
-            <ProductModal product={this.state.sProd}/>
+            
+            <ProductModal product={this.state.sProd} onClose={this.closeModal} />
               
             </Modal>
             

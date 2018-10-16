@@ -62,8 +62,10 @@ export class Mini_Cart extends React.Component {
 
   saveToLocal() {
 
-       const local = this.state.products;
+       const local = this.state;
+
        localStorage.setItem('cart_state', JSON.stringify(local));
+        
    }
 
 
@@ -116,7 +118,7 @@ export class Mini_Cart extends React.Component {
 
     var local = localStorage.getItem('cart_state');
     if(local){
-      this.setState({products:JSON.parse(local)});
+      this.setState(JSON.parse(local));
     }
     
     //this.setState({products:prod});
@@ -150,7 +152,7 @@ export class Mini_Cart extends React.Component {
           </div>
           <div className="col-xs-3 text-right no-padding-left">
          
-            {item.quantity *item.price} €
+            {item.price} €
           </div>
          
           

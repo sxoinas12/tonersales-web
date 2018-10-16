@@ -1,17 +1,40 @@
+
+.prod_img{
+	height: 120px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url('/images/second.jpg');
+}
 .prod_modal {
-	
+	padding: 10px 30px;
 }
 
 .prod_modal .prod_name {
-	
-	
+	padding-bottom: 10px;
+	font-size: 18px;
 }
 
 .prod_modal .description{
-	
+	padding-bottom: 10px;
+	min-height: 160px;
 }
 
 
-.prod_modal .foot{
-	
+.prod_modal .prod_price{
+	padding-bottom: 10px;
 }
+
+.prod_modal .close_but{
+	height: 2px;
+    color: gray;
+    font-family: Helvetica, sans-serif
+}
+
+
+  
+
+.prod_modal .close_but:hover {
+  color: black;
+  cursor: pointer;
+}
+

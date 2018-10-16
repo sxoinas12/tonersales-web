@@ -5,7 +5,7 @@ import {Footer} from '../Home/footer';
 import {Entrance} from '../Home/entrance';
 import './checkout.css';
 import SearchBar from '../helpers/searchBar';
-
+import {CartProducts} from './cart-products';
 
 
 
@@ -34,9 +34,13 @@ export class Checkout extends React.Component{
 	             <Entrance {...this.props}/> 
 	            </div> 
 	        </div>
+
+	        <div className="row">
+	         <CartProducts {...this.props}/>
+	        </div>
 		
 			 <div className="row">
-	        <Footer />
+	        	<Footer />
 	      	</div>
       	</div>
 			);

@@ -84,11 +84,12 @@ export class Card extends React.Component {
                   </div>
                 <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-                <div className="add" onClick = {() => this.addProduct(this.state.info)}>
-                <div type="button" className="add_but" >
+                <div className="add_but" type="button" onClick = {() => this.addProduct(this.state.info)}>
+                
+                  
                   Προσθηκη
                
-                </div>
+               
               </div>
             </div>
             <Modal 

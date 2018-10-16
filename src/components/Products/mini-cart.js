@@ -24,9 +24,10 @@ export class Mini_Cart extends React.Component {
   
 
   handleClick = (e) =>{
+    console.log(this.state.products);
     this.props.history.push({
       pathname:'/checkout',
-      state: {products:this.products}
+      state: {products:this.state.products}
       });
   }
 

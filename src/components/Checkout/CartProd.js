@@ -1,7 +1,7 @@
 import React, {component} from 'react';
 
 import 'bootstrap/dist/css/bootstrap.css';
-
+import './CartProd.css'
 
 export class CartProd extends React.Component{
 	
@@ -13,8 +13,30 @@ export class CartProd extends React.Component{
 	render(){
 		
 		return (
-			<div className="row">
-				 {this.props.data.name}
+			<div className="row product">
+				<div className="col-xs-2">
+					Product Image
+				</div>
+				<div className="col-xs-2">
+					<div className="row">
+						{this.props.data.name}
+					</div>
+					<div className="row">
+						Id: {this.props.data.id}
+					</div>
+				</div>
+				<div className="col-xs-4">
+					<div className="row">
+						Quantity: {this.props.data.quantity}
+					</div>
+					<div className="row">
+						{this.props.data.price} €
+					</div>
+				</div>
+				<div className="col-xs-4 text-right">
+					{this.props.data.price*this.props.data.quantity} €
+				</div>
+				
 			</div>
 
 			);

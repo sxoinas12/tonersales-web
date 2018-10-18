@@ -39,7 +39,7 @@ export class Checkout extends React.Component{
 	         <CartProducts {...this.props}/>
 	        </div>
 		
-			 <div className="row">
+			 <div className="row checkfoot">
 	        	<Footer />
 	      	</div>
       	</div>

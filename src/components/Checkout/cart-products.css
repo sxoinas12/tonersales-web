@@ -1,0 +1,18 @@
+.checkout{
+
+}
+
+.checkout .header{
+	padding-top: 100px;
+	padding-bottom: 10px;
+	border-bottom: 2px solid;
+	margin-bottom: 10px;
+	font-size: 16px;
+
+}
+
+
+.checkout .total{
+	font-size:16px;
+	font-family: bold;
+}

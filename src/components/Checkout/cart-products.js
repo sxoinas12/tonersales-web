@@ -21,19 +21,29 @@ export class CartProducts extends React.Component{
         <CartProd data= {item}  id={item.id} key={item.id}/>
       
         );
+
 		return (
 			<div className="container checkout">
 				<div className="row header">
-					<div className="col-xs-1 text-left">
+					<div className="col-xs-2 text-right">
 						Το καλάθι μου
 					</div>
-					<div className="cart_image col-xs-9 text-left">
+					<div className="cart_image col-xs-8 text-left">
 						Image for Cart will go here 
+					</div>
+					<div className="col-xs-2 text-right">
+						<button onClick={() => console.log(this.props.history.location.state.total)}type="submit">Next</button>
 					</div>
 				</div>
 
 				<div className="row">
 					{nameList}
+				</div>
+				<div className="row total">
+					<div className="col-xs-12 text-right">
+						Total: {this.props.history.location.state.total}€
+					</div>
+
 				</div>
 			</div>
 

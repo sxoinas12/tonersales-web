@@ -42,11 +42,10 @@ class HomeSearch extends React.Component {
 
     return (
           <div>
-            <div className="col-xs-12 text-center">
-             <div className="head page-header">
-              <a href="http://localhost:3000/"><h1>TonerSales</h1></a>
-            </div>
-              { /*<a href="http://localhost:3000/"> <img src={require('./toner-sales-logo.jpg')} /> </a> */}
+            <div className="col-xs-12 text-center home_logo">
+            
+              <a className="" href="http://localhost:3000/"></a>
+           
             </div>
             <div className="col-xs-12 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">        
               <SearchBar initialValue = {""} onSubmit = {this.handleSubmit} />

@@ -10,7 +10,10 @@
 
 .home_logo{
 	
-	background-image: url('/images/tonersales.png');
+	width:800px;
+	height: auto;
+	background-repeat: no-repeat;
+	background-position: center;
 	background-size: cover;
 	
 	

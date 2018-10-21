@@ -41,10 +41,12 @@ class HomeSearch extends React.Component {
     
 
     return (
-          <div>
-            <div className="col-xs-12 text-center home_logo">
+          <div className="row">
+            <div className="col-xs-6 text-center home_logo">
             
-              <a className="" href="http://localhost:3000/"></a>
+              <a className="" href="http://localhost:3000/"><img src="./images/logo4.png" className="home_logo"/>
+              </a>
+
            
             </div>
             <div className="col-xs-12 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">        

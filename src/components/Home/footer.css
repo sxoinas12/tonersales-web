@@ -1,19 +1,25 @@
-
-.footer h6 {
-	color:#719f41;
-}
-
-.footer ul{
-	list-style-type:none;
-}
-.footer a {
-	color:#777777;
-}
-
 .footer{
-	background: #333;
-	color:#eee;
-	font-size: 11px;
+	background: #615d6c;
+	color:whitesmoke;
+	font-size: 14px;
+	margin-top:50px;
 		
 }
+
+.footer h6{
+	font-size:16px;
+}
+
+
+.footer ul{
+	color:whitesmoke;
+	list-style-type:none;
+}
+
+.footer a:link{
+	text-decoration: none;
+	color:#81a4cd;
+}
+
+
 

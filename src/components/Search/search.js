@@ -54,18 +54,19 @@ export class Search extends React.Component {
     <div className="container-fluid main ">
     
       <div className="row ">
-          <div className="row first">
-            <div className= "col-xs-12 col-md-2 col-lg-2 title">
-              <a href="/"><h3>Mini Logo will go here</h3></a>
+          
+            <div className= "col-xs-1  title">
+              <a href="/"><img src="./images/logo4.png" className="mini_logo"/></a>
             </div>
-            <div className="col-xs-12 col-md-4 col-lg-3 bar ">
+            <div className="col-xs-3  bar text-right">
               <SearchBar initialValue={this.props.location.state.searchQuery} onSubmit={this.onSubmit} /> 
             </div>
-            <div className="col-xs-12 col-md-offset-3 col-md-3 col-lg-offset-4 col-lg-2  ">
+            <div className="col-xs-2 col-xs-offset-5    text-right  ">
              <Entrance {...this.props}/> 
             </div> 
-         </div>
-
+      </div>
+         
+      <div className="row">
          <div className="container">
             <div className="row">
             <ProductList data = {this.state.list} />

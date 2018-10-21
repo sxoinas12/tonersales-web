@@ -32,7 +32,7 @@ export class CartProducts extends React.Component{
 						Image for Cart will go here 
 					</div>
 					<div className="col-xs-2 text-right">
-						<button onClick={() => console.log(this.props.history.location.state.total)}type="submit">Next</button>
+						<button className="checkoutBut" onClick={() => console.log(this.props.history.location.state.total)}type="submit">Επόμενο</button>
 					</div>
 				</div>
 

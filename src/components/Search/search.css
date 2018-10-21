@@ -1,1 +1,15 @@
+.mini_logo {
 
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 40vh;
+    margin-left: -110px;
+    padding-bottom: 30px;
+    margin-top: -44px;
+
+}
+
+
+.main .bar {
+	padding-top:40px;
+}

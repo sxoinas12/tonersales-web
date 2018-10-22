@@ -1,6 +1,8 @@
 .cont{
 	margin-top: 2%;
-	margin-left: 4%;
+
+	
+
 }
 
 
@@ -12,11 +14,42 @@
     transition: 0.3s;
     border-radius: 5px; /* 5px rounded corners */
     padding: 7px;
+    height: 350px;
+    font-size:15px;
+    font-family: tahoma;
 }
 
 
+.card .card-body{
+	height: 190px;
+
+}
+
+.card .ProdName{
+	
+	height: 40px;
+	overflow: hidden;
+
+	text-overflow: ellipsis;
+	max-width: 100px;
+}
 
 
+.card .ProdPrice{
+	height: 30px;
+	}
+
+
+
+.card .ProdTd{
+  
+  height: 90px;
+  overflow: hidden;
+  
+  
+
+
+}
 .c_img {
  
 	

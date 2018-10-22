@@ -25,12 +25,21 @@ class SearchBar extends React.Component {
           });
   }
 
+  _handleKeyPress = (e) =>{
+    console.log("here");
+    if(e.key == 'Enter'){
+    this.props.onSubmit(this.state.searchQuery)
+  }
+  }
+  
+
   render() {
     return (
           <div className="searchBar">
       
             <div className="input-group" >
               <input 
+                onKeyPress = {this._handleKeyPress}
                 value={this.state.searchQuery}
                 type="text"
                 name={"searchQuery"}

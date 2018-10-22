@@ -26,7 +26,7 @@ class HomeSearch extends React.Component {
 
   handleSubmit = (e) =>{
 
-  
+    console.log(e.keyCode);
     this.props.history.push({
       pathname:'/search',
       state: {searchQuery:e}
@@ -35,6 +35,8 @@ class HomeSearch extends React.Component {
 
   }
 
+  
+
  
   render() {
     
@@ -42,16 +44,20 @@ class HomeSearch extends React.Component {
 
     return (
           <div className="row">
-            <div className="col-xs-6 text-center home_logo">
-            
-              <a className="" href="http://localhost:3000/"><img src="./images/logo4.png" className="home_logo"/>
-              </a>
-
-           
+            <div className="col-xs-12">
+              <div className="row text-center">
+                <div className="col-xs-12">
+                  <a className="" href="http://localhost:3000/">
+                    <img src="./images/logo4.png" className="home_logo"/>
+                  </a>
+                </div>
+              </div>
+              <div className="row">  
+                <div className="col-xs-6 col-xs-offset-3">      
+                  <SearchBar initialValue = {""} onSubmit = {this.handleSubmit} />
+                </div>
+              </div> 
             </div>
-            <div className="col-xs-12 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">        
-              <SearchBar initialValue = {""} onSubmit = {this.handleSubmit} />
-            </div> 
         </div>
     );
   }

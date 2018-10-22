@@ -23,15 +23,15 @@ export class CartProducts extends React.Component{
         );
 
 		return (
-			<div className="container checkout">
+			<div className=" checkout">
 				<div className="row header">
-					<div className="col-xs-2 text-right">
+					<div className="col-xs-12 col-sm-2 ">
 						Το καλάθι μου
 					</div>
-					<div className="cart_image col-xs-8 text-left">
+					<div className="cart_image col-xs-12 col-sm-8 text-left ">
 						Image for Cart will go here 
 					</div>
-					<div className="col-xs-2 text-right">
+					<div className="col-xs-12 col-sm-2 text-right">
 						<button className="checkoutBut" onClick={() => console.log(this.props.history.location.state.total)}type="submit">Επόμενο</button>
 					</div>
 				</div>

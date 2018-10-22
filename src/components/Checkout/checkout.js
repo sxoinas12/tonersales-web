@@ -21,28 +21,32 @@ export class Checkout extends React.Component{
 
 	render(){
 		return(
+		[
 		<div className="row">
 		
-			<div className="row">
-	            <div className= "col-xs-12 col-md-2 col-lg-2 title">
-	              <a href="/"><h3>Mini Logo will go here</h3></a>
-	            </div>
-	            <div className="col-xs-12 col-md-4 col-lg-3 bar ">
-	              <SearchBar /> 
-	            </div>
-	            <div className="col-xs-12 col-md-offset-3 col-md-3 col-lg-offset-4 col-lg-2  ">
-	             <Entrance {...this.props}/> 
-	            </div> 
-	        </div>
+			
+          	
+            <div className= "col-xs-12 col-md-3 col-sm-3 title">
+              <a href="/"><div className="mini_logo"></div></a>
+            </div>
+            <div className="col-xs-12  col-md-5 col-sm-6 bar text-left">
+              <SearchBar initialValue={this.props.location.state.searchQuery} onSubmit={this.onSubmit} /> 
+            </div>
+            <div className="col-xs-12 col-md-3 col-sm-3 col-md-offset-1 text-right entrance ">
+             <Entrance {...this.props}/> 
+            </div> 
+      	</div>,
 
 	        <div className="row">
-	         <CartProducts {...this.props}/>
-	        </div>
+	        	<div className="col-xs-12  col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1 ">
+	        	<CartProducts {...this.props}/>
+	        	</div>
+	        </div>,
 		
-			 <div className="row checkfoot">
-	        	<Footer />
-	      	</div>
+		 <div className="row checkfoot">
+        	<Footer />
       	</div>
+      	]
 			);
 	}
 }

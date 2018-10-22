@@ -82,7 +82,7 @@ export class Card extends React.Component {
                    Price:{this.state.price} 
              
                   </div>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p className="card-text">Card Quick Description</p>
                 </div>
                 <div className="add_but" type="button" onClick = {() => this.addProduct(this.state.info)}>
                 

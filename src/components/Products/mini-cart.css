@@ -5,6 +5,11 @@ margin:0;
 padding:0;
 }
 
+.cart {
+    width: 250px;
+    border:1px solid #ccc;
+    line-height: 22px;
+}
 .cart_list ol {
     style:none;
 }
@@ -92,10 +97,14 @@ vertical-align: text-bottom;
     padding: 3px 0;
     font-size: 14px;
     font-family: tahoma;
+
 }
 
 .cart_product .cart_name{
     text-transform: capitalize;
+    
+   
+    text-align: center;
 }
 
 .cart_product .quantity{
@@ -119,10 +128,7 @@ vertical-align: text-bottom;
 
 
 
-.cart {
-    width: 250px;
-    border:1px solid #ccc;
-}
+
 
 .cart_items a:hover {
     background-color: #ddd;

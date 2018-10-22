@@ -106,14 +106,14 @@ export class Card extends React.Component {
               <div  className=" card-body" onClick = { () => this.setState({modalIsOpen:true,sProd:this.props.data})} >
                
                 <div className="ProdName">
-                  Name:{this.state.name}
+                  'Ονομα:{this.state.name}
                 </div> 
                 <div className="ProdPrice">
-                  Price:{this.state.price}
+                  Τίμη:{this.state.price}
                 </div>
                 
                 <div className="ProdTd"  >
-                  <b>Description:</b>
+                  <b>Συμβατό:</b>
                   <br />
                   {this.stripHtml(this.state.shortdescription)}
                 </div>

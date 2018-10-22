@@ -144,12 +144,20 @@ export class Mini_Cart extends React.Component {
           <div className="col-xs-6 cart_name">
             {index+1}. {item.name}
           </div>        
-          <div className="col-xs-3 no-padding">
-            <span className="quantity_but" onClick = { () => {this.addBut(item,index) }} type="button">&#43;</span> 
-            <span className="quantity">
-              {item.quantity} 
-            </span>
-            <span  className="quantity_but" onClick = {() => { this.minBut(item,index) }} type="button">&#8722;</span>
+          <div className="col-xs-3 no-padding text-right">
+            <div className="row">
+              <div className="col-xs-5 no-padding">
+                <span  className="quantity_but" onClick = {() => { this.minBut(item,index) }} type="button">&#8722;</span>
+              </div>
+              <div className="col-xs-2 no-padding">
+                <span className="quantity">
+                  {item.quantity} 
+                </span>
+              </div>
+              <div className="col-xs-5 no-padding text-left">
+                <span className="quantity_but" onClick = { () => {this.addBut(item,index) }} type="button">&#43;</span> 
+              </div>
+            </div>
           </div>
           <div className="col-xs-3 text-right no-padding-left">
          
@@ -180,14 +188,10 @@ export class Mini_Cart extends React.Component {
             </div>
             <div className="cart_total">
                 <div className="row">
-                  <div className="col-xs-9 text-right" >
-                    Total 
+                  <div className="col-xs-11 text-right no-padding " >
+                    Total: <b>{this.state.total} €</b>
                   </div>
-                  <div className="col-xs-3 text-right price no-padding-left">
-                    
-                     {this.state.total} €
-                    
-                  </div>
+                 
                 </div>
 
             </div>

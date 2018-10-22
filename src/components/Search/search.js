@@ -28,14 +28,10 @@ export class Search extends React.Component {
   }
 
     Search = (reqBody) =>{
-   // let tempUrl = Net.Url.products + reqBody;
-    //console.log(tempUrl);
-    //debugger;
+   
     Net.get(Net.urls.products+ reqBody)
     .then(res => {
-      //console.log(res);
-      //console.log(res.data);
-      //debugger;
+      
       this.setState({list:res});
     });
   }
@@ -55,13 +51,13 @@ export class Search extends React.Component {
     
       <div className="row ">
           
-            <div className= "col-xs-1  title">
-              <a href="/"><img src="./images/logo4.png" className="mini_logo"/></a>
+            <div className= "col-xs-12 col-md-3 col-sm-3 title">
+              <a href="/"><div className="mini_logo"></div></a>
             </div>
-            <div className="col-xs-3  bar text-right">
+            <div className="col-xs-12  col-md-5 col-sm-6 bar text-left">
               <SearchBar initialValue={this.props.location.state.searchQuery} onSubmit={this.onSubmit} /> 
             </div>
-            <div className="col-xs-2 col-xs-offset-5    text-right  ">
+            <div className="col-xs-12 col-md-3 col-sm-3 col-md-offset-1 text-right entrance ">
              <Entrance {...this.props}/> 
             </div> 
       </div>

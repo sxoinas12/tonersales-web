@@ -1,15 +1,21 @@
-.mini_logo {
+.main .mini_logo {
 
+   	width: 100%;
+    background-image: url("/images/logo4.png");
     background-repeat: no-repeat;
-    background-position: center;
-    height: 40vh;
-    margin-left: -110px;
-    padding-bottom: 30px;
-    margin-top: -44px;
+    background-position: left;
+        background-position-x: left;
+    height: 188px;
+    background-size: 131%;
+    background-position-x: 13px;
 
 }
 
-
 .main .bar {
-	padding-top:40px;
+	padding-top:66px;
+}
+
+
+.entrance {
+	line-height: 50px;
 }

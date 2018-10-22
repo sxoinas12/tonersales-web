@@ -26,12 +26,13 @@ export class ProductList extends React.Component {
         );
 
     return (
-      <div>
+        <div className="row ProdCont">
      
-      <div className="row">
+      
         {nameList}
-      </div>
-      </div>
+        </div>
+      
+     
 
       
     );

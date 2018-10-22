@@ -62,13 +62,10 @@ export class Search extends React.Component {
             </div> 
       </div>
          
-      <div className="row">
-         <div className="container">
-            <div className="row">
-            <ProductList data = {this.state.list} />
-            </div>
-         </div>
-    </div>
+  
+      <ProductList data = {this.state.list} />
+           
+  
 
       <div className="row">
         <Footer />

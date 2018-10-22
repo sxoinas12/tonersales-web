@@ -30,6 +30,8 @@ export class Card extends React.Component {
       name:this.props.data.name,
       price:this.props.data.price,
       id:this.props.data.id,
+      description:this.props.data.description,
+      shortdescription:this.props.data.shortdescription,
       quantity:1,
       sProd:{}
 
@@ -49,6 +51,32 @@ export class Card extends React.Component {
             console.log("here");
 
             }
+
+   stripHtml = (html) =>{
+    
+   var max_len = 15; 
+   var tmp = document.createElement("DIV");
+   tmp.innerHTML = html;
+   let s = tmp.innerText 
+  // s = s.replace(/(^\s*)|(\s*$)/gi,"");
+   s = s.replace(/[ ]{2,}/gi," ");
+   s = s.replace(/[, ]+/g, " ").trim();
+   s = s.replace(/\n /,"\n");
+   let len= s.split(' ').length;
+   let temp;
+   if(len>max_len){
+    let temp = s.split(' ',max_len);
+    temp[max_len] = "...";
+    return temp.join(' ');
+  }
+    else{
+
+   return s;
+}
+  }
+
+
+
   openModal() {
     this.setState({modalIsOpen: true});
   }
@@ -65,33 +93,39 @@ export class Card extends React.Component {
     Modal.setAppElement('body');
   }
 
-
+ 
 
   render() {
     
     
     return (
-         <div className="cont col-xs-12 col-md-4 col-lg-3 "  >
+         <div className="cont col-xs-12 col-sm-6  col-md-4 col-lg-3 "  >
             <div className="card" styles="max-width: 18rem;">
-              <div  onClick = { () => this.setState({modalIsOpen:true,sProd:this.props.data})} className="c_img"> </div>
+              <div className="c_img" onClick = { () => this.setState({modalIsOpen:true,sProd:this.props.data})} > </div>
 
-              <div   onClick = { () => this.setState({modalIsOpen:true,sProd:this.props.data})} className="caption card-body">
-                <h3 >Thumbnail label</h3>
-                  <div>
-                   Name:{this.state.name} <br />
-                   Price:{this.state.price} 
-             
-                  </div>
-                <p className="card-text">Card Quick Description</p>
+              <div  className=" card-body" onClick = { () => this.setState({modalIsOpen:true,sProd:this.props.data})} >
+               
+                <div className="ProdName">
+                  Name:{this.state.name}
+                </div> 
+                <div className="ProdPrice">
+                  Price:{this.state.price}
                 </div>
-                <div className="add_but" type="button" onClick = {() => this.addProduct(this.state.info)}>
                 
+                <div className="ProdTd"  >
+                  <b>Description:</b>
+                  <br />
+                  {this.stripHtml(this.state.shortdescription)}
+                </div>
                   
-                  Προσθηκη
-               
-               
+                
+              </div>
+                <div className="add_but" type="button" onClick = {() => this.addProduct(this.state.info)}>
+                  Προσθηκη 
               </div>
             </div>
+
+
             <Modal 
             isOpen={this.state.modalIsOpen}
             style={customStyles}

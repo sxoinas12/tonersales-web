@@ -1,4 +1,7 @@
-
+.ProdCont {
+	padding-right:25px;
+	padding-left: 25px; 
+}
 .items:hover{
 	cursor: pointer;
 }

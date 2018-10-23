@@ -19,10 +19,12 @@ export class Checkout extends React.Component{
 		};
 	}
 
+	
+
 	render(){
 		return(
 		[
-		<div className="row">
+		<div className="row" key={0}>
 		
 			
           	
@@ -37,13 +39,13 @@ export class Checkout extends React.Component{
             </div> 
       	</div>,
 
-	        <div className="row">
+	        <div className="row" key={1}>
 	        	<div className="col-xs-12  col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1 ">
 	        	<CartProducts {...this.props}/>
 	        	</div>
 	        </div>,
 		
-		 <div className="row checkfoot">
+		 <div className="row checkfoot" key={2}>
         	<Footer />
       	</div>
       	]

@@ -24,7 +24,7 @@ export class Mini_Cart extends React.Component {
   
 
   handleClick = (e) =>{
-    console.log(this.state.products);
+    
     this.props.history.push({
       pathname:'/checkout',
       state: {products:this.state.products,total:this.state.total}
@@ -39,7 +39,10 @@ export class Mini_Cart extends React.Component {
     products[index].quantity +=1;
     this.setState({products:products});
     this.setState({total:this.state.total+products[index].price});
-    
+    this.props.history.push({
+      pathname:'/checkout',
+      state: {products:this.state.products,total:this.state.total}
+      });
   }
 
   minBut = (e,index) => {
@@ -47,15 +50,26 @@ export class Mini_Cart extends React.Component {
     if(products[index].quantity != 1){
       products[index].quantity -=1;
       this.setState({products:products});
-      this.setState({total:this.state.total-products[index].price});
-      
+      console.log("bofore",this.state.total)
+
+      this.setState({total:this.state.total - products[index].price});
+
+      console.log("after",this.state.total);
+      this.props.history.push({
+      pathname:'/checkout',
+      state: {products:this.state.products,total:this.state.total}
+      });
+      console.log("here Total is ",this.state.total);
       
     }
     else if(products[index].quantity === 1){
       this.setState({total:this.state.total-products[index].price})
       products.splice(index,1);
       this.setState({products:products});
-      //this.setState({total:this.state.total-products[index].price});
+      this.props.history.push({
+      pathname:'/checkout',
+      state: {products:this.state.products,total:this.state.total}
+      });
       
 
     }

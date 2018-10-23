@@ -46,10 +46,9 @@ export class Card extends React.Component {
 
    addProduct = (info) =>{
            
-            console.log(this.state.shortdescription);
-            console.log(this.state.description);
+        
             cartEmitter.emit('addProduct',this.state)
-            console.log("here");
+            
 
             }
 

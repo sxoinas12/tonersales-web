@@ -8,14 +8,36 @@ export class CartProducts extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			products:[]
+			products:[],
+			total:0,
 		};
 	}
+
+	check() {
+		//console.log(this.state.products);
+	}
+	saveToLocal() {
+       const local = this.state;
+       localStorage.setItem('cart_state', JSON.stringify(local));
+        
+   }
+
+   componentDidUpdate() {
+    console.log("history",this.props.history.location.state.total);
+    console.log(this.props.history.location.state);
+    this.saveToLocal();
+    
+   }
+
+   componentWillUnmount(){
+   	this.saveToLocal();
+   }
+
 
 	
 
 	render(){
-		const data = this.props.history.location.state.products;
+		const data = this.props.history.location.state.products
     	const nameList = data.map((item)=>
        
         <CartProd data= {item}  id={item.id} key={item.id}/>
@@ -32,7 +54,7 @@ export class CartProducts extends React.Component{
 						Image for Cart will go here 
 					</div>
 					<div className="col-xs-12 col-sm-2 col-lg-2 text-right">
-						<button className="checkoutBut" onClick={() => console.log(this.props.history.location.state.total)}type="submit">
+						<button className="checkoutBut" onClick ={this.check}>
 							<div className="checkoutButName">
 								Αγορά
 							</div>

@@ -41,3 +41,13 @@
   cursor: pointer;
 }
 
+
+.prod_modal .foot {
+	border-top: 1px solid;
+
+	margin-left: -32px;
+
+	margin-right: -32px;
+
+	padding-top: 6px;
+}

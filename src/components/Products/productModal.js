@@ -55,7 +55,7 @@ export class ProductModal extends React.Component {
              </div>
              <div className="row prod_price"> 
                <div className="col-xs-12 text-right">        
-                Price: {this.props.product.price}
+                Price: {this.props.product.price} €
                </div>
              </div>
           

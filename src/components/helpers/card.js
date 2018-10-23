@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './card.css';
 import Modal from 'react-modal';
 import cartEmitter from '../Events/events';
@@ -46,7 +46,8 @@ export class Card extends React.Component {
 
    addProduct = (info) =>{
            
-           
+            console.log(this.state.shortdescription);
+            console.log(this.state.description);
             cartEmitter.emit('addProduct',this.state)
             console.log("here");
 
@@ -71,8 +72,10 @@ export class Card extends React.Component {
   }
     else{
 
+
    return s;
 }
+
   }
 
 
@@ -106,10 +109,10 @@ export class Card extends React.Component {
               <div  className=" card-body" onClick = { () => this.setState({modalIsOpen:true,sProd:this.props.data})} >
                
                 <div className="ProdName">
-                  'Ονομα:{this.state.name}
+                  <b>'Ονομα:</b> {this.state.name}
                 </div> 
                 <div className="ProdPrice">
-                  Τίμη:{this.state.price}
+                  <b>Τιμή:</b> {this.state.price} €
                 </div>
                 
                 <div className="ProdTd"  >
@@ -131,7 +134,7 @@ export class Card extends React.Component {
             style={customStyles}
             onRequestClose={this.closeModal}>
             
-            <ProductModal product={this.state.sProd} onClose={this.closeModal} />
+            <ProductModal product={this.state.sProd} onClose={this.closeModal} onAdd={this.addProduct}/>
               
             </Modal>
             

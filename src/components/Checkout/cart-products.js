@@ -25,15 +25,17 @@ export class CartProducts extends React.Component{
 		return (
 			<div className=" checkout">
 				<div className="row header">
-					<div className="col-xs-12 col-sm-2 ">
+					<div className="col-xs-12 col-sm-2 col-md-2 col-lg-1 ">
 						Το καλάθι μου
 					</div>
-					<div className="cart_image col-xs-12 col-sm-8 text-left ">
+					<div className="cart_image col-xs-12 col-sm-8 col-md-8 col-lg-9 text-left ">
 						Image for Cart will go here 
 					</div>
-					<div className="col-xs-12 col-sm-2 text-right">
+					<div className="col-xs-12 col-sm-2 col-lg-2 text-right">
 						<button className="checkoutBut" onClick={() => console.log(this.props.history.location.state.total)}type="submit">
-						Αγορά
+							<div className="checkoutButName">
+								Αγορά
+							</div>
 						</button>
 					</div>
 				</div>
@@ -43,7 +45,8 @@ export class CartProducts extends React.Component{
 				</div>
 				<div className="row total">
 					<div className="col-xs-12 text-right">
-						Total: {this.props.history.location.state.total}€
+						Total: {Math.round(this.props.history.location.state.total*100)/100}€
+						
 					</div>
 
 				</div>

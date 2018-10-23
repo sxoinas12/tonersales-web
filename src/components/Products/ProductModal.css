@@ -7,6 +7,8 @@
 }
 .prod_modal {
 	padding: 10px 30px;
+	font-size: 15px;
+	font-family: tahoma;
 }
 
 .prod_modal .prod_name {
@@ -17,6 +19,7 @@
 .prod_modal .description{
 	padding-bottom: 10px;
 	min-height: 160px;
+
 }
 
 

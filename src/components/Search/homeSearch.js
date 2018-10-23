@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './homeSearch.css';
 import { withRouter } from 'react-router-dom'
 
-import { Button } from 'react-bootstrap';
-import {ProductList} from '../Products/ProductList';
-import {Entrance} from '../Home/entrance';
+
 import SearchBar from '../helpers/searchBar';
-import {Route , Redirect } from 'react-router';
+
 
 const Net = require('../helpers/net.js');
 const Methods = require('../helpers/methods.js');

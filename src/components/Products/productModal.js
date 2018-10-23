@@ -12,7 +12,20 @@ export class ProductModal extends React.Component {
     
   }
 
+  stripHtml = (html) =>{
+    
+   var max_len = 15; 
+   var tmp = document.createElement("DIV");
+   tmp.innerHTML = html;
+   let s = tmp.innerText 
+  // s = s.replace(/(^\s*)|(\s*$)/gi,"");
+   s = s.replace(/[ ]{2,}/gi," ");
+   s = s.replace(/[, ]+/g, " ").trim();
+   s = s.replace(/\n /,"\n");
+   return s;
 
+
+  }
 
   render() {
          
@@ -37,7 +50,7 @@ export class ProductModal extends React.Component {
            <div className="col-xs-9  text-left">
              <div className="row">
                <div className="col-xs-12 description">
-               Description: {this.props.product.description}
+               <b>Description:</b> {this.stripHtml(this.props.product.description)}
                </div>
              </div>
              <div className="row prod_price"> 
@@ -53,7 +66,7 @@ export class ProductModal extends React.Component {
       <div className="row foot">
        
         <div className="col-xs-12 text-right">
-          <button>
+          <button onClick ={this.props.onAdd}>
            Προσθκη
           </button>
         </div>

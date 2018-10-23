@@ -49,6 +49,7 @@ export class Mini_Cart extends React.Component {
       this.setState({products:products});
       this.setState({total:this.state.total-products[index].price});
       
+      
     }
     else if(products[index].quantity === 1){
       this.setState({total:this.state.total-products[index].price})
@@ -75,6 +76,7 @@ export class Mini_Cart extends React.Component {
    componentDidUpdate() {
     
     this.saveToLocal();
+    
    }
 
   componentWillMount() {
@@ -189,7 +191,7 @@ export class Mini_Cart extends React.Component {
             <div className="cart_total">
                 <div className="row">
                   <div className="col-xs-11 text-right no-padding " >
-                    Total: <b>{this.state.total} €</b>
+                    Total: <b>{Math.round(this.state.total*100)/100} €</b>
                   </div>
                  
                 </div>

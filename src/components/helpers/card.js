@@ -45,10 +45,8 @@ export class Card extends React.Component {
   }
 
    addProduct = (info) =>{
-
-            cartEmitter.emit('addProduct',this.state)
-
-            }
+      cartEmitter.emit('addProduct',this.state)
+   }
 
    stripHtml = (html) =>{
     

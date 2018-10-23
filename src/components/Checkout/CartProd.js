@@ -4,14 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './CartProd.css'
 
 export class CartProd extends React.Component{
-	
-	constructor(props){
-		super(props);
-		
-	}
-
 	render(){
-		
 		return (
 			<div className="row product">
 				<div className="col-xs-3 col-sm-2 col-md-2 col-lg-2">
@@ -36,9 +29,7 @@ export class CartProd extends React.Component{
 				<div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-right">
 					{this.props.data.price*this.props.data.quantity} €
 				</div>
-				
 			</div>
-
 			);
 
 	}

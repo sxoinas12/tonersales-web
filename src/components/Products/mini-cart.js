@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './mini-cart.css';
-import cartEmitter from '../Events/events';
+import Emitter from '../Events/events';
 
 
 
@@ -18,9 +18,7 @@ export class Mini_Cart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products:[],
-      total:0,
-
+      products:[]
     }
   }
   
@@ -63,29 +61,18 @@ export class Mini_Cart extends React.Component {
       products.splice(index,1);
       this.setState({products:products});
       this.saveToLocal();
-      
-
     }
   }
 
 
   saveToLocal() {
-
        const local = this.state;
        localStorage.setItem('cart_state', JSON.stringify(local));
-   }
-
-
-   componentDidUpdate() {
-    cartEmitter.emit('addProd')
-    
-   }
-
-
+       Emitter.emit('addProd');
+  }
 
   componentWillMount() {
-     
-     Subscription = cartEmitter.addListener('addProduct', (data) => {
+     Subscription = Emitter.addListener('addProduct', (data) => {
       //it was data.name with error
       if(data){
         let products = this.state.products;
@@ -105,8 +92,7 @@ export class Mini_Cart extends React.Component {
         if(index !== null){
           products[index].quantity +=1;
           this.setState({products:products});
-          this.setState({total:this.state.total+products[index].price});
-          
+          this.setState({total:this.state.total+products[index].price}); 
         }
         else {
           var arrayvar = this.state.products.slice()
@@ -116,27 +102,24 @@ export class Mini_Cart extends React.Component {
             console.log("not here");
             this.setState({ products: arrayvar })
             //this.setState({total:this.state.total-products[index].price});
-            this.setState({total:this.state.total + data.price});
-            
-            }
+            this.setState({ total:this.state.total + data.price });
+          }
         }
-
       }
+      this.saveToLocal();
     });
 
     var local = localStorage.getItem('cart_state');
     if(local){
       this.setState(JSON.parse(local));
     }
-
-    
     //this.setState({products:prod});
   }
 
   
 
   render() {
-    
+    let total = this.state.products.reduce((total, item) => total + item.quantity * item.price, 0).toFixed(2);
     const nameList = this.state.products.map((item,index)=>
             
         <li key={item.id} className="row cart_product">
@@ -190,7 +173,7 @@ export class Mini_Cart extends React.Component {
             <div className="cart_total">
                 <div className="row">
                   <div className="col-xs-11 text-right no-padding " >
-                    Total: <b>{Math.round(this.state.total*100)/100} €</b>
+                    Total: <b>{total} €</b>
                   </div>
                  
                 </div>

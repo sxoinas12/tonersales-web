@@ -11,31 +11,14 @@ export class CartProducts extends React.Component{
 	
 	constructor(props){
 		super(props);
-		this.state = {
-			products:[],
-			total:0,
-		};
-		
-		console.log(this.state);
 	}
 
-	
- 
-	
-
-  
-
-
-	
-
 	render(){
-		const data = this.props.products
+		const data = this.props.products;
     	const nameList = data.map((item)=>
-       
-        <CartProd data= {item}  id={item.id} key={item.id}/>
-      
+        	<CartProd data= {item}  id={item.id} key={item.id}/>
         );
-
+    	let total = data.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
 		return (
 			<div className=" checkout">
 				<div className="row header">
@@ -46,7 +29,7 @@ export class CartProducts extends React.Component{
 						Image for Cart will go here 
 					</div>
 					<div className="col-xs-12 col-sm-2 col-lg-2 text-right">
-						<button className="checkoutBut" onClick ={this.check}>
+						<button className="checkoutBut" >
 							<div className="checkoutButName">
 								Αγορά
 							</div>
@@ -59,7 +42,7 @@ export class CartProducts extends React.Component{
 				</div>
 				<div className="row total">
 					<div className="col-xs-12 text-right">
-						Total: {this.props.total}€
+						Total: {total}€
 						
 					</div>
 

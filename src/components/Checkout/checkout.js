@@ -20,7 +20,6 @@ export class Checkout extends React.Component{
 			total:0,
 		};
 		cartEmitter.addListener('addProd',this.loadfromlocal);
-		
 	}
 
 	
@@ -28,10 +27,13 @@ export class Checkout extends React.Component{
 
    loadfromlocal = () => {
    	var local = localStorage.getItem('cart_state');
+   	try{
 	    if(local){
 	      this.setState(JSON.parse(local));
 	    }
-   	
+	} catch(e) {
+		console.log(e);
+	}
    }
 
    componentWillMount(){

@@ -12,7 +12,7 @@ export class Home extends React.Component {
   constructor(props){
     super(props);
 
-    console.log(props);
+    
     this.state = {
       isLogged:false,
       list:[],
@@ -22,7 +22,7 @@ export class Home extends React.Component {
     Net.get(Net.urls.homeprod)
     
     .then(res => {
-      console.log(res);
+      
       this.setState({list:res})
     });
 

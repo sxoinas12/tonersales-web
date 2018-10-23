@@ -15,11 +15,35 @@ export class Checkout extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			products:[]
+			products:[],
+			
 		};
 	}
 
 	
+
+	check() {
+		//console.log(this.state.products);
+	}
+	saveToLocal() {
+       const local = this.state;
+       localStorage.setItem('cart_state', JSON.stringify(local));
+        
+   }
+
+   componentWillReceiveProps(nextProps){
+   		console.log("hereeee");
+  		if(nextProps!==this.props){
+  			console.log(nextProps);
+    		this.props = nextProps;
+    		console.log(this.props);
+   		
+  }
+}
+	componentWillUnmount(){
+   	this.saveToLocal();
+   }
+
 
 	render(){
 		return(

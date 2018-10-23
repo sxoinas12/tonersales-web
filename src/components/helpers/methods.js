@@ -47,7 +47,7 @@ var del = function(url,id){
 	.catch(error => error)
 }
 
-console.log("fine");
+
 
 module.exports = {
 	Get:get,

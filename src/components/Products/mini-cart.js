@@ -37,29 +37,30 @@ export class Mini_Cart extends React.Component {
   addBut = (e,index) => {
     let products = this.state.products;
     products[index].quantity +=1;
-    this.setState({products:products});
     this.setState({total:this.state.total+products[index].price});
+    this.setState({products:products});
     this.props.history.push({
       pathname:'/checkout',
       state: {products:this.state.products,total:this.state.total}
       });
+   
   }
 
   minBut = (e,index) => {
     let products = this.state.products;
+    let temp;
     if(products[index].quantity != 1){
       products[index].quantity -=1;
+      console.log("before",this.state.total);
+      
+      temp =this.state.total-products[index].price;
+      this.setState({total:temp});
       this.setState({products:products});
-      console.log("bofore",this.state.total)
-
-      this.setState({total:this.state.total - products[index].price});
-
-      console.log("after",this.state.total);
       this.props.history.push({
       pathname:'/checkout',
       state: {products:this.state.products,total:this.state.total}
       });
-      console.log("here Total is ",this.state.total);
+
       
     }
     else if(products[index].quantity === 1){
@@ -88,7 +89,7 @@ export class Mini_Cart extends React.Component {
 
 
    componentDidUpdate() {
-    
+     console.log("after",this.state.total);
     this.saveToLocal();
     
    }

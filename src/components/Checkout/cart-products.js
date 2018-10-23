@@ -23,15 +23,13 @@ export class CartProducts extends React.Component{
    }
 
    componentDidUpdate() {
-    console.log("history",this.props.history.location.state.total);
-    console.log(this.props.history.location.state);
+    //console.log("history",this.props.history.location.state.total);
+    //console.log(this.props.history.location.state);
     this.saveToLocal();
     
    }
 
-   componentWillUnmount(){
-   	this.saveToLocal();
-   }
+  
 
 
 	

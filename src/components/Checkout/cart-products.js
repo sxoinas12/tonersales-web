@@ -3,6 +3,10 @@ import React, {component} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './cart-products.css';
 import {CartProd} from './CartProd';
+import Emitter from '../Events/events';
+
+let update =null;
+
 export class CartProducts extends React.Component{
 	
 	constructor(props){
@@ -11,23 +15,13 @@ export class CartProducts extends React.Component{
 			products:[],
 			total:0,
 		};
+		
+		console.log(this.state);
 	}
 
-	check() {
-		//console.log(this.state.products);
-	}
-	saveToLocal() {
-       const local = this.state;
-       localStorage.setItem('cart_state', JSON.stringify(local));
-        
-   }
-
-   componentDidUpdate() {
-    //console.log("history",this.props.history.location.state.total);
-    //console.log(this.props.history.location.state);
-    this.saveToLocal();
-    
-   }
+	
+ 
+	
 
   
 
@@ -35,7 +29,7 @@ export class CartProducts extends React.Component{
 	
 
 	render(){
-		const data = this.props.history.location.state.products
+		const data = this.props.products
     	const nameList = data.map((item)=>
        
         <CartProd data= {item}  id={item.id} key={item.id}/>
@@ -65,7 +59,7 @@ export class CartProducts extends React.Component{
 				</div>
 				<div className="row total">
 					<div className="col-xs-12 text-right">
-						Total: {Math.round(this.props.history.location.state.total*100)/100}€
+						Total: {this.props.total}€
 						
 					</div>
 

@@ -6,43 +6,39 @@ import {Entrance} from '../Home/entrance';
 import './checkout.css';
 import SearchBar from '../helpers/searchBar';
 import {CartProducts} from './cart-products';
+import cartEmitter from '../Events/events';
 
-
-
+let update = null;
 
 export class Checkout extends React.Component{
 	
 	constructor(props){
 		super(props);
+		
 		this.state = {
 			products:[],
-			
+			total:0,
 		};
+		cartEmitter.addListener('addProd',this.loadfromlocal);
+		
 	}
 
 	
+	
 
-	check() {
-		//console.log(this.state.products);
-	}
-	saveToLocal() {
-       const local = this.state;
-       localStorage.setItem('cart_state', JSON.stringify(local));
-        
+   loadfromlocal = () => {
+   	var local = localStorage.getItem('cart_state');
+	    if(local){
+	      this.setState(JSON.parse(local));
+	    }
+   	
    }
 
-   componentWillReceiveProps(nextProps){
-   		console.log("hereeee");
-  		if(nextProps!==this.props){
-  			console.log(nextProps);
-    		this.props = nextProps;
-    		console.log(this.props);
-   		
- 		 }
-}
-	componentWillUnmount(){
-   	this.saveToLocal();
+   componentWillMount(){
+   	this.loadfromlocal();
    }
+  
+	
 
 
 	render(){
@@ -65,7 +61,7 @@ export class Checkout extends React.Component{
 
 	        <div className="row" key={1}>
 	        	<div className="col-xs-12  col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1 ">
-	        	<CartProducts {...this.props}/>
+	        	<CartProducts {...this.state}/>
 	        	</div>
 	        </div>,
 		

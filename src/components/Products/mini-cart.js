@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './mini-cart.css';
 import cartEmitter from '../Events/events';
 
+
+
 let Subscription = null
 const customLabel = {
   content : {
@@ -27,8 +29,9 @@ export class Mini_Cart extends React.Component {
     
     this.props.history.push({
       pathname:'/checkout',
-      state: {products:this.state.products,total:this.state.total}
+      state: {products:this.state.products}
       });
+    
   }
 
  
@@ -39,10 +42,7 @@ export class Mini_Cart extends React.Component {
     products[index].quantity +=1;
     this.setState({total:this.state.total+products[index].price});
     this.setState({products:products});
-    this.props.history.push({
-      pathname:'/checkout',
-      state: {products:this.state.products,total:this.state.total}
-      });
+    this.saveToLocal();
    
   }
 
@@ -51,26 +51,18 @@ export class Mini_Cart extends React.Component {
     let temp;
     if(products[index].quantity != 1){
       products[index].quantity -=1;
-      console.log("before",this.state.total);
+     
       
       temp =this.state.total-products[index].price;
       this.setState({total:temp});
       this.setState({products:products});
-      this.props.history.push({
-      pathname:'/checkout',
-      state: {products:this.state.products,total:this.state.total}
-      });
-
-      
+      this.saveToLocal();
     }
     else if(products[index].quantity === 1){
       this.setState({total:this.state.total-products[index].price})
       products.splice(index,1);
       this.setState({products:products});
-      this.props.history.push({
-      pathname:'/checkout',
-      state: {products:this.state.products,total:this.state.total}
-      });
+      this.saveToLocal();
       
 
     }
@@ -80,19 +72,16 @@ export class Mini_Cart extends React.Component {
   saveToLocal() {
 
        const local = this.state;
-
        localStorage.setItem('cart_state', JSON.stringify(local));
-        
    }
-
-
 
 
    componentDidUpdate() {
-     console.log("after",this.state.total);
-    this.saveToLocal();
+    cartEmitter.emit('addProd')
     
    }
+
+
 
   componentWillMount() {
      
@@ -105,6 +94,7 @@ export class Mini_Cart extends React.Component {
         for (let i=0; i<products.length; i++){
           if(products[i].id === data.id){
             index = i;
+
             break;
           }
           else{
@@ -116,7 +106,7 @@ export class Mini_Cart extends React.Component {
           products[index].quantity +=1;
           this.setState({products:products});
           this.setState({total:this.state.total+products[index].price});
-
+          
         }
         else {
           var arrayvar = this.state.products.slice()
@@ -138,18 +128,12 @@ export class Mini_Cart extends React.Component {
     if(local){
       this.setState(JSON.parse(local));
     }
+
     
     //this.setState({products:prod});
   }
 
-  componentWillUnmount() {
-     //let arrayvar  =[];
-     //localStorage.clear();
-      this.saveToLocal();
-    //this.setState({ products: arrayvar })
-
-
-  }
+  
 
   render() {
     

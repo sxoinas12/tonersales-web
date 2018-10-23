@@ -38,7 +38,7 @@ export class Checkout extends React.Component{
     		this.props = nextProps;
     		console.log(this.props);
    		
-  }
+ 		 }
 }
 	componentWillUnmount(){
    	this.saveToLocal();

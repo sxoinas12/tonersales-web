@@ -52,7 +52,7 @@ class HomeSearch extends React.Component {
               </div>
               <div className="row">  
                 <div className="col-xs-6 col-xs-offset-3">      
-                  <SearchBar initialValue = {""} onSubmit = {this.handleSubmit} />
+                  <SearchBar initialValue = {" "} onSubmit = {this.handleSubmit} />
                 </div>
               </div> 
             </div>

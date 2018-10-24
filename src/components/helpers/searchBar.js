@@ -20,13 +20,15 @@ class SearchBar extends React.Component {
     const target = e.target;
     const value = target.value;
     const name = target.name;
+    console.log(value);
     this.setState({
       [name]:value
           });
+   
   }
 
   _handleKeyPress = (e) =>{
-    console.log("here");
+    
     if(e.key == 'Enter'){
     this.props.onSubmit(this.state.searchQuery)
   }

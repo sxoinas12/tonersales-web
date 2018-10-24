@@ -19,22 +19,41 @@ export class Search extends React.Component {
     super(props);
     this.state={
       list:[],
+      reqbody:""
     } 
-    let reqBody = this.props.location.state.searchQuery;
-    this.Search(reqBody);
     
 
 
   }
+    checkReq = () => {
+      if(this.props.location.state === undefined){
+        return;
+      }
+      else {
+        this.Search(this.props.location.state);
+        return this.props.location.state.searchQuery;
+      }
+    }
+    
 
     Search = (reqBody) =>{
-   
+    if(reqBody === ""){
+      this.setState({list:[]});
+    }
+    else{
     Net.get(Net.urls.products+ reqBody)
     .then(res => {
       
       this.setState({list:res});
     });
   }
+  }
+
+  componentWillMount() {
+    this.checkReq();
+  }
+
+  
 
 
   onSubmit = (e) => {
@@ -55,7 +74,7 @@ export class Search extends React.Component {
               <a href="/"><div className="mini_logo"></div></a>
             </div>
             <div className="col-xs-12  col-md-5 col-sm-6 bar text-left">
-              <SearchBar initialValue={this.props.location.state.searchQuery} onSubmit={this.onSubmit} /> 
+              <SearchBar initialValue={this.reqBody} onSubmit={this.onSubmit} /> 
             </div>
             <div className="col-xs-12 col-md-3 col-sm-3 col-md-offset-1 text-right entrance ">
              <Entrance {...this.props}/> 

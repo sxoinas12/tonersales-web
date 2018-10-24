@@ -11,7 +11,7 @@ import {Redirect} from 'react-router';
 import {Home} from './Home/home';
 import {Search} from './Search/search';
 import {Checkout} from './Checkout/checkout';
-
+import {OrderForm} from './OrderCreation/OrderForm';
 
 
 export class Template extends React.Component{
@@ -26,6 +26,7 @@ export class Template extends React.Component{
 				<Route path="/login" component={Login} />
 				<Route path="/search" component={Search} />
 				<Route path="/checkout" component={Checkout} />
+				<Route path="/OrderCreation" component={OrderForm} />
  			</div>
 		</Router>	
 		</div>

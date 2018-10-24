@@ -20,6 +20,8 @@ export class Checkout extends React.Component{
 			total:0,
 		};
 		cartEmitter.addListener('addProd',this.loadfromlocal);
+		
+
 	}
 
 	
@@ -54,7 +56,7 @@ export class Checkout extends React.Component{
               <a href="/"><div className="mini_logo"></div></a>
             </div>
             <div className="col-xs-12  col-md-5 col-sm-6 bar text-left">
-              <SearchBar initialValue={this.props.location.state.searchQuery} onSubmit={this.onSubmit} /> 
+              <SearchBar initialValue={this.props.location.search} onSubmit={this.onSubmit} /> 
             </div>
             <div className="col-xs-12 col-md-3 col-sm-3 col-md-offset-1 text-right entrance ">
              <Entrance {...this.props}/> 

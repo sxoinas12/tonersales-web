@@ -8,7 +8,7 @@ import {Entrance} from '../Home/entrance';
 import SearchBar from '../helpers/searchBar';
 
 
-const Net = require('../helpers/net.js');
+
 
 
 
@@ -17,64 +17,41 @@ export class Search extends React.Component {
 
   constructor(props) {
     super(props);
+    this.input = this.checkReq();
     this.state={
       list:[],
-      reqbody:""
+       
     } 
-    
-
 
   }
-    checkReq = () => {
-      if(this.props.location.state === undefined){
-        return;
-      }
-      else {
-        this.Search(this.props.location.state);
-        return this.props.location.state.searchQuery;
-      }
+
+
+  handleSubmit = (res) => {
+    this.setState({list:res});
+  }
+
+  checkReq = () => {
+    if(this.props.location.state === undefined){
+      return "";
     }
-    
-
-    Search = (reqBody) =>{
-    if(reqBody === ""){
-      this.setState({list:[]});
+    else {
+      //console.log(this.props.location);
+      return this.props.location.search;
     }
-    else{
-    Net.get(Net.urls.products+ reqBody)
-    .then(res => {
-      
-      this.setState({list:res});
-    });
   }
-  }
-
-  componentWillMount() {
-    this.checkReq();
-  }
-
   
-
-
-  onSubmit = (e) => {
-    console.log(e);
-
-    const val = e;
-    this.Search(val);
-  }
+  
 
   render() {
     
     return (
     <div className="container-fluid main ">
-    
       <div className="row ">
-          
             <div className= "col-xs-12 col-md-3 col-sm-3 title">
               <a href="/"><div className="mini_logo"></div></a>
             </div>
             <div className="col-xs-12  col-md-5 col-sm-6 bar text-left">
-              <SearchBar initialValue={this.reqBody} onSubmit={this.onSubmit} /> 
+              <SearchBar initialValue={this.input} handleSubmit={this.handleSubmit} /> 
             </div>
             <div className="col-xs-12 col-md-3 col-sm-3 col-md-offset-1 text-right entrance ">
              <Entrance {...this.props}/> 

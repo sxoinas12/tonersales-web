@@ -1,18 +1,18 @@
 import React from 'react';
-
 import { withRouter } from 'react-router-dom'
-
 import './searchBar.css';
+const Net = require('../helpers/net.js');
 
 class SearchBar extends React.Component {
   constructor(props){
     super(props);
-  
+    
     this.state={
       searchQuery:this.props.initialValue,
-      list:[]
+      
     }
   }
+
 
 
  change = (e) =>{
@@ -20,17 +20,34 @@ class SearchBar extends React.Component {
     const target = e.target;
     const value = target.value;
     const name = target.name;
-    console.log(value);
     this.setState({
-      [name]:value
+      searchQuery:value
           });
    
+  }
+ 
+  
+  Search = (reqBody) =>{
+    if(reqBody === ""){
+      Net.get(Net.urls.homeprod)
+      .then(res=>{
+        this.props.handleSubmit(res)
+      })
+    }
+    else{
+    Net.get(Net.urls.products+ reqBody)
+    .then(res => {
+      this.props.handleSubmit(res);
+      //this.setState({list:res});
+
+    });
+  }
   }
 
   _handleKeyPress = (e) =>{
     
     if(e.key == 'Enter'){
-    this.props.onSubmit(this.state.searchQuery)
+    this.Search(this.state.searchQuery)
   }
   }
   
@@ -49,7 +66,7 @@ class SearchBar extends React.Component {
                 placeholder={this.state.searchQuery}
                 className="" id="search-bar-input"/>
                 <div className="input-group-addon btn" 
-                 onClick =  {() => this.props.onSubmit(this.state.searchQuery)}>
+                 onClick =  {() => this.Search(this.state.searchQuery)}>
                   <i  className="fas fa-search"></i>
                 </div>
             </div>   

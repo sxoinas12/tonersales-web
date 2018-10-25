@@ -27,6 +27,7 @@ export class OrderForm extends React.Component {
 	   	try{
 		    if(local){
 		      this.setState(JSON.parse(local));
+		      console.log(JSON.parse(local));
 		    }
 		} catch(e) {
 			console.log(e);

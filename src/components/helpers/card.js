@@ -46,6 +46,16 @@ export class Card extends React.Component {
 
    addProduct = (info) =>{
       cartEmitter.emit('addProduct',this.state)
+      let popup = document.getElementById("myPopup");
+      popup.classList.toggle("show");
+      popup.classList.add("hide");
+
+      setTimeout(function(){
+        popup.classList.remove("show");
+
+        
+      },3000)
+
    }
 
    stripHtml = (html) =>{
@@ -118,9 +128,13 @@ export class Card extends React.Component {
                   
                 
               </div>
-                <div className="add_but" type="button" onClick = {() => this.addProduct(this.state.info)}>
+                <div className="add_but popup" type="button" onClick = {() => this.addProduct(this.state.info)}>
                   Προσθηκη 
+                  <span className="popuptext" id="myPopup">Προστέθηκε στο καλάθι</span>
               </div>
+
+
+
             </div>
 
 

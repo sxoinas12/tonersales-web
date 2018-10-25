@@ -2,13 +2,23 @@
 import React, {component} from 'react';
 import './ShippingForm.css';
 const Net = require('../helpers/net.js');
-
+const models = require('../helpers/OrderModels.js');
 
 export class ShippingForm extends React.Component {
 	constructor(props){
 		super(props);
+		
 	}
 
+	
+
+	 componentDidUpdate(){
+
+	 }
+
+	
+
+	
 	render(){
 		return(
 			<div className="row">
@@ -16,62 +26,63 @@ export class ShippingForm extends React.Component {
 					<div className="row">
 						<div className="col-xs-12 text-center">
 						 <h3>Αποστολή</h3>
+
 						</div>
 					</div>
-					<form className="row">
+					<div className="row" >
 						<div className="col-xs-12">
 
 						<div className="row">
 						<div className="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
 							<label>Τροπος αποστολής</label>
-						    <select className="form-control" id="exampleFormControlSelect1">
-						      <option>1</option>
-						      <option>2</option>
+						    <select className="form-control" onChange={this.props.handleChange} name="ShippingMethod" value={this.props.data.ShippingMethod} >
+						      <option>Παραλαβη απο το καταστημα</option>
+						      <option>Αποστολή στο Σπιτι</option>
 						    </select>
 						</div>
 						<div className="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
 							<label>Ονοματεπώνυμο</label>
-   							<input type="email" className="form-control" id="exampleInputEmail1" placeholder="Ονοματεπώνυμο"/>
+   							<input type="text" className="form-control" name="FullName" onChange={this.props.handleChange} value={this.props.data.FullName}/>
 						</div>
 						</div>
 
 						<div className="row">
 						<div className="form-group col-xs-12 col-sm-2 col-md-4 col-lg-3">
 							<label>Διευθυνση</label>
-   							<input type="email" className="form-control" id="exampleInputEmail1" />
+   							<input type="text" className="form-control" name="Address" onChange={this.props.handleChange} value={this.props.data.Address} />
 						</div>
 						<div className="form-group col-xs-12 col-sm-2 col-md-4 col-lg-3">
 							<label>Πόλη</label>
-   							<input type="email" className="form-control" id="exampleInputEmail1" />
+   							<input type="text" className="form-control" name="Town" onChange={this.props.handleChange} value={this.props.data.Town} />
 						</div>
 						<div className="form-group col-xs-12 col-sm-2 col-md-4 col-lg-3">
 							<label>ΤΚ</label>
-   							<input type="email" className="form-control" id="exampleInputEmail1" />
+   							<input type="text" className="form-control" name="Postcode" onChange={this.props.handleChange} value={this.props.data.Postcode} />
 						</div>
 						</div>
 
 						<div className="row">
 						<div className="form-group col-xs-12 col-sm-3 col-md-4 col-lg-3">
 							<label>Κινητό Τηλέφωνο</label>
-   							<input type="email" className="form-control" id="exampleInputEmail1" />
+   							<input type="text" className="form-control" name="Mobilephone" onChange={this.props.handleChange} value={this.props.data.Mobilephone} />
 						</div>
-						<div className="form-group col-xs-12 col-sm-3 col-md-4 col-lg-3">
+						<div className="form-group col-xs-12 col-sm-3 col-md-4 col-lg-3" >
 							<label>Σταθερό Τηλέφωνο</label>
-   							<input type="email" className="form-control" id="exampleInputEmail1" />
+   							<input type="text" className="form-control" name="Homephone" onChange={this.props.handleChange} value={this.props.data.Homephone} />
 						</div>
 						<div className="form-group col-xs-12 col-sm-3 col-md-4 col-lg-3">
 							<label>e-mail</label>
-   							<input type="email" className="form-control" id="exampleInputEmail1" />
+   							<input type="text" className="form-control" name="email" onChange={this.props.handleChange} value={this.props.data.email} />
 						</div>
 						</div>	
 						<div className="row">
 						<div className="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
 							<label>Οδηγίες για την παραδοση</label>
-   							<input type="email" className="form-control input-lg" id="exampleInputEmail1" />
+   							<input type="text" className="form-control input-lg" name="Order_instructions" onChange={this.props.handleChange} value={this.props.data.Order_instructions}/>
 						</div>
 						<div className="form-group col-xs-12 col-sm-6 col-md-6 col-lg-3">
 							<label>Εκδοση παραστατικών</label>
-   							<select className="form-control" id="exampleFormControlSelect1">
+   							<select className="form-control" name="Receipt_type" onChange={this.props.handleChange} value={this.props.data.Receipt_type}>
 						      <option>Απόδειξη λιανικής πώλησης</option>
 						      <option>Τιμολογιο</option>
 						    </select>
@@ -79,7 +90,7 @@ export class ShippingForm extends React.Component {
 						</div>					
 
 						</div>
-					</form>
+					</div>
 					
 
 				</div>

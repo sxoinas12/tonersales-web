@@ -8,16 +8,17 @@ import {ShippingForm} from './ShippingForm';
 import {OrderReview} from './OrderReview';
 import {PaymentForm} from './PaymentForm';
 
-
+const models = require('../helpers/OrderModels.js');
+const OrderService = require('../helpers/parseOrder.js');
 const Net = require('../helpers/net.js');
-
-
 export class OrderForm extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
 			products:[],
-			total:0
+			total:0,
+			shipping:models.ShippingModel,
+			payment:models.PaymentModel,
 		}	
 }
 	
@@ -32,6 +33,22 @@ export class OrderForm extends React.Component {
 		}
 	}
 
+
+	change = (event) =>{
+		event.preventDefault();
+	    let name = event.target.name;
+	    let shipping = {...this.state.shipping}
+	    shipping[name] = event.target.value;
+	    this.setState({shipping})
+	    
+	    }
+	    
+
+	submitOrder = (e) =>{
+		e.preventDefault();
+		Net.post(Net.urls.orders,this.state);
+		
+	}
 	componentWillMount(){
 		this.loadfromlocal();
 	}
@@ -56,24 +73,25 @@ export class OrderForm extends React.Component {
             </div> 
       	</div>,
       	<div className="row container-fluid padding-top" key={1}>
-      		 <div className="col-xs-12">
+      		 <form className="col-xs-12">
+
 	      		 <OrderReview order= {this.state}/>
-	      	
-	      		 <ShippingForm />
+	      		 
+	      		 <ShippingForm data= {this.state.shipping} handleChange={this.change}/>
 	      		
-	      		 <PaymentForm />
+	      		 <PaymentForm  data={this.state.payment} handleChange={this.change}/>
 
-      		 </div>
+	      		 <div className="row">
+	      		 	<div className="col-xs-12 text-center">
+		      		 <button type="submit" onClick={this.submitOrder}className="submit"><b>Ολοκλήρωση παραγγέλιας</b></button> 
+		      		</div>
+	      		 </div>
+
+      		 </form>
       	</div>,
 
-      	<div className="row" key={2}>
-      		<div className="col-xs-12 text-center">
-      		 <button className="submit"><b>Ολοκλήρωση παραγγέλιας</b></button> 
-      		</div>
-      	</div>,
-	        
 		
-		 <div className="row checkfoot" key={3}>
+		 <div className="row checkfoot" key={2}>
         	<Footer />
       	</div>
       	]

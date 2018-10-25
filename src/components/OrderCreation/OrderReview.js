@@ -18,7 +18,7 @@ export class OrderReview extends React.Component {
 	render(){
 
 		const data = this.props.order.products;
-		console.log(data);
+		
 		const total = this.props.order.total;
 		const products = data.map((item) => 
 

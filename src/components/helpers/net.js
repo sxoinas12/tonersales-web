@@ -3,6 +3,7 @@ const homeProd= "/products/home";
 const urlLogin = "/user/login"; //login section
 const urlRegister = "/user/register";
 const urlGoogle = "/auth/google";
+const urlOrder = "/orders";
 
 
 //this is the local ip 
@@ -16,7 +17,8 @@ const url = {
 	homeprod:homeProd,
 	login:urlLogin,
 	register:urlRegister,
-	google:urlGoogle
+	google:urlGoogle,
+	orders:urlOrder
 }
 
 class Net {

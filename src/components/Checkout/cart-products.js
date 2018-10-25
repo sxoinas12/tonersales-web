@@ -17,9 +17,6 @@ export class CartProducts extends React.Component{
 
 
 	
-	handleClick  = () => {
-		console.log(this.props);
-	}
 	render(){
 
 
@@ -46,7 +43,10 @@ export class CartProducts extends React.Component{
 									
 								    <button className="checkoutBut"
 								      type='button'
-								      onClick={() => { history.push('/OrderCreation') }}
+								      onClick={() => { 
+								      	history.push('/OrderCreation');
+
+								       }}
 								    >
 								      Αγορά
 								    </button>

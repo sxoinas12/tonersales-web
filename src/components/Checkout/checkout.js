@@ -20,8 +20,7 @@ export class Checkout extends React.Component{
 			total:0,
 		};
 		cartEmitter.addListener('addProd',this.loadfromlocal);
-		console.log(this.props.location);
-
+		
 	}
 
 	

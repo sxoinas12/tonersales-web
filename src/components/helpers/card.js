@@ -51,7 +51,7 @@ export class Card extends React.Component {
       popup.classList.add("hide");
 
       setTimeout(function(){
-        popup.classList.remove("show");
+       // popup.classList.remove("show");
 
         
       },3000)
@@ -128,7 +128,7 @@ export class Card extends React.Component {
                   
                 
               </div>
-                <div className="add_but popup" type="button" onClick = {() => this.addProduct(this.state.info)}>
+                <div className=" popup" type="button" onClick = {() => this.addProduct(this.state.info)}>
                   Προσθηκη 
                   <span className="popuptext" id="myPopup">Προστέθηκε στο καλάθι</span>
               </div>

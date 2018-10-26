@@ -28,12 +28,13 @@ change = (e) =>{
   handleSubmit = (e) =>{
 		e.preventDefault();
 		let reqBody = this.state;
-		Methods.Post(Net.Url.login);
+		
+		Net.post(Net.urls.register,reqBody);
 	}
 
   handleGoogleSubmit = () => {
 		console.log(Net.Url.google);
-		window.location.href= Net.Url.google;
+		window.location.href= Net.urls.google;
 	}
 
 	render(){

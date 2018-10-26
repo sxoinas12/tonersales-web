@@ -11,7 +11,8 @@ export class Login extends React.Component{
 		super(props);
 		this.state = {
 			email:"",
-			password:""
+			password:"",
+			warning:"warning",
 		}
 	}
 	change = (e) =>{
@@ -26,7 +27,22 @@ export class Login extends React.Component{
 	handleSubmit = (e) => {
 		e.preventDefault();
 		let reqBody = this.state;
-		Net.post(Net.urls.login,reqBody);
+		
+		Net.post(Net.urls.login,reqBody)
+		.then(res => {
+			if(res.token){
+				
+				this.props.access(res.token);
+				this.props.close();
+			}
+			else{
+				//missing html and css for hint
+				
+				
+				this.setState({email:"",password:"",warning:"warningOn"});
+				this.props.open();
+			}
+		})
 		
 	}
 
@@ -41,6 +57,7 @@ export class Login extends React.Component{
 	}
 
 	render(){
+		let warning = this.state.warning;
 		return(
 			<div className="log">
 				Σύνδεση
@@ -82,6 +99,11 @@ export class Login extends React.Component{
 					 <button className = " btn login_button" type="submit">
 				     Login
 				    </button>
+
+				    <div className={this.state.warning}>
+				    Wrong Information!
+				    </div>
+
 				</form>
 			</div>
 			);

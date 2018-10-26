@@ -121,9 +121,11 @@ text-align: center;
     padding: 8px 0;
     position: absolute;
     z-index: 1;
-    bottom: 50%;
-    left: 90%;
-    margin-left: -80px;
+    
+    margin-top: -32%;
+    margin-left: 51%;
+
+
 }
 
 /* Popup arrow */

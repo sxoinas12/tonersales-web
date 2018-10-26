@@ -39,12 +39,36 @@ export class Entrance extends React.Component {
     this.state = {
       isLog:false,
       modalIsOpen:false,
-      subtitle:''
+      subtitle:'',
+      logged:false,
+      user:{
+        token:""
+      }
     };
   }
 
   openModal = () =>{
     this.setState({modalIsOpen:true});
+  }
+
+  AllowAccess = (res) => {
+    this.setState({logged:true});
+    let user = {...this.state.user}
+    
+    user["token"] = res;
+    this.setState({user});
+    this.saveToLocal();
+   // console.log(this.state.user)
+   // this.setState({user})
+  }
+
+
+  loadfromlocal = () =>{
+    var local = localStorage.getItem('entrance_state');
+    local = JSON.parse(local);
+    if(local.user.token){
+      this.setState({logged:true});
+    }
   }
 
   afterOpenModal = () =>{
@@ -58,11 +82,38 @@ export class Entrance extends React.Component {
     Modal.setAppElement('body');
   }
 
+  saveToLocal() {
+       const local = this.state;
+       localStorage.setItem('entrance_state', JSON.stringify(local));
+       
+  }
+  componentWillMount() {
+    this.loadfromlocal()
+  }
+  componentDidUpdate() {
+
+    
+    // if true change entrance to be logged in 
+    
+  }
+
   render() {
   const isLog = this.state.isLog;
-  const selectModal = isLog ? (<Login />) : (<Register  />);
-  return(
-      <div className= "pos">
+  const logged = this.state.logged;
+  const selectModal = isLog ? (<Login access={this.AllowAccess} close={this.closeModal} open={this.openModal} />) : 
+                              (<Register close={this.closeModal} open={this.openModal} />);
+  const changeEntrance = logged ?  (
+
+    <div className="pos">
+        <ul>
+       <li>User profile</li>
+       <li>
+        <Mini_Cart {...this.props} />
+       </li>
+       </ul>
+    </div>
+    ):(
+    <div className= "pos">
           <ul>
             <li>
               <a onClick={() => this.setState({isLog:true, modalIsOpen:true})}>Σύνδεση</a>
@@ -88,6 +139,18 @@ export class Entrance extends React.Component {
               {selectModal}
             </div>    
           </Modal>
+      </div>
+    ); 
+
+  
+  
+  
+
+
+  
+  return(
+      <div>
+        {changeEntrance}
       </div>
     
    

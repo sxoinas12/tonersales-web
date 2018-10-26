@@ -20,6 +20,7 @@ export class Search extends React.Component {
     this.input = this.checkReq();
     this.state={
       list:[],
+      
        
     } 
 
@@ -27,6 +28,7 @@ export class Search extends React.Component {
 
 
   handleSubmit = (res) => {
+    //console.log(res);
     this.setState({list:res});
   }
 
@@ -39,8 +41,28 @@ export class Search extends React.Component {
       return this.props.location.search;
     }
   }
-  
-  
+  loadfromlocal = () => {
+    var local = localStorage.getItem('cart_state');
+    local = JSON.parse(local);
+    console.log(local);
+    try {
+      if(local){
+        this.setState({list:local.products})
+      }
+
+    }
+      
+     catch(e) {
+      console.log(e);
+    }
+  }
+  componentWillMount(){
+    this.loadfromlocal();
+
+ 
+  }
+
+
 
   render() {
     
@@ -54,7 +76,7 @@ export class Search extends React.Component {
               <SearchBar initialValue={this.input} handleSubmit={this.handleSubmit} /> 
             </div>
             <div className="col-xs-12 col-md-3 col-sm-3 col-md-offset-1 text-right entrance ">
-             <Entrance {...this.props}/> 
+             <Entrance {...this.state.credential}/> 
             </div> 
       </div>
          

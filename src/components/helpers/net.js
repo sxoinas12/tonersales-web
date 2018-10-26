@@ -1,7 +1,7 @@
 const urlProd = "/products/specific?val="; //serach products
 const homeProd= "/products/home";
-const urlLogin = "/user/login"; //login section
-const urlRegister = "/user/register";
+const urlLogin = "/users/login"; //login section
+const urlRegister = "/users/register";
 const urlGoogle = "/auth/google";
 const urlOrder = "/orders";
 

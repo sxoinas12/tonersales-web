@@ -19,19 +19,36 @@ export class OrderForm extends React.Component {
 			total:0,
 			shipping:models.ShippingModel,
 			payment:models.PaymentModel,
+			token:"",
 		}	
 }
 	
 	loadfromlocal = () => {
-		var local = localStorage.getItem('cart_state');
+		let local = localStorage.getItem('cart_state');
+		let access = localStorage.getItem('entrance_state');
 	   	try{
 		    if(local){
 		      this.setState(JSON.parse(local));
-		      console.log(JSON.parse(local));
+		      try{
+			      if(access){
+			      	access = JSON.parse(access);
+			      	this.setState({token:access.user.token},function(){
+			      		console.log(this.state);
+			      	});
+			      	
+			      }
+		  	 }
+		  	 catch(e){
+		  	 	console.log(e);
+		  	 }
+		      
+		 
 		    }
 		} catch(e) {
 			console.log(e);
 		}
+
+		
 	}
 
 
@@ -41,13 +58,15 @@ export class OrderForm extends React.Component {
 	    let shipping = {...this.state.shipping}
 	    shipping[name] = event.target.value;
 	    this.setState({shipping})
-	    
+	    console.log(this.state);
 	    }
 	    
 
 	submitOrder = (e) =>{
 		e.preventDefault();
+		console.log(Net.urls.orders);
 		Net.post(Net.urls.orders,this.state);
+		
 		
 	}
 	componentWillMount(){

@@ -3,7 +3,7 @@ const homeProd= "/products/home";
 const urlLogin = "/users/login"; //login section
 const urlRegister = "/users/register";
 const urlGoogle = "/auth/google";
-const urlOrder = "/orders";
+const urlOrder = "/orders/verify";
 
 
 //this is the local ip 

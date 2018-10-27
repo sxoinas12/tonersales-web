@@ -41,21 +41,18 @@ export class Card extends React.Component {
     this.closeModal = this.closeModal.bind(this);
 
    
-
+    this.popup = {};
   }
 
    addProduct = (info) =>{
       cartEmitter.emit('addProduct',this.state)
-      let popup = document.getElementById("myPopup");
-      popup.classList.toggle("show");
-      popup.classList.add("hide");
-
-      setTimeout(function(){
-       // popup.classList.remove("show");
-
-        
-      },3000)
-
+      let popup = this.popup;
+      popup.classList.add("show");
+      popup.classList.remove('hide');
+      setTimeout(() => {
+        popup.classList.add('hide');
+        setTimeout(() => { popup.classList.remove('show'); }, 1000);
+      }, 2000);  
    }
 
    stripHtml = (html) =>{
@@ -128,11 +125,13 @@ export class Card extends React.Component {
                   
                 
               </div>
-                <div className=" popup" type="button" onClick = {() => this.addProduct(this.state.info)}>
+                <div type="button" onClick = {() => this.addProduct(this.state.info)}>
                   Προσθηκη 
-                  <span className="popuptext" id="myPopup">Προστέθηκε στο καλάθι</span>
+                
               </div>
-
+              <div className="popup" >
+                <span ref={ref => this.popup = ref} className="popuptext">Προστέθηκε στο καλάθι</span>
+              </div>
 
 
             </div>

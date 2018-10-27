@@ -112,7 +112,7 @@ text-align: center;
 
 /* The actual popup (appears on top) */
 .popup .popuptext {
-    visibility: hidden;
+    /*visibility: hidden;*/
     width: 160px;
     background-color: #555;
     color: #fff;
@@ -121,11 +121,10 @@ text-align: center;
     padding: 8px 0;
     position: absolute;
     z-index: 1;
-    
-    margin-top: -32%;
-    margin-left: 51%;
-
-
+    margin-top: -85px;
+    margin-left: 0%;
+    opacity: 0;
+    display: none;
 }
 
 /* Popup arrow */
@@ -142,20 +141,15 @@ text-align: center;
 
 /* Toggle this class when clicking on the popup container (hide and show the popup) */
 .popup .show {
-    visibility: visible;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s
+    display: block;
+    -webkit-animation: fadeIn 2s cubic-bezier(0.19, 1, 0.22, 1);
+    animation: fadeIn 2s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .popup .hide{
-	
-    -webkit-animation: fadeOut 3s;
-
-    animation: fadeOut 3s;
-
-    
-
-
+    opacity: 0;
+    -webkit-animation: fadeOut 1s;
+    animation: fadeOut 1s;
 }
 
 /* Add animation (fade in the popup) */

@@ -39,11 +39,12 @@ class Net {
 
 
 
-	post(url,reqBody){
+	post(url,reqBody,token){
 		return fetch(this.BaseUrl +url,{
 			method:"POST",
 			headers:{
-				"Content-Type":"application/json"
+				"Content-Type":"application/json",
+				"Token": token
 			},
 			body:JSON.stringify(reqBody)
 		}).then(response => response.json())

@@ -19,28 +19,18 @@ export class OrderForm extends React.Component {
 			total:0,
 			shipping:models.ShippingModel,
 			payment:models.PaymentModel,
-			token:"",
+			
 		}	
 }
 	
 	loadfromlocal = () => {
 		let local = localStorage.getItem('cart_state');
 		let access = localStorage.getItem('entrance_state');
+
 	   	try{
 		    if(local){
 		      this.setState(JSON.parse(local));
-		      try{
-			      if(access){
-			      	access = JSON.parse(access);
-			      	this.setState({token:access.user.token},function(){
-			      		console.log(this.state);
-			      	});
-			      	
-			      }
-		  	 }
-		  	 catch(e){
-		  	 	console.log(e);
-		  	 }
+		      
 		      
 		 
 		    }
@@ -65,7 +55,12 @@ export class OrderForm extends React.Component {
 	submitOrder = (e) =>{
 		e.preventDefault();
 		console.log(Net.urls.orders);
-		Net.post(Net.urls.orders,this.state);
+		let access = localStorage.getItem('entrance_state');
+		access = JSON.parse(access);
+		let order = {...this.state};
+		order.products = order.products.map((item)=>({item:item.id,quantity:item.quantity}));
+		Net.post(Net.urls.orders,order
+			,access.user.token);
 		
 		
 	}

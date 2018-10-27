@@ -58,21 +58,29 @@ export class Entrance extends React.Component {
     user["token"] = res;
     this.setState({user});
     this.saveToLocal();
-   // console.log(this.state.user)
-   // this.setState({user})
+  
   }
 
 
   loadfromlocal = () =>{
     var local = localStorage.getItem('entrance_state');
     local = JSON.parse(local);
-    if(local.user.token){
+    if(local){
+      if(local.user.token){
       this.setState({logged:true});
     }
+    }
+    
   }
 
   afterOpenModal = () =>{
   } 
+
+  loggout = () =>{
+    localStorage.removeItem('entrance_state');
+    this.setState({logged:false})
+
+  }
 
   closeModal = () => {
     this.setState({modalIsOpen:false});
@@ -109,6 +117,9 @@ export class Entrance extends React.Component {
        <li>User profile</li>
        <li>
         <Mini_Cart {...this.props} />
+       </li>
+       <li onClick={this.loggout}className="loggout">
+          loggout
        </li>
        </ul>
     </div>

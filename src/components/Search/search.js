@@ -18,6 +18,7 @@ export class Search extends React.Component {
   constructor(props) {
     super(props);
     this.input = this.checkReq();
+    console.log(this.input);
     this.state={
       list:[],
       
@@ -28,26 +29,31 @@ export class Search extends React.Component {
 
 
   handleSubmit = (res) => {
-    //console.log(res);
+    
     this.setState({list:res});
   }
 
   checkReq = () => {
     if(this.props.location.state === undefined){
+
       return "";
     }
     else {
       //console.log(this.props.location);
+      console.log(this.props.location.search);
       return this.props.location.search;
     }
   }
+
+
+
   loadfromlocal = () => {
     var local = localStorage.getItem('cart_state');
     local = JSON.parse(local);
-    console.log(local);
+    
     try {
       if(local){
-        this.setState({list:local.products})
+      //
       }
 
     }
@@ -57,6 +63,7 @@ export class Search extends React.Component {
     }
   }
   componentWillMount(){
+    this.setState({list:this.props.location.state.list})
     this.loadfromlocal();
 
  

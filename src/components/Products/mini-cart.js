@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './mini-cart.css';
 import Emitter from '../Events/events';
-
-
+import { BrowserRouter, Route } from 'react-router-dom';
+import ReactDOM from 'react-dom';
 
 let Subscription = null
 const customLabel = {
@@ -24,7 +24,7 @@ export class Mini_Cart extends React.Component {
   
 
   handleClick = (e) =>{
-    
+    console.log(this.props);
     this.props.history.push({
       pathname:'/checkout',
       state: {products:this.state.products}
@@ -197,10 +197,19 @@ export class Mini_Cart extends React.Component {
 
     return (
     <div  ref="myRef" className="dropdown">
-      <a className= "dropbtn" onClick= {this.handleClick}><i className="fas fa-shopping-cart"></i></a>
+      <Route render={({history}) =>(
+        <a className= "dropbtn" onClick= {() => {
+          history.push({
+          pathname:'/checkout',
+          state: {products:this.state.products}
+          });
+        }}><i className="fas fa-shopping-cart"></i></a>
       
-        {CartLayout}
-      
+        
+
+        )}
+      />
+      {CartLayout}
      </div>
     
     );

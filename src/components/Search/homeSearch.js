@@ -15,7 +15,7 @@ class HomeSearch extends React.Component {
   constructor(props){
     super(props);
     this.input = this.checkReq();
-    console.log(this.input)
+    console.log(this.props)
     this.state={
       searchQuery:"",
       list:[]
@@ -27,8 +27,8 @@ class HomeSearch extends React.Component {
 
   handleSubmit = (res) =>{
 
+    //console.log(res);
     console.log(res);
-    
     
     this.props.history.push({
 
@@ -39,7 +39,7 @@ class HomeSearch extends React.Component {
 
   checkReq = () => {
     if(this.props.location.state === undefined){
-      console.log("input is");
+      
       return '';
     }
     else {

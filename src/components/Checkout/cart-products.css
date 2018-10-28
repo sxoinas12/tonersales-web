@@ -3,6 +3,29 @@
    
 
 }
+.checkout .title{
+	padding-left: 0px;
+	padding-top:150px;
+
+}
+
+
+.checkout .but_pos{
+	padding-top:130px;
+}
+
+.checkout .mini_cart_logo {
+	background-image: url("/images/mini_cart.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    background-position-x: left;
+    height: 188px;
+    background-position-x: 99px;
+
+background-size: 48%;
+
+background-position-y: 110px;
+}
 
 .checkout .header{
 	padding-top: 100px;

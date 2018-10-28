@@ -29,13 +29,13 @@ export class CartProducts extends React.Component{
 		return (
 			<div className=" checkout">
 				<div className="row header">
-					<div className="col-xs-12 col-sm-2 col-md-2 col-lg-1 ">
-						Το καλάθι μου
+					<div className="col-xs-12 col-sm-3 col-md-3 col-lg-2 text-left mini_cart_logo title">
+						<b>Το καλάθι μου</b>
 					</div>
-					<div className="cart_image col-xs-12 col-sm-8 col-md-8 col-lg-9 text-left ">
-						Image for Cart will go here 
+					<div className="cart_image col-xs-6 col-sm-3 col-md-3 col-lg-2  text-center  ">
+						
 					</div>
-					<div className="col-xs-12 col-sm-2 col-lg-2 text-right">
+					<div className="col-xs-12 col-sm-2 col-sm-offset-4 col-md-2 col-md-offset-4 col-lg-2 col-lg-offset-6 text-right but_pos">
 						
 							<div className="checkoutButName">
 								{

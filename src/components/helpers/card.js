@@ -125,7 +125,7 @@ export class Card extends React.Component {
                   
                 
               </div>
-                <div type="button" onClick = {() => this.addProduct(this.state.info)}>
+                <div type="button" className="add_but" onClick = {() => this.addProduct(this.state.info)}>
                   Προσθηκη 
                 
               </div>

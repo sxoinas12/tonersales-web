@@ -2,7 +2,7 @@
 import React, {component} from 'react';
 import './PaymentForm.css';
 const Net = require('../helpers/net.js');
-const models = require('../helpers/OrderModels.js');
+const models = require('../helpers/Models.js');
 
 
 export class PaymentForm extends React.Component {

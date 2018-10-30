@@ -109,7 +109,7 @@ export class Entrance extends React.Component {
   const isLog = this.state.isLog;
   const logged = this.state.logged;
   const selectModal = isLog ? (<Login access={this.AllowAccess} close={this.closeModal} open={this.openModal} />) : 
-                              (<Register close={this.closeModal} open={this.openModal} />);
+                              (<Register open={this.openModal} close={this.closeModal}  />);
   const changeEntrance = logged ?  (
 
     <div className="pos">

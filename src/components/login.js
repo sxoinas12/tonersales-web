@@ -48,7 +48,12 @@ export class Login extends React.Component{
 
 	handleGoogleSubmit = () => {
 		//console.log(Net.Url.google);
-		//window.location.href= Net.Url.google;
+		console.log(Net.urls.google);
+	
+		window.location.href= Net.urls.google
+		
+		
+		//console.log(Net.urls.google);
 	}
 
 	handleFacebookSubmit = () =>{
@@ -90,7 +95,7 @@ export class Login extends React.Component{
 					  <br />
 					 <input
 					 value={this.state.password}
-					 type="text"
+					 type="password"
 					 placeholder="password"
 					 name="password"
 					 onChange={this.change}

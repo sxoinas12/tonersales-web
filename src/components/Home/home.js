@@ -5,6 +5,7 @@ import {Entrance} from './entrance';
 import {Footer} from './footer';
 import {Card} from '../helpers/card';
 import {ProductList} from '../Products/ProductList';
+import Filter from '../helpers/Filters';
 const Net = require('../helpers/net.js');
 
 
@@ -47,15 +48,21 @@ export class Home extends React.Component {
             <HomeSearch />
           </div>
           </div>
+         
 	        
 
 
 
-         <div className="container">
+
             <div className="row">
-            <ProductList data = {this.state.list} />
+              <div className="col-xs-hidden col-lg-2">
+                <Filter input={"Filter Input"} />
+              </div>
+              <div className="col-xs-12 col-lg-10">
+                <ProductList data = {this.state.list} />
+              </div>
             </div>
-         </div>
+     
 
           <div className="row">
               <Footer />

@@ -8,7 +8,7 @@ import {ShippingForm} from './ShippingForm';
 import {OrderReview} from './OrderReview';
 import {PaymentForm} from './PaymentForm';
 
-const models = require('../helpers/OrderModels.js');
+const models = require('../helpers/Models.js');
 const OrderService = require('../helpers/parseOrder.js');
 const Net = require('../helpers/net.js');
 export class OrderForm extends React.Component {

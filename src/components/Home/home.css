@@ -5,7 +5,9 @@
 	overflow: auto;
 	
 }
-
+.no-padding {
+	padding: 0px;
+}
 
 .page-header{
 

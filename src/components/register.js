@@ -30,10 +30,11 @@ change = (e) =>{
 		let reqBody = this.state;
 		
 		Net.post(Net.urls.register,reqBody);
+		this.props.close();
 	}
 
   handleGoogleSubmit = () => {
-		console.log(Net.Url.google);
+		console.log(Net.urls.google);
 		window.location.href= Net.urls.google;
 	}
 
@@ -80,7 +81,7 @@ change = (e) =>{
 					 <br />
 					 <input 
 					 value = {this.state.password}
-					 type="text" 
+					 type="password" 
 					 placeholder ="password"
 					 name="password"
 					 onChange={this.change}

@@ -1,4 +1,4 @@
-const models = require('../helpers/OrderModels.js');
+const models = require('../helpers/Models.js');
 
 
 class OrderService {

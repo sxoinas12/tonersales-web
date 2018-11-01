@@ -203,7 +203,7 @@ export class Mini_Cart extends React.Component {
           pathname:'/checkout',
           state: {products:this.state.products}
           });
-        }}><i className="fas fa-shopping-cart"></i></a>
+        }}><img src="./images/mini_cart.png" className="cart_size"/></a>
       
         
 

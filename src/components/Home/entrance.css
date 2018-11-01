@@ -1,6 +1,16 @@
 
 .pos li { cursor: pointer; }
 	
+.pos{
+	padding-top:10px; 
+}
+.pos .profile{
+	border:1px solid;
+	border-radius: 50%;
+	width: 50%;
+cursor:pointer;
+	border-color:  	#303030;
+}
 
 
 
@@ -12,7 +22,17 @@
 	color:#333333;
 }
 
+.pos .loggout {
+	color: 	#383838;
+	cursor:pointer;
+	font-family: tahoma;
+	font-size: 15px;
+}
 
+.pos .loggout:hover{
+	text-decoration: underline;
+	color:#615d6c;
+}
 
 .selector{
 	color:#707070;

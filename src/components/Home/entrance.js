@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 import {Login} from '../login';
 import {Register} from '../register';
 import {Mini_Cart} from '../Products/mini-cart';
-
+import { Route } from 'react-router-dom'
 
 const divstyle = {
   color: 'black', // 'ms' is the only lowercase vendor prefix
@@ -112,19 +112,26 @@ export class Entrance extends React.Component {
                               (<Register open={this.openModal} close={this.closeModal}  />);
   const changeEntrance = logged ?  (
 
-    <div className="pos">
-        <ul>
-       <li>User profile</li>
-       <li>
+    <div className="row pos">
+        <div className="col-xs-12 col-sm-4 col-md-4 col-lg-3 col-lg-offset-2 text-right">
         <Mini_Cart {...this.props} />
-       </li>
-       <li onClick={this.loggout}className="loggout">
-          loggout
-       </li>
-       </ul>
+        
+       </div>
+        
+       <div className="col-xs-12 col-sm-1 col-md-5 col-lg-3 text-center">
+        <Route render={({history}) =>(
+        <img type="button" onClick={() =>history.push('/profile')}src="./images/no-user.png" className="profile"/>
+        )}/>
+        </div>
+        <div className="col-xs-12 col-sm-4 col-md-3 col-lg-2 text-left loggout" onClick={this.loggout} >
+          Loggout
+       </div>
+
+      
+
     </div>
     ):(
-    <div className= "pos">
+    <div className= "row pos">
           <ul>
             <li>
               <a onClick={() => this.setState({isLog:true, modalIsOpen:true})}>Σύνδεση</a>

@@ -54,7 +54,7 @@ class FilterField extends React.Component {
 		)
 		return(
 			<div className="row">
-	    			<div classNameName="col-xs-12 ">
+	    			<div className="col-xs-12 ">
 	    				<div className="row">
 	    					<div className="col-xs-12">
 	    					{this.props.inputName}

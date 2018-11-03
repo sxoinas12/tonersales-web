@@ -1,0 +1,41 @@
+.prof_img{
+	background-color: #e9ebee;
+	
+}
+
+.prof_info{
+	
+
+	margin-top: 20px;
+
+	line-height: 38px;
+	border:1px solid;
+	border-radius: 2px;
+	
+}
+
+
+.prof_info label{
+	
+	padding: 2px;
+	font-size: 15px;
+
+
+}
+
+.prof_head {
+	text-align: center;
+}
+
+.prof_info .item{
+	border-bottom: 1px solid;
+}
+
+.edit{
+	cursor:pointer;
+}
+
+.edit:hover{
+	text-decoration: underline;
+
+}

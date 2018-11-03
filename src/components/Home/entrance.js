@@ -79,7 +79,9 @@ export class Entrance extends React.Component {
   loggout = () =>{
     localStorage.removeItem('entrance_state');
     this.setState({logged:false})
-
+    if(this.props.logOff){
+      this.props.logOff();
+    }
   }
 
   closeModal = () => {

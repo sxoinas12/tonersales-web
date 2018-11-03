@@ -15,6 +15,9 @@ export class Login extends React.Component{
 			warning:"warning",
 		}
 	}
+
+	 
+
 	change = (e) =>{
 	    const target = e.target;
 	    const value = target.value;
@@ -46,10 +49,21 @@ export class Login extends React.Component{
 		
 	}
 
+
+	_handleKeyPress = (e) => {
+
+    if (e.key === 'Enter') {
+    	e.preventDefault();
+    	console.log(e.key);
+	 	console.log('here');
+	 	//debugger;
+      this.handleSubmit(e)
+    }
+  }
+
 	handleGoogleSubmit = () => {
 		//console.log(Net.Url.google);
 		console.log(Net.urls.google);
-	
 		window.location.href= Net.urls.google
 		
 		
@@ -66,7 +80,7 @@ export class Login extends React.Component{
 		return(
 			<div className="log">
 				Σύνδεση
-				<form className="form" onSubmit = {this.handleSubmit}> 
+				<form className="form" onKeyPress={this._handleKeyPress}> 
 					<button onClick={this.handleGoogleSubmit} className="btn btn-danger google_button"> 
 						<div className="bord">
 							<i className="fab fa-google-plus-g"></i>
@@ -101,7 +115,7 @@ export class Login extends React.Component{
 					 onChange={this.change}
 					 />
 					 <br />
-					 <button className = " btn login_button" type="submit">
+					 <button className = " btn login_button" type="submit"  onClick = {this.handleSubmit}>
 				     Login
 				    </button>
 

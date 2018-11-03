@@ -1,0 +1,39 @@
+
+
+.sect {
+	padding-top: 100px;
+	padding-bottom: 100px;
+}
+
+.navBar ol{
+	list-style-type:none;
+}
+.selectView {
+	cursor: pointer;
+	border-bottom:1px solid;
+	border-right: 1px solid;
+	text-align: center;
+	border-color:#383838;
+	font-size: 15px;
+}
+
+
+
+.selectView:hover{
+	
+	background-color: #A0A0A0; 
+}
+
+
+.no-padding-left{
+	padding-left: 0px;
+}
+.prof_sect {
+	line-height: 30px;
+}
+.prof_sect .head{
+	border-bottom: 1px solid;
+
+	font-weight: 17px;
+	padding-bottom: 5px;
+}

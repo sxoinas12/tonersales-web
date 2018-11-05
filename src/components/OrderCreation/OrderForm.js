@@ -54,7 +54,7 @@ export class OrderForm extends React.Component {
 
 	submitOrder = (e) =>{
 		e.preventDefault();
-		console.log(Net.urls.orders);
+		//console.log(Net.urls.orders);
 		let access = localStorage.getItem('entrance_state');
 		access = JSON.parse(access);
 		let order = {...this.state};

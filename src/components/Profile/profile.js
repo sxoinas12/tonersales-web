@@ -7,28 +7,76 @@ import {Prof} from './prof';
 import {Orders} from './orders';
 import {Settings} from './settings';
 
+
+const Net = require('../helpers/net.js');
+
+
+
 export class Profile extends React.Component{
 	
 	constructor(props){
 		super(props);
 		
 		this.state = {
-			select:<Prof />,
+			select:"Profile",
 			isLogged:true,
+			user:{
+				username:"",
+				email:""
+			},
+			orders:{}
 		};
+
 		
 	}
+
+	change = (e) =>{
+	    const target = e.target;
+	    const value = target.value;
+	    const name = target.name;
+	    let user = this.state.user;
+	    user[name] = value;
+	    this.setState({user:user});
+	}
+
+	submitChanges = (values) =>{
+		
+		let access = localStorage.getItem('entrance_state');
+		access = JSON.parse(access);
+		let user = {...this.state.user};
+	
+		try{
+			if(values && access.user.token){
+				console.log(values);
+				console.log(access.user.token)
+				Net.post(Net.urls.profile,values,access.user.token)
+				.then((data) =>{
+					user["username"] = data.username;
+					user["email"] = data.email;
+					
+				}).catch((e)=>{
+					console.log(e);
+				})
+			}
+		}
+		catch(e){
+			console.log(e)
+		}
+
+	}
+
 	showProfile = () => {
-		this.setState({select:<Prof />});
+		this.setState({select:"Profile"});
 	}
 
 
 	showOrders = () => {
-		this.setState({select:<Orders />});
+		//console.log(this.state.user);
+		this.setState({select:"Orders"});
 	}
 
 	showSetting = () => {
-		this.setState({select:<Settings />});
+		this.setState({select:"Settings"});
 	}
 
 
@@ -44,7 +92,6 @@ export class Profile extends React.Component{
 	loadfromlocal = () => {
 		let access = localStorage.getItem('entrance_state');
 		access = JSON.parse(access);
-		console.log(access);
 		if(access){
 	   	try{
 		    if(access.user.token){
@@ -62,13 +109,45 @@ export class Profile extends React.Component{
 	componentWillMount(){
 		
 		this.loadfromlocal();
+		try{
+			let access = localStorage.getItem('entrance_state');
+			access = JSON.parse(access);
+			
+			if(access.user.token){
+				let user = this.state.user
+				Net.get(Net.urls.profile,access.user.token).
+				then((data)=>{
+					console.log("the data are ",data);
+					user["username"] = data.username;
+					user["email"] = data.email;		
+					this.setState({user:user});
+					
+				})
+				.catch(error=>error)
+			}
+		}
+		catch(e){
+			console.log(e);
+		}
 		
 	}
 
 	
 	render(){
-		const View = this.state.select;
+		let View;
+		switch(this.state.select){
+			case "Profile":
+			default:
+				View = <Prof change={this.change} info={this.state.user} submit={this.submitChanges} />;
+				break;
 
+			case "Orders":
+				View = <Orders />;
+				break;
+			case "Settings":
+				View = <Settings />;
+				break;
+		}
 		return(	
 			<div className="row">
 				<div className="col-xs-12">
@@ -90,8 +169,8 @@ export class Profile extends React.Component{
 							<label className="">Profile Section</label>
 							</div>
 							
-							<div className="row" >
-								<ol className="col-xs-1  no-padding-left" >
+							<div className="row menu" >
+								<ol className="col-xs-2  no-padding-left" >
 									<li onClick={() => this.showProfile()} className="selectView">Profile</li>
 									<li onClick={() => this.showOrders()} className="selectView">Orders</li>
 									<li onClick={() => this.showSetting()} className="selectView">Settings</li>

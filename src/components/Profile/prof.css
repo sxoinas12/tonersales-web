@@ -1,6 +1,20 @@
 .prof_img{
 	background-color: #e9ebee;
+
 	
+}
+
+.submit_changes {
+	font:0px;
+
+	
+}
+.info{
+	margin-left: 30px;
+	
+
+	margin-right: 30px;
+	padding: 5px; 
 }
 
 .prof_info{
@@ -27,8 +41,8 @@
 	text-align: center;
 }
 
-.prof_info .item{
-	border-bottom: 1px solid;
+ .item{
+	margin-top: 8px;
 }
 
 .edit{
@@ -37,5 +51,6 @@
 
 .edit:hover{
 	text-decoration: underline;
+	font-size: 15px;
 
 }

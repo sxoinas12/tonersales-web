@@ -4,7 +4,7 @@ const urlLogin = "/users/login"; //login section
 const urlRegister = "/users/register";
 const urlGoogle = "/auth/google";
 const urlOrder = "/orders/verify";
-
+const urlProfile ="/profile";
 
 //this is the local ip 
 //it will change from network to network
@@ -18,7 +18,8 @@ const url = {
 	login:urlLogin,
 	register:urlRegister,
 	google:urlGoogle,
-	orders:urlOrder
+	orders:urlOrder,
+	profile:urlProfile
 }
 
 class Net {
@@ -26,11 +27,12 @@ class Net {
    		this.BaseUrl = BaseUrl;
    		this.urls = url;
    	}
-   	get(url){
+   	get(url,token){
 		return fetch(this.BaseUrl +url,{
 	      method:"GET",
 	      headers:{
-	        "Content-Type": "application/json"
+	        "Content-Type": "application/json",
+	        "token":token
 	      }
 	    })
 	    .then(response => response.json())

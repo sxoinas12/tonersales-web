@@ -24,7 +24,7 @@ export class Profile extends React.Component{
 				username:"",
 				email:""
 			},
-			orders:{}
+			orders:[],
 		};
 
 		
@@ -47,8 +47,7 @@ export class Profile extends React.Component{
 	
 		try{
 			if(values && access.user.token){
-				console.log(values);
-				console.log(access.user.token)
+				
 				Net.post(Net.urls.profile,values,access.user.token)
 				.then((data) =>{
 					user["username"] = data.username;
@@ -71,8 +70,9 @@ export class Profile extends React.Component{
 
 
 	showOrders = () => {
-		//console.log(this.state.user);
+		
 		this.setState({select:"Orders"});
+		
 	}
 
 	showSetting = () => {
@@ -109,15 +109,15 @@ export class Profile extends React.Component{
 	componentWillMount(){
 		
 		this.loadfromlocal();
-		try{
-			let access = localStorage.getItem('entrance_state');
+		let access = localStorage.getItem('entrance_state');
 			access = JSON.parse(access);
+		try{
+			
 			
 			if(access.user.token){
 				let user = this.state.user
 				Net.get(Net.urls.profile,access.user.token).
 				then((data)=>{
-					console.log("the data are ",data);
 					user["username"] = data.username;
 					user["email"] = data.email;		
 					this.setState({user:user});
@@ -128,6 +128,21 @@ export class Profile extends React.Component{
 		}
 		catch(e){
 			console.log(e);
+		}
+
+		try{
+			if(access.user.token){
+				Net.get(Net.urls.myOrders,access.user.token).
+				then((data)=>{
+					//console.log(data);
+					this.setState({orders:data.data})
+				}).catch((e)=>{
+					console.log(e)
+				})
+			}
+		}
+		catch(e){
+			console.log(e)
 		}
 		
 	}
@@ -142,7 +157,7 @@ export class Profile extends React.Component{
 				break;
 
 			case "Orders":
-				View = <Orders />;
+				View = <Orders info={this.state.orders}/>;
 				break;
 			case "Settings":
 				View = <Settings />;

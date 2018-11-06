@@ -5,6 +5,7 @@ const urlRegister = "/users/register";
 const urlGoogle = "/auth/google";
 const urlOrder = "/orders/verify";
 const urlProfile ="/profile";
+const urlMyOrders = "/orders";
 
 //this is the local ip 
 //it will change from network to network
@@ -19,7 +20,8 @@ const url = {
 	register:urlRegister,
 	google:urlGoogle,
 	orders:urlOrder,
-	profile:urlProfile
+	profile:urlProfile,
+	myOrders:urlMyOrders
 }
 
 class Net {

@@ -115,18 +115,18 @@ export class Entrance extends React.Component {
   const changeEntrance = logged ?  (
 
     <div className="row pos">
-        <div className="col-xs-12 col-sm-4 col-md-4 col-lg-3 col-lg-offset-2 text-right">
+        <div className="col-xs-4 col-sm-4 col-md-4 col-lg-3 col-lg-offset-1 text-right">
         <Mini_Cart {...this.props} />
         
        </div>
         
-       <div className="col-xs-12 col-sm-1 col-md-5 col-lg-3 text-center">
+       <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-lg-offset-1 text-center">
         <Route render={({history}) =>(
         <img type="button" onClick={() =>history.push('/profile')}src="./images/no-user.png" className="profile"/>
         )}/>
         </div>
-        <div className="col-xs-12 col-sm-4 col-md-3 col-lg-2 text-left loggout" onClick={this.loggout} >
-          Loggout
+        <div className="col-xs-4 col-sm-4 col-md-3 col-lg-3 text-left  loggout" onClick={this.loggout} >
+          Logout
        </div>
 
       

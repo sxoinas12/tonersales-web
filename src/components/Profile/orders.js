@@ -1,6 +1,6 @@
 import React, {component} from 'react';
 import './orders.css';
-
+const Net = require('../helpers/net.js');
 
 export class Orders extends React.Component{
 	
@@ -8,40 +8,53 @@ export class Orders extends React.Component{
 		super(props);
 		
 		this.state = {
-			
+			orders:[],
 		};
 		
 	}
 	componentWillMount(){
-		console.log(this.props)
+		let orders = [];
+		let access = localStorage.getItem('entrance_state');
+		access = JSON.parse(access);
+		
+		this.props.info.map((item)=>{
+			let order = {
+			payment_meth_id:"",
+			products:[],
+			shipping_id:"",
+			total:"",
+			}
+			let id = [];
+			item.products.map((item)=>{
+				Net.getId(Net.urls.productsId,id,access.user.token)
+			})
+			.then((data)=>{
+				// here must put data to the Order
+			})
+
+		})
+
+		if(access.user.token){
+			console.log(this.props.info)
+
+
+			
+		}	
 	}
 
 	render(){
 
 		const Orders = this.props.info.map((item,index)=>
-			<div key={index}>Items:{item.total}</div>
+			<div key={index}>
+				Items:{item.products}
+			</div>
 		);
 		return(
 			<div className="row">
 
-			   <table className="table">
-			    <thead>
-			      <tr>
-			        <th>Products</th>
-			        <th>Shipping Method</th>
-			        <th>Payment Method</th>
-			        <th>Total</th>
-			      </tr>
-			    </thead>
-			    <tbody>
-			      <tr>
-			        <td>John</td>
-			        <td>Doe</td>
-			        <td>john@example.com</td>
-			      </tr>
-			      
-			    </tbody>
-			  </table>
+			  <div>
+			  
+			  </div>
 			</div>)
 	}
 	}

@@ -33,7 +33,7 @@ export class Prof extends React.Component{
 					      <img src="../images/img_avatar.png" className="prof_img"/>
 					    </a>
 					  </div>
-					  <div className="col-xs-12 col-sm-5 col-md-5 col-lg-5 "> 
+					  <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 "> 
 						    <div className="row">
 						    	<h4 className="prof_head">Profile info</h4>
 						    </div>
@@ -41,19 +41,18 @@ export class Prof extends React.Component{
 					  		<div className="col-xs-12" >
 							  	<div className="row item">
 							
-									  <div className="input-group input-group-lg">
-									  	  <input type="text" className="form-control input-lg" name="username" onChange={this.props.change} value={this.props.info.username} aria-describedby="sizing-addon3" disabled={this.state.focused}/>
-										  
+									  <div className="col-xs-12 input-group input-group-lg">
+									  	 <input type="text" className="form-control input-lg" name="username" onChange={this.props.change} value={this.props.info.username} aria-describedby="sizing-addon3" disabled={this.state.focused}/>	  
 									</div>
 							 
 							  	</div>
 							  	<div className="row item ">
-									 <div className="input-group input-group">
+									 <div className="col-xs-12 input-group input-group">
 									  	  <input type="text" className="form-control input-lg" name="email" onChange={this.props.change} value={this.props.info.email}  aria-describedby="sizing-addon3" disabled={this.state.focused}/>
 									</div>
 							    </div>
 							    <div className="row item">
-							  	<div className="input-group input-group">
+							  	<div className="col-xs-12 input-group input-group">
 									  	  <input type="text" className="form-control input-lg" name="password" onChange={this.props.change} placeholder="*******" aria-describedby="sizing-addon3" disabled={this.state.focused}/>
 									</div>
 							    </div>

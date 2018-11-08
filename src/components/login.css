@@ -25,6 +25,13 @@
 	display: inline-block;
 }
 
+.forgot{
+	padding-left:20px;
+}
+
+.forgot a{
+	cursor: pointer;
+}
 
 .bord {
 	border-right:1px solid #fff;
@@ -60,7 +67,13 @@ height: 280px;
     padding: 20px;
 }
 
-
+.form .header{
+	border-bottom: 1px solid;
+	border-color: #707070;
+	font-size: 15px;
+	font-weight: bold;
+	padding-bottom: 10px;
+}
 .warning{
 	visibility: hidden;
 }

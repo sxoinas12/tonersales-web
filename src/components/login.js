@@ -13,6 +13,7 @@ export class Login extends React.Component{
 			email:"",
 			password:"",
 			warning:"warning",
+			reset:true
 		}
 	}
 
@@ -27,6 +28,24 @@ export class Login extends React.Component{
 	    });
 	}
 
+	resetPassword = (e) =>{
+		this.setState({reset:false})
+	}
+
+	resetPass = (e) =>{
+		e.preventDefault();
+		let email = this.state.email;
+		console.log(Net.urls.restore)
+		let obj = {email:email};
+		Net.post(Net.urls.restore,obj)
+		.then(res=>{
+			 console.log(res);
+		})
+		.catch((e)=>{
+			console.log("error",e);
+		})
+	} 
+
 	handleSubmit = (e) => {
 		e.preventDefault();
 		let reqBody = this.state;
@@ -40,8 +59,6 @@ export class Login extends React.Component{
 			}
 			else{
 				//missing html and css for hint
-				
-				
 				this.setState({email:"",password:"",warning:"warningOn"});
 				this.props.open();
 			}
@@ -54,10 +71,15 @@ export class Login extends React.Component{
 
     if (e.key === 'Enter') {
     	e.preventDefault();
-    	console.log(e.key);
-	 	console.log('here');
-	 	//debugger;
-      this.handleSubmit(e)
+      	this.handleSubmit(e)
+    }
+  }
+
+  _handleKeyPass = (e) => {
+
+    if (e.key === 'Enter') {
+    	e.preventDefault();
+      	this.resetPass(e)
     }
   }
 
@@ -74,11 +96,15 @@ export class Login extends React.Component{
 		//it do nothing atm missing back end funcitonality
 		console.log('hi');
 	}
-
+	
 	render(){
+		const reset = this.state.reset;
 		let warning = this.state.warning;
 		return(
-			<div className="log">
+		
+			<div>
+				{reset ?(
+				<div	className="log">
 				Σύνδεση
 				<form className="form" onKeyPress={this._handleKeyPress}> 
 					<button onClick={this.handleGoogleSubmit} className="btn btn-danger google_button"> 
@@ -118,13 +144,38 @@ export class Login extends React.Component{
 					 <button className = " btn login_button" type="submit"  onClick = {this.handleSubmit}>
 				     Login
 				    </button>
-
+				    <div className="forgot">
+				    	or <a onClick={this.resetPassword}>Forgot Password</a>
+				    </div>
 				    <div className={this.state.warning}>
 				    Wrong Information!
 				    </div>
 
 				</form>
+				</div>
+				):
+				(<div className="log">
+					<div className="form" onKeyPress={this._handleKeyPass}>
+						<div className="header">
+							Forgot Password
+						</div>
+					
+					<br />
+					 <input
+					
+					 placeholder="email"
+					 name="email"
+					 onChange={this.change}
+					 /> 
+					 </div>
+					 <button className = " btn login_button" type="submit"  onClick = {this.resetPass}>
+				     Submit
+				    </button>
+				</div>
+				)}
 			</div>
+
+		
 			);
 	}
 }

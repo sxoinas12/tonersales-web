@@ -36,7 +36,7 @@ export default class Filter extends React.Component {
     return (
 
     	<div className="row ">
-    		<div className="col-xs-12 filter">
+    		<div className="col-xs-12  filter">
 	    		{Filters}
     		</div>	
     	</div>

@@ -173,7 +173,7 @@ export class Profile extends React.Component{
 		            <div className="col-xs-12  col-md-5 col-sm-6 bar text-left">
 		              <SearchBar initialValue={this.input} handleSubmit={this.handleSubmit} /> 
 		            </div>
-		            <div className="col-xs-12 col-md-3 col-sm-3 col-md-offset-1 text-right entrance ">
+		            <div className="col-xs-12 col-md-3 col-sm-3 col-md-offset-1 col-lg-2 col-lg-offset-2 text-right entrance ">
 		             <Entrance {...this.props} logOff = {this.logOff}/> 
 		            </div> 
 		      		</div>
@@ -186,9 +186,9 @@ export class Profile extends React.Component{
 							
 							<div className="row menu" >
 								<ol className="col-xs-2  no-padding-left" >
-									<li onClick={() => this.showProfile()} className="selectView">Profile</li>
-									<li onClick={() => this.showOrders()} className="selectView">Orders</li>
-									<li onClick={() => this.showSetting()} className="selectView">Settings</li>
+									<li onClick={() => this.showProfile()} className="selectView"><b>Profile</b></li>
+									<li onClick={() => this.showOrders()} className="selectView"><b>Orders</b></li>
+									<li onClick={() => this.showSetting()} className="selectView"><b>Settings</b></li>
 								</ol>
 								
 								<div className="col-xs-7 viewPossition">

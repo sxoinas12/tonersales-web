@@ -15,6 +15,10 @@
 	 border: none!important; 
 }
 
+.filt {
+	padding-left: 50px;
+}
+
 .HotProd{
 	height: 40vh;
 	padding-left:12%;

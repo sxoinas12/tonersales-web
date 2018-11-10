@@ -104,7 +104,7 @@ export class Card extends React.Component {
     
     
     return (
-         <div className="cont col-xs-12 col-sm-6  col-md-4 col-lg-3 "  >
+         <div className="cont col-xs-12 col-sm-6  col-md-4 col-lg-4 "  >
             <div className="card" styles="max-width: 18rem;">
               <div className="c_img" onClick = { () => this.setState({modalIsOpen:true,sProd:this.props.data})} > </div>
 

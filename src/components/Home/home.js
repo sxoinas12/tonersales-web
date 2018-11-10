@@ -55,10 +55,10 @@ export class Home extends React.Component {
 
 
             <div className="row">
-              <div className="col-xs-hidden col-lg-2">
+              <div className="col-xs-6 col-sm-2 col-md-2  col-lg-2 filt">
                 <Filter input={"Filter Input"} />
               </div>
-              <div className="col-xs-12 col-lg-10">
+              <div className="col-xs-12 col-sm-10 col-md-10 col-lg-10">
                 <ProductList data = {this.state.list} />
               </div>
             </div>

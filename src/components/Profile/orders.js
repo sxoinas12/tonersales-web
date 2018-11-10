@@ -1,22 +1,59 @@
 import React, {component} from 'react';
 import './orders.css';
+import {Ord} from './ord';
 const Net = require('../helpers/net.js');
 
 export class Orders extends React.Component{
 	
 	constructor(props){
 		super(props);
-		
 		this.state = {
 			orders:[],
-		};
+		};	
+	}
+
+	check = () =>{
+		//console.log(this.state.orders)
+		//console.log("succesfully loaded data from our server")
+	}
+
+	parseItems = (order,item,token) =>{
+
+	 		
+		let array = item.products.map((prod)=>{
+			let product = {
+			data:{},
+			quantity:null
+			};
+			return Net.getId(Net.urls.productsId,prod["item"],token)
+			.then((data)=>{
+				//console.log("Dataa are :", data);
+				product["data"] = data;
+				product["quantity"] = prod["quantity"];
+				order["products"].push(product);
+				order["total"] = item["total"];
+			})
+			.catch((e)=>console.log("error:",e));
+
+
+		});
+		return Promise.all(array);
+	
 		
 	}
+
+
+
+	trackOrder = () =>{
+		console.log("tracking Order")
+	}
+
 	componentWillMount(){
+		console.log(this.props.info)
 		let orders = [];
 		let access = localStorage.getItem('entrance_state');
 		access = JSON.parse(access);
-		
+		//console.log(Net.urls.productsId);
 		this.props.info.map((item)=>{
 			let order = {
 			payment_meth_id:"",
@@ -25,36 +62,70 @@ export class Orders extends React.Component{
 			total:"",
 			}
 			let id = [];
-			item.products.map((item)=>{
-				Net.getId(Net.urls.productsId,id,access.user.token)
-			})
+			this.parseItems(order,item,access.user.token)
 			.then((data)=>{
-				// here must put data to the Order
+				this.setState({
+					orders: [...this.state.orders,order]
+				})
 			})
-
+			.catch((e)=>{
+				console.log("error",e)
+			})
+			
 		})
-
+		
 		if(access.user.token){
-			console.log(this.props.info)
+			//dada
 
 
 			
 		}	
 	}
 
-	render(){
+	compoentDidMount(){
+		console.log(this.state.orders);
+	}
 
-		const Orders = this.props.info.map((item,index)=>
-			<div key={index}>
-				Items:{item.products}
+	render(){
+		
+		const Orders = this.state.orders.map((item,index)=>
+			<div className="row box" key={index}>
+				<div className="col-xs-12">
+					<div className="row ord-head">
+						<h4><b>Order {index+1}</b></h4>
+					</div>
+					<div className="row">
+						<Ord info={item} />
+						<div className="col-lg-3">
+							<b>Shipping Status</b>
+						</div>
+						<div className="col-lg-3">
+							<b>Total: {item.total.toFixed(2)} €</b>
+						</div>
+					</div>
+				</div>
 			</div>
 		);
-		return(
-			<div className="row">
 
+
+
+
+
+		return(
+			<div className="row pad-left">
+			 <div className="row">
+			 </div>
 			  <div>
-			  
+			  {Orders}
 			  </div>
 			</div>)
 	}
 	}
+
+
+
+
+
+
+
+

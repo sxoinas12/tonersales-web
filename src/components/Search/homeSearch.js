@@ -14,14 +14,9 @@ const Methods = require('../helpers/methods.js');
 class HomeSearch extends React.Component {
   constructor(props){
     super(props);
-    this.input = this.checkReq();
-    console.log(this.props)
     this.state={
-      searchQuery:"",
-      list:[]
-      
+      searchQuery:""
     }
-    
   }
 
 
@@ -31,28 +26,11 @@ class HomeSearch extends React.Component {
     console.log(res);
     
     this.props.history.push({
-
-      pathname:'/search',
-      state: {list:res}
-      });
+      pathname:'/search/' + res
+    });
   }
-
-  checkReq = () => {
-    if(this.props.location.state === undefined){
-      
-      return '';
-    }
-    else {
-      //console.log(this.props.location);
-      return this.props.location.search;
-    }
-  }
-
  
   render() {
-    
-    
-
     return (
           <div className="row">
             <div className="col-xs-12">
@@ -65,7 +43,7 @@ class HomeSearch extends React.Component {
               </div>
               <div className="row">  
                 <div className="col-xs-6 col-xs-offset-3">      
-                  <SearchBar initialValue = {this.input} handleSubmit = {this.handleSubmit} />
+                  <SearchBar handleSubmit = {this.handleSubmit} />
                 </div>
               </div> 
             </div>

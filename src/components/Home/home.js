@@ -6,7 +6,7 @@ import {Footer} from './footer';
 import {Card} from '../helpers/card';
 import {ProductList} from '../Products/ProductList';
 import Filter from '../helpers/Filters';
-const Net = require('../helpers/net.js');
+import ProductService from '../Services/ProductService';
 
 
 export class Home extends React.Component {
@@ -20,18 +20,15 @@ export class Home extends React.Component {
     }
   }
   Search = () =>{ 
-    Net.get(Net.urls.homeprod)
-    
+    ProductService.getHome()
     .then(res => {
-      
       this.setState({list:res})
     });
-
   }
 
- componentWillMount() {
+  componentWillMount() {
     this.Search();
- }
+  }
 
   render() {
     return (
@@ -45,8 +42,8 @@ export class Home extends React.Component {
               
             </div>
             <div className="row fullScreen">
-            <HomeSearch />
-          </div>
+              <HomeSearch />
+            </div>
           </div>
          
 	        

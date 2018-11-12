@@ -6,49 +6,25 @@ const Net = require('../helpers/net.js');
 class SearchBar extends React.Component {
   constructor(props){
     super(props);
-    
     this.state={
       searchQuery:this.props.initialValue,
-      
     }
   }
-
-
-
  change = (e) =>{
-
     const target = e.target;
     const value = target.value;
     const name = target.name;
     this.setState({
       searchQuery:value
-          });
-   
-  }
- 
-  
-  Search = (reqBody) =>{
-    if(reqBody === ""){
-      Net.get(Net.urls.homeprod)
-      .then(res=>{
-        this.props.handleSubmit(res)
-      })
-    }
-    else{
-    Net.get(Net.urls.products+ reqBody)
-    .then(res => {
-      this.props.handleSubmit(res);
-      //this.setState({list:res});
-
     });
   }
+  Search = (reqBody) =>{
+    this.props.handleSubmit(reqBody);
   }
-
   _handleKeyPress = (e) =>{
-    
     if(e.key == 'Enter'){
-    this.Search(this.state.searchQuery)
-  }
+      this.Search(this.state.searchQuery)
+    }
   }
   
 

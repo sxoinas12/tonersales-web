@@ -8,29 +8,33 @@ import {Entrance} from '../Home/entrance';
 import SearchBar from '../helpers/searchBar';
 import Filter from '../helpers/Filters';
 
-
+import ProductService from '../Services/ProductService';
 
 
 
 export class Search extends React.Component {
-  
-
   constructor(props) {
     super(props);
-    this.input = this.checkReq();
-    console.log(this.input);
+    //this.input = this.checkReq();
+
     this.state={
       list:[],
-      
-       
-    } 
-
+      search: props.match.params.searchTerm
+    }
+    this.loadProducts(this.state.search);
   }
 
+  loadProducts(term) {
+    ProductService.search(term, 1)
+    .then((prods) => this.setState({list:prods.data}));
+  }
 
-  handleSubmit = (res) => {
-    
-    this.setState({list:res});
+  handleSubmit = (term) => {
+    ProductService.search(term, 1)
+    .then((prods) => this.setState({list:prods.data}));
+    this.props.history.push({
+      pathname:'/search/' + term
+    })
   }
 
   checkReq = () => {
@@ -45,32 +49,6 @@ export class Search extends React.Component {
     }
   }
 
-
-
-  loadfromlocal = () => {
-    var local = localStorage.getItem('cart_state');
-    local = JSON.parse(local);
-    
-    try {
-      if(local){
-      //
-      }
-
-    }
-      
-     catch(e) {
-      console.log(e);
-    }
-  }
-  componentWillMount(){
-    this.setState({list:this.props.location.state.list})
-    this.loadfromlocal();
-
- 
-  }
-
-
-
   render() {
     
     return (
@@ -80,10 +58,10 @@ export class Search extends React.Component {
               <a href="/"><div className="mini_logo"></div></a>
             </div>
             <div className="col-xs-12  col-md-5 col-sm-6 col-lg-5 bar text-left">
-              <SearchBar initialValue={this.input} handleSubmit={this.handleSubmit} /> 
+              <SearchBar initialValue={this.state.search} handleSubmit={this.handleSubmit} /> 
             </div>
             <div className="col-xs-12 col-md-3 col-sm-3 col-md-offset-1 col-lg-2 col-lg-offset-2 text-right entrance ">
-             <Entrance {...this.state.credential}/> 
+             <Entrance /> 
             </div> 
       </div>
          

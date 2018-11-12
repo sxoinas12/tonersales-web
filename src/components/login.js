@@ -2,8 +2,9 @@ import React, {component} from 'react';
 import './login.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
+import UserService from './Services/UserService.js';
+
 const Net = require('./helpers/net.js');
-const Methods = require('./helpers/methods.js');
 
 export class Login extends React.Component{
 
@@ -45,60 +46,37 @@ export class Login extends React.Component{
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		let reqBody = this.state;
-		
-		Net.post(Net.urls.login,reqBody)
+		UserService.login(this.state.email, this.state.password)
 		.then(res => {
-
-			if(res.token){
-				
-				this.props.access(res.token);
-				this.props.close();
-			}
-			else{
-				//missing html and css for hint
-				this.setState({email:"",password:"",warning:"warningOn"});
-				this.props.open();
-			}
+			this.props.onLogin(res);
+			this.props.close();
 		})
-		
+		.catch((err) => {
+			this.setState({email:"",password:"",warning:"warningOn"});
+			this.props.open();
+		})
 	}
 
-
 	_handleKeyPress = (e) => {
-
-    if (e.key === 'Enter') {
-    	e.preventDefault();
-      	this.handleSubmit(e)
-    }
-  }
-
-  _handleKeyPass = (e) => {
-
-    if (e.key === 'Enter') {
-    	e.preventDefault();
-      	this.resetPass(e)
-    }
-  }
-
+	    if (e.key === 'Enter') {
+	    	e.preventDefault();
+	      	this.handleSubmit(e)
+	    }
+  	}
+	_handleKeyPass = (e) => {
+	    if (e.key === 'Enter') {
+	    	e.preventDefault();
+	      	this.resetPass(e)
+	    }
+	}
 	handleGoogleSubmit = (e) => {
-		
-
-
 		window.location.href =  Net.BaseUrl + Net.urls.google 
-		//console.log(window.location)
-		
-		//console.log(Net.urls.google);
 	}
 
 	handleFacebookSubmit = (e) =>{
 		//it do nothing atm missing back end funcitonality
 		e.preventDefault();
-		
 		window.location.href = Net.BaseUrl + Net.urls.facebook;
-		
-		
-		
 	}
 	
 	render(){

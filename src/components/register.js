@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './register.css';
 import 'bootstrap/dist/css/bootstrap.css';
-
+import UserService from './Services/UserService.js';
 const Net = require('./helpers/net.js');
-const Methods = require('./helpers/methods.js');
+
 
 
 export class Register extends React.Component{
@@ -27,15 +27,26 @@ change = (e) =>{
   }
   handleSubmit = (e) =>{
 		e.preventDefault();
-		let reqBody = this.state;
+		//let reqBody = this.state;
+		UserService.register(this.state.username,this.state.email,this.state.password)
+		.then(res => {
+			this.props.onRegister(res);
+			this.props.close();
+		})
+		.catch((err) => {
+			this.setState({password:""});
+			this.props.open();
+		})
 		
-		Net.post(Net.urls.register,reqBody);
-		this.props.close();
 	}
 
   handleGoogleSubmit = () => {
 		console.log(Net.urls.google);
 		window.location.href= Net.urls.google;
+	}
+
+	handleFacebookSubmit = ()=> {
+		console.log("dada")
 	}
 
 	render(){

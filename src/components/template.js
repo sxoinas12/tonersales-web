@@ -24,7 +24,8 @@ export class Template extends React.Component{
 				<Route exact path="/(|:token)" component={Home} />
 				<Route path="/register" component={Register} />
 				<Route path="/login" component={Login} />
-				<Route path="/search" component={Search} />
+				<Route path="/search/:searchTerm" component={Search} />
+				<Route exact path="/search" component={Search} />
 				<Route path="/checkout" component={Checkout} />
 				<Route path="/OrderCreation" component={OrderForm} />
 				<Route path="/profile" component={Profile} />

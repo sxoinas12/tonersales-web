@@ -19,6 +19,7 @@ export class ProductList extends React.Component {
   render() {
          
     const {data} = this.props;
+    console.log(data); 
     const nameList = data.map((item)=>
        
         <Card data= {item}  id={item.id} key={item.id}/>

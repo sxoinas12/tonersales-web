@@ -102,12 +102,23 @@ export class Entrance extends React.Component {
   componentWillMount() {
     this.loadfromlocal()
     let homeUrl = "http://localhost:3000/"
-    let location = JSON.stringify(window.location.href)
+    let location = window.location.href
     let token = location.replace("#_=_","")
+    token = token.replace(homeUrl,"")
+    let user = {...this.state.user}
+    console.log(token)
+    debugger;
     if(token){
-      token = token.replace(homeUrl,"")
+      console.log("the token ",token)
+      console.log("do i come here")
+      
+      user['token'] = token;
+      this.setState({user:user})
       this.AllowAccess(token);
+      
+      
     }
+    
     
   }
   componentDidUpdate() {

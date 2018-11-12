@@ -17,8 +17,6 @@ export class Login extends React.Component{
 		}
 	}
 
-	 
-
 	change = (e) =>{
 	    const target = e.target;
 	    const value = target.value;
@@ -35,7 +33,6 @@ export class Login extends React.Component{
 	resetPass = (e) =>{
 		e.preventDefault();
 		let email = this.state.email;
-		//console.log(Net.urls.restore)
 		let obj = {email:email};
 		Net.post(Net.urls.restore,obj)
 		.then(res=>{

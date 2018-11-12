@@ -21,14 +21,14 @@ export class Template extends React.Component{
 		<div>
 		<Router>
 			<div className="template">
-				<Route exact path="/" component={Home} />
+				<Route exact path="/(|:token)" component={Home} />
 				<Route path="/register" component={Register} />
 				<Route path="/login" component={Login} />
 				<Route path="/search" component={Search} />
 				<Route path="/checkout" component={Checkout} />
 				<Route path="/OrderCreation" component={OrderForm} />
 				<Route path="/profile" component={Profile} />
-				<Route path="/:token" component={Home} />
+		
  			</div>
 		</Router>	
 		</div>

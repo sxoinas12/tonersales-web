@@ -52,10 +52,12 @@ export class Entrance extends React.Component {
   }
 
   AllowAccess = (res) => {
+    console.log(res);
     this.setState({logged:true});
     let user = {...this.state.user}
     
     user["token"] = res;
+    console.log("lastly here")
     this.setState({user});
     this.saveToLocal();
   
@@ -99,6 +101,14 @@ export class Entrance extends React.Component {
   }
   componentWillMount() {
     this.loadfromlocal()
+    let homeUrl = "http://localhost:3000/"
+    let location = JSON.stringify(window.location.href)
+    let token = location.replace("#_=_","")
+    if(token){
+      token = token.replace(homeUrl,"")
+      this.AllowAccess(token);
+    }
+    
   }
   componentDidUpdate() {
 

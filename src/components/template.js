@@ -28,6 +28,7 @@ export class Template extends React.Component{
 				<Route path="/checkout" component={Checkout} />
 				<Route path="/OrderCreation" component={OrderForm} />
 				<Route path="/profile" component={Profile} />
+				<Route path="/:token" component={Home} />
  			</div>
 		</Router>	
 		</div>

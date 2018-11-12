@@ -35,7 +35,7 @@ export class Login extends React.Component{
 	resetPass = (e) =>{
 		e.preventDefault();
 		let email = this.state.email;
-		console.log(Net.urls.restore)
+		//console.log(Net.urls.restore)
 		let obj = {email:email};
 		Net.post(Net.urls.restore,obj)
 		.then(res=>{
@@ -52,6 +52,7 @@ export class Login extends React.Component{
 		
 		Net.post(Net.urls.login,reqBody)
 		.then(res => {
+
 			if(res.token){
 				
 				this.props.access(res.token);
@@ -83,18 +84,24 @@ export class Login extends React.Component{
     }
   }
 
-	handleGoogleSubmit = () => {
-		//console.log(Net.Url.google);
-		console.log(Net.urls.google);
-		window.location.href= Net.urls.google
+	handleGoogleSubmit = (e) => {
 		
+
+
+		window.location.href =  Net.BaseUrl + Net.urls.google 
+		//console.log(window.location)
 		
 		//console.log(Net.urls.google);
 	}
 
-	handleFacebookSubmit = () =>{
+	handleFacebookSubmit = (e) =>{
 		//it do nothing atm missing back end funcitonality
-		console.log('hi');
+		e.preventDefault();
+		
+		window.location.href = Net.BaseUrl + Net.urls.facebook;
+		
+		
+		
 	}
 	
 	render(){

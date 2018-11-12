@@ -48,9 +48,24 @@ class FilterField extends React.Component {
 	constructor(props){
 		super(props);
 	}
+
+
+	checkVal = (e) =>{
+		console.log(e.target.checked)
+		if(e.target.checked === false){
+			e.target.checked = true;
+		}
+		else if(e.target.checked === true){
+			console.log("here");
+			e.target.checked = false;
+		}
+		
+
+	}
+
 	render(){
 		const options = Object.keys(this.props.input).map((key,index)=>
-			<Option input={this.props.input[key]} key = {index}  />
+			<Option input={this.props.input[key]} checkVal={this.checkVal}key = {index}  />
 		)
 		return(
 			<div className="row">
@@ -80,9 +95,10 @@ class FilterField extends React.Component {
 }
 
 
+
 const Option = (props)=> <div className="radio">
 						          <label>
-						            <input type="radio"  />
+						            <input type="radio"  onChange={props.checkVal}/>
 						            {props.input}
 						          </label>
 						        </div>;

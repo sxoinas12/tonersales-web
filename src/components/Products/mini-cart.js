@@ -18,107 +18,66 @@ export class Mini_Cart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products:[]
+      products:[],
     }
   }
-  
-
-  handleClick = (e) =>{
-    console.log(this.props);
-    this.props.history.push({
-      pathname:'/checkout',
-      state: {products:this.state.products}
-      });
-    
-  }
-
- 
-  
-
   addBut = (e,index) => {
     let products = this.state.products;
     products[index].quantity +=1;
-    this.setState({total:this.state.total+products[index].price});
     this.setState({products:products});
-    this.saveToLocal();
-   
+    this._save();
+
   }
 
   minBut = (e,index) => {
     let products = this.state.products;
-    let temp;
     if(products[index].quantity != 1){
-      products[index].quantity -=1;
-     
-      
-      temp =this.state.total-products[index].price;
-      this.setState({total:temp});
+      products[index].quantity -=1; 
       this.setState({products:products});
-      this.saveToLocal();
     }
     else if(products[index].quantity === 1){
-      this.setState({total:this.state.total-products[index].price})
       products.splice(index,1);
       this.setState({products:products});
-      this.saveToLocal();
+  
     }
+    this._save();
+    
   }
 
-
-  saveToLocal() {
-       const local = this.state;
-       localStorage.setItem('cart_state', JSON.stringify(local));
-       Emitter.emit('addProd');
+  _save = () =>{
+    
+    localStorage.setItem("cart_state", JSON.stringify(this.state));
   }
 
+  _load = () =>{
+    let local = localStorage.getItem("cart_state");
+    if(local){
+      this.setState(JSON.parse(local))
+    }
+    
+  }
   componentWillMount() {
+     this._load()
      Subscription = Emitter.addListener('addProduct', (data) => {
-      //it was data.name with error
-      if(data){
-        let products = this.state.products;
-        let index = null;
-        
-        for (let i=0; i<products.length; i++){
-          if(products[i].id === data.id){
-            index = i;
-
-            break;
-          }
-          else{
-            continue;
-          }
-        }
-
-        if(index !== null){
-          products[index].quantity +=1;
-          this.setState({products:products});
-          this.setState({total:this.state.total+products[index].price}); 
-        }
-        else {
-          var arrayvar = this.state.products.slice()
-          this.setState({selector:true});
-          arrayvar.push(data)
-          if (this.refs.myRef){
-            console.log("not here");
-            this.setState({ products: arrayvar })
-            //this.setState({total:this.state.total-products[index].price});
-            this.setState({ total:this.state.total + data.price });
-          }
-        }
-      }
-      this.saveToLocal();
+      
+      let products = this.state.products;
+      let prod = this.state.products.find(prod => prod.id === data.id);
+      if(prod)
+        prod.quantity += 1;
+      else 
+        products.push(data);
+      this.setState({products});
+      this._save();
     });
 
-    var local = localStorage.getItem('cart_state');
-    if(local){
-      this.setState(JSON.parse(local));
-    }
-    //this.setState({products:prod});
+   
+   
   }
 
   
 
   render() {
+    
     let total = this.state.products.reduce((total, item) => total + item.quantity * item.price, 0).toFixed(2);
     const nameList = this.state.products.map((item,index)=>
             
@@ -157,7 +116,7 @@ export class Mini_Cart extends React.Component {
         );
 
      const selector = this.state.products.length;
-    // const total = 0;
+
      const CartLayout = selector ? 
      (
       <div>
@@ -172,7 +131,7 @@ export class Mini_Cart extends React.Component {
             </div>
             <div className="cart_total">
                 <div className="row">
-                  <div className="col-xs-11 text-right no-padding " >
+                  <div className="col-xs-11 text-right no-padding ">
                     Total: <b>{total} €</b>
                   </div>
                  
@@ -201,7 +160,7 @@ export class Mini_Cart extends React.Component {
         <a className= "dropbtn" onClick= {() => {
           history.push({
           pathname:'/checkout',
-          state: {products:this.state.products}
+          state: {data:this.state}
           });
         }}><img src="/images/mini_cart.png" className="cart_size"/></a>
       

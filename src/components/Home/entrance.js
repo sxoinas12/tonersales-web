@@ -52,7 +52,7 @@ export class Entrance extends React.Component {
     let user = {...this.state.user}
     
     user["token"] = res;
-    console.log("lastly here")
+   
     this.setState({user});
     this.saveToLocal();
   }
@@ -77,7 +77,7 @@ export class Entrance extends React.Component {
           logged: true
         });
       }
-      console.log(res);
+  
     });
   }
 

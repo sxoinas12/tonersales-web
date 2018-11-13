@@ -7,8 +7,9 @@ import './checkout.css';
 import SearchBar from '../helpers/searchBar';
 import {CartProducts} from './cart-products';
 import cartEmitter from '../Events/events';
+import ProductService from '../Services/ProductService';
 
-let update = null;
+
 
 export class Checkout extends React.Component{
 	
@@ -16,32 +17,13 @@ export class Checkout extends React.Component{
 		super(props);
 		
 		this.state = {
-			products:[],
-			total:0,
+			data:ProductService.getCart(),
 		};
-		cartEmitter.addListener('addProd',this.loadfromlocal);
+		//console.log(this.state.data)
+		cartEmitter.addListener('addProd');
 		
 	}
 
-	
-	
-
-   loadfromlocal = () => {
-   	var local = localStorage.getItem('cart_state');
-   	try{
-	    if(local){
-	      this.setState(JSON.parse(local));
-	    }
-	} catch(e) {
-		console.log(e);
-	}
-   }
-
-   componentWillMount(){
-   	this.loadfromlocal();
-   }
-  
-	
 
 
 	render(){
@@ -64,7 +46,7 @@ export class Checkout extends React.Component{
 
 	        <div className="row" key={1}>
 	        	<div className="col-xs-12  col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1 ">
-	        	<CartProducts {...this.state}/>
+	        
 	        	</div>
 	        </div>,
 		

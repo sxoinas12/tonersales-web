@@ -17,6 +17,18 @@ class ProductService {
 		let url = PRODUCT_SERVICE_PATH + '/search/' + page + '/' + searchTerm; 
 		return Net.get(url);
 	}
+	getCartState(){
+		let local = localStorage.getItem('cart_state');
+		try{
+		    if(local){
+		      return JSON.parse(local);
+		    	}
+			}
+			catch(e) {
+				throw e;
+			}
+	}
+
 	getHome() {
 		let url = PRODUCT_SERVICE_PATH + '/home';
 		return Net.get(url);

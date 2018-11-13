@@ -45,7 +45,16 @@ export class Card extends React.Component {
   }
 
    addProduct = (info) =>{
-      cartEmitter.emit('addProduct',this.state)
+      let product = {
+        name:this.state.name,
+        price:this.state.price,
+        id:this.state.id,
+        description:this.state.description,
+        shortdescription:this.state.shortdescription,
+        quantity:this.state.quantity,
+      }
+      cartEmitter.emit('addProduct',product)
+     
       let popup = this.popup;
       popup.classList.add("show");
       popup.classList.remove('hide');

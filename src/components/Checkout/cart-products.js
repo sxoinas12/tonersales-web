@@ -15,7 +15,7 @@ export class CartProducts extends React.Component{
 		super(props);
 	}
 
-
+	load
 	
 	render(){
 

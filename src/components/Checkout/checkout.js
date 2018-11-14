@@ -6,9 +6,9 @@ import {Entrance} from '../Home/entrance';
 import './checkout.css';
 import SearchBar from '../helpers/searchBar';
 import {CartProducts} from './cart-products';
-import cartEmitter from '../Events/events';
-import ProductService from '../Services/ProductService';
 
+import ProductService from '../Services/ProductService';
+import Emitter from '../Events/events';
 
 
 export class Checkout extends React.Component{
@@ -17,13 +17,21 @@ export class Checkout extends React.Component{
 		super(props);
 		
 		this.state = {
-			data:ProductService.getCart(),
+			products:[],
 		};
-		//console.log(this.state.data)
-		cartEmitter.addListener('addProd');
+		
+		Emitter.addListener('addProd',(data)=> this._load());
 		
 	}
-
+	_load = () =>{
+    let local = localStorage.getItem("cart_state");
+    if(local){
+      this.setState(JSON.parse(local))
+    }
+  }
+  	componentWillMount(){
+  		this._load();
+  	}
 
 
 	render(){
@@ -46,7 +54,7 @@ export class Checkout extends React.Component{
 
 	        <div className="row" key={1}>
 	        	<div className="col-xs-12  col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1 ">
-	        
+	        	<CartProducts products={this.state.products}/>
 	        	</div>
 	        </div>,
 		

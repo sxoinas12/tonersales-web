@@ -22,14 +22,17 @@ export class Mini_Cart extends React.Component {
     }
   }
   addBut = (e,index) => {
+    
     let products = this.state.products;
     products[index].quantity +=1;
     this.setState({products:products});
     this._save();
+    Emitter.emit('addProd')
 
   }
 
   minBut = (e,index) => {
+    
     let products = this.state.products;
     if(products[index].quantity != 1){
       products[index].quantity -=1; 
@@ -41,6 +44,7 @@ export class Mini_Cart extends React.Component {
   
     }
     this._save();
+    Emitter.emit('addProd')
     
   }
 
@@ -54,8 +58,8 @@ export class Mini_Cart extends React.Component {
     if(local){
       this.setState(JSON.parse(local))
     }
-    
   }
+
   componentWillMount() {
      this._load()
      Subscription = Emitter.addListener('addProduct', (data) => {
@@ -158,6 +162,7 @@ export class Mini_Cart extends React.Component {
     <div  ref="myRef" className="dropdown">
       <Route render={({history}) =>(
         <a className= "dropbtn" onClick= {() => {
+          console.log("here")
           history.push({
           pathname:'/checkout',
           state: {data:this.state}

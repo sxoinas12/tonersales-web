@@ -7,6 +7,9 @@ import {Footer} from '../Home/footer';
 import {Entrance} from '../Home/entrance';
 import SearchBar from '../helpers/searchBar';
 import Filter from '../helpers/Filters';
+import {Pagination} from '../helpers/pagination';
+
+
 
 import ProductService from '../Services/ProductService';
 
@@ -19,22 +22,36 @@ export class Search extends React.Component {
 
     this.state={
       list:[],
-      search: props.match.params.searchTerm
+      search: props.match.params.searchTerm,
+      pagination:{},
     }
-    this.loadProducts(this.state.search);
+    this.loadProducts(this.state.search, props.match.params.page || 1);
+   
+
   }
 
-  loadProducts(term) {
-    ProductService.search(term, 1)
-    .then((prods) => this.setState({list:prods.data}));
+
+  _showpages () {
+    console.log(this.state.pages)
+  }
+
+
+  loadProducts(term,page = 1) {
+    ProductService.search(term, page)
+    .then((prods) => this.setState({
+      list:prods.data,
+      pagination:prods.pagination
+    }))
+    .then(()=>{
+      this.props.history.push({
+        pathname:'/search/' + term + '/' + page
+      })
+    })
   }
 
   handleSubmit = (term) => {
-    ProductService.search(term, 1)
-    .then((prods) => this.setState({list:prods.data}));
-    this.props.history.push({
-      pathname:'/search/' + term
-    })
+    this.loadProducts(term)
+   
   }
 
   checkReq = () => {
@@ -43,11 +60,11 @@ export class Search extends React.Component {
       return "";
     }
     else {
-      //console.log(this.props.location);
-      console.log(this.props.location.search);
       return this.props.location.search;
     }
   }
+
+
 
   render() {
     
@@ -73,8 +90,12 @@ export class Search extends React.Component {
               <div className="col-xs-12 col-sm-10 col-md-10 col-lg-10">
                 <ProductList data = {this.state.list} />
               </div>
-            </div>
 
+
+       </div>
+       
+       <Pagination onLoad ={(page) => this.loadProducts(this.state.search,page)} pagination={this.state.pagination}/>
+       
       <div className="row">
         <Footer />
       </div>

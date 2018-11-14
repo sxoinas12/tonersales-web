@@ -8,100 +8,139 @@ const models = require("../helpers/Models");
 export default class Filter extends React.Component {
   
 
-  constructor(props) {
-    super(props);
-    this.state = {
-    	// Filters:Parser.create(this.props)
+  	constructor(props) {
+    	super(props);
+    	this.state = {
+    		selected:{}
    		}
-   	//request to take product types and categories (all of them)
-   	
     }
+
+    componentDidMount() {
+    	this._load();
+    }
+
+
+
 
     render() {	
-    // const Filters = this.props.filters.map((item)=>
-    const filters = {
-    	"ProductType" : {
-			"1" : "Toner",
-			"2" : "Inks"
-		},
-    	"Category":{
-    		"1" : "HP",
-			"23": "Samsung"
-    	}
-    }
-    const Filters = Object.keys(filters).map((key,index)=>
-    	<FilterField inputName = {key} input = {filters[key]} key ={index} />
-    )
-    
-    return (
 
+    const filter = {
+    	options:"", // filter options
+    	type:"", // type of search
+    	name:"", // name of the filter in front-end
+    	field:"" // database table name
+    }
+    const selected = {
+    	productType: []
+    }
+    const filters = [
+    	{
+    		type: 'includes',
+    		name: 'Product Type',
+    		field : 'productType', 
+    		options: [
+			   "Toner",
+			   "Samsung" 
+			]
+		},
+    	{
+    		type: 'includes',
+    		name: 'Category',
+    		field : 'category',
+    		options: [
+				"HP",
+				"Samsung"
+			]
+    	}
+    ]
+    const Filters = this.FieldFactory(filters);
+    	
+    
+    	return (
     	<div className="row ">
     		<div className="col-xs-12  filter">
 	    		{Filters}
     		</div>	
     	</div>
-    	)}
+    	)
+	}
+	_save(selected) {
+		localStorage.setItem('filters', JSON.stringify(selected));
+	}
+	_load() {
+		let local = localStorage.getItem('filters');
+		this.setState({selected:JSON.parse(local)})
+	}
+	_onUpdate(filter, values) {
+		let selected = {
+			...this.state.selected,
+			[filter]: values
+		}
+		this._save(selected);
+		this.setState({selected});
+	}
+
+	FieldFactory(filters) {
+		return filters.map((filter, index) => {
+			let a = this.state.selected[filter.field] || [];
+			switch(filter.type) {
+				case 'includes': 
+					return <IncludeFilterField selected={a} onUpdate={(values) => this._onUpdate(filter.field, values)} name={filter.name} options={filter.options} key={index}/>;
+				case 'equals' : 
+					return '';
+			}
+		});
+	}
 }
 
-
-class FilterField extends React.Component {
+class IncludeFilterField extends React.Component {
 	constructor(props){
 		super(props);
 	}
-
-
-	checkVal = (e) =>{
-		console.log(e.target.checked)
-		if(e.target.checked === false){
-			e.target.checked = true;
+	
+	checkFilter = (value, index) =>{
+		let indx = this.props.selected.indexOf(value);
+		let options = this.props.selected;
+		if(indx > -1) {
+			options.splice(indx, 1);
+		} else {
+			options = [...this.props.selected, value]
 		}
-		else if(e.target.checked === true){
-			console.log("here");
-			e.target.checked = false;
-		}
-		
-
+		if(this.props.onUpdate)
+			this.props.onUpdate(options);
 	}
 
 	render(){
-		const options = Object.keys(this.props.input).map((key,index)=>
-			<Option input={this.props.input[key]} checkVal={this.checkVal}key = {index}  />
+		
+		const options = (this.props.options).map((option,index)=>
+			<Option selected = {this.props.selected.indexOf(option) > -1} value={option} check={(e) => this.checkFilter(option, index)} key={index}  />
 		)
 		return(
 			<div className="row">
 	    			<div className="col-xs-12 ">
 	    				<div className="row">
 	    					<div className="col-xs-12">
-	    					{this.props.inputName}
+	    					{this.props.name}
 	    					</div>
 	    				</div>
 	    				<div className="row">
 	    					<div className="col-xs-12">
 	    					 <form>
-						     {options}
+						     	{options}
 						     </form>
 						   	</div>
 	    				</div>
-
 	    			</div>
-
-
 	    		</div>
-
-
-
 			)
 	}
 }
-
-
-
-const Option = (props)=> <div className="radio">
-						          <label>
-						            <input type="radio"  onChange={props.checkVal}/>
-						            {props.input}
-						          </label>
-						        </div>;
+const Option = (props)=>
+<div className="radio">
+  <label>
+    <input type="checkbox" name={props.value} checked={props.selected} onChange={props.check}/> {props.value}
+  </label>
+</div>;
 
 
 

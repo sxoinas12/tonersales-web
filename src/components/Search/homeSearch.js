@@ -19,11 +19,19 @@ class HomeSearch extends React.Component {
     }
   }
 
+  change = (e) =>{
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+    this.setState({
+      searchQuery:value
+    });
+  }
 
   handleSubmit = (res) =>{
 
     //console.log(res);
-    console.log(res);
+    console.log("searc term is ",res);
     
     this.props.history.push({
       pathname:'/search/' + res
@@ -43,7 +51,7 @@ class HomeSearch extends React.Component {
               </div>
               <div className="row">  
                 <div className="col-xs-6 col-xs-offset-3">      
-                  <SearchBar handleSubmit = {this.handleSubmit} />
+                  <SearchBar initialValue={this.state.searchQuery} handleSubmit = {this.handleSubmit} />
                 </div>
               </div> 
             </div>

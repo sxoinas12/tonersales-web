@@ -9,11 +9,16 @@ class SearchBar extends React.Component {
     this.state={
       searchQuery:this.props.initialValue,
     }
+    console.log(this.state.searchQuery)
   }
  change = (e) =>{
+
+    //console.log(e.target.value)
+    //console.log(this.state.searchQuery)
     const target = e.target;
     const value = target.value;
     const name = target.name;
+    console.log(target.name)
     this.setState({
       searchQuery:value
     });
@@ -37,7 +42,7 @@ class SearchBar extends React.Component {
                 onKeyPress = {this._handleKeyPress}
                 value={this.state.searchQuery}
                 type="text"
-                name={"searchQuery"}
+                name="searchQuery"
                 onChange={this.change}
                 placeholder={this.state.searchQuery}
                 className="" id="search-bar-input"/>

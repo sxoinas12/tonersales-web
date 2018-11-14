@@ -13,10 +13,12 @@ export default class Filter extends React.Component {
     	this.state = {
     		selected:{}
    		}
+   		this._persistence = false;
     }
 
     componentDidMount() {
-    	this._load();
+    	if(this._persistence)
+    		this._load();
     }
 
 
@@ -33,27 +35,7 @@ export default class Filter extends React.Component {
     const selected = {
     	productType: []
     }
-    const filters = [
-    	{
-    		type: 'includes',
-    		name: 'Product Type',
-    		field : 'productType', 
-    		options: [
-			   "Toner",
-			   "Samsung" 
-			]
-		},
-    	{
-    		type: 'includes',
-    		name: 'Category',
-    		field : 'category',
-    		options: [
-				"HP",
-				"Samsung"
-			]
-    	}
-    ]
-    const Filters = this.FieldFactory(filters);
+    const Filters = this.FieldFactory(this.props.input);
     	
     
     	return (
@@ -69,15 +51,21 @@ export default class Filter extends React.Component {
 	}
 	_load() {
 		let local = localStorage.getItem('filters');
-		this.setState({selected:JSON.parse(local)})
+		if(local){
+			this.setState({selected:JSON.parse(local)})
+		}
+		
 	}
 	_onUpdate(filter, values) {
 		let selected = {
 			...this.state.selected,
 			[filter]: values
 		}
-		this._save(selected);
+		if(this._persistence)
+			this._save(selected);
 		this.setState({selected});
+		if(this.onChange)
+			this.onChange(selected);
 	}
 
 	FieldFactory(filters) {

@@ -18,19 +18,26 @@ export class Checkout extends React.Component{
 		
 		this.state = {
 			products:[],
+			token:''
 		};
 		
 		Emitter.addListener('addProd',(data)=> this._load());
+		
 		
 	}
 	_load = () =>{
     let local = localStorage.getItem("cart_state");
     if(local){
       this.setState(JSON.parse(local))
-    }
-  }
+     
+  		}
+  	}
+
+  	
+  	
   	componentWillMount(){
   		this._load();
+  		
   	}
 
 
@@ -40,7 +47,7 @@ export class Checkout extends React.Component{
 		<div className="row" key={0}>
 		
 			
-          	
+          	<button onClick={()=> console.log(this.state)}> Click</button>
             <div className= "col-xs-12 col-md-3 col-sm-3 title">
               <a href="/"><div className="mini_logo"></div></a>
             </div>
@@ -48,13 +55,13 @@ export class Checkout extends React.Component{
               <SearchBar initialValue={this.props.location.search} onSubmit={this.onSubmit} /> 
             </div>
             <div className="col-xs-12 col-md-3 col-sm-3 col-md-offset-1 text-right entrance ">
-             <Entrance {...this.props}/> 
+             <Entrance /> 
             </div> 
       	</div>,
 
 	        <div className="row" key={1}>
 	        	<div className="col-xs-12  col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1 ">
-	        	<CartProducts products={this.state.products}/>
+	        	<CartProducts products={this.state.products} />
 	        	</div>
 	        </div>,
 		

@@ -13,7 +13,7 @@ export default class Filter extends React.Component {
     	this.state = {
     		selected:{}
    		}
-   		this._persistence = false;
+   		this._persistence = props.persistence || false;
     }
 
     componentDidMount() {
@@ -52,7 +52,10 @@ export default class Filter extends React.Component {
 	_load() {
 		let local = localStorage.getItem('filters');
 		if(local){
-			this.setState({selected:JSON.parse(local)})
+			let selected = JSON.parse(local);
+			this.setState({selected});
+			if(this.props.onChange)
+				this.props.onChange(selected);
 		}
 		
 	}
@@ -64,8 +67,8 @@ export default class Filter extends React.Component {
 		if(this._persistence)
 			this._save(selected);
 		this.setState({selected});
-		if(this.onChange)
-			this.onChange(selected);
+		if(this.props.onChange)
+			this.props.onChange(selected);
 	}
 
 	FieldFactory(filters) {

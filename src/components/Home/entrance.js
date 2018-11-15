@@ -5,7 +5,7 @@ import {Login} from '../login';
 import {Register} from '../register';
 import {Mini_Cart} from '../Products/mini-cart';
 import { Route } from 'react-router-dom'
-
+import Emitter from '../Events/events';
 import UserService from '../Services/UserService';
 
 const divstyle = {
@@ -48,6 +48,7 @@ export class Entrance extends React.Component {
   }
 
   onLogin = (res) => {
+  
     this.setState({logged:true});
     let user = {...this.state.user}
     
@@ -55,23 +56,32 @@ export class Entrance extends React.Component {
    
     this.setState({user});
     this.saveToLocal();
+   
+    
   }
 
   loggout = () =>{
+    this.closeModal();
     UserService.logout();
     this.setState({
       logged: false
     })
+
   }
 
   closeModal = () => {
     this.setState({modalIsOpen:false});
   }
 
+  componentDidUpdate(){
+    Emitter.emit('entrance')
+  }
+
   componentDidMount(){
     Modal.setAppElement('body');
     UserService.getMe().then((res) => {
       if(res.token) {
+        
         this.setState({
           user: res,
           logged: true
@@ -79,6 +89,7 @@ export class Entrance extends React.Component {
       }
   
     });
+    
   }
 
   render() {

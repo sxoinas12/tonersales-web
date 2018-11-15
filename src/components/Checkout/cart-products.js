@@ -13,11 +13,65 @@ export class CartProducts extends React.Component{
 	
 	constructor(props){
 		super(props);
+		this.state = {
+			token:false,
+		}
+		Emitter.addListener('entrance',(data) => this._loadToken());
 	}
 
-	load
+
+
+	_loadToken = () =>{
+  		console.log("Event")
+  		let token = localStorage.getItem("token");
+    	if(token){
+    		console.log("here?")
+    		this.setState({token:true});
+    	}
+    	else{
+    		this.setState({token:false})
+    	}
+    }
 	
+
+
+
+
+
+	componentDiDMount(){
+		this._loadToken();
+	}
 	render(){
+		const Logged = this.state.token ? (
+			<div className="checkoutButName">
+								{
+									<Route render={({ history}) => (
+									
+								    <button className="checkoutBut"
+								      type='button'
+								      onClick={() => { 
+								      	history.push('/OrderCreation');
+								      }}
+								    >
+								      Αγορά
+								    </button>
+								  )} />
+								}
+							</div>
+			):(
+			<div className="checkoutButName">
+								{
+									<Route render={({ history}) => (
+								    <button className="checkoutBut"
+								      type='button'
+								      onClick={() => { 
+								      	history.push('/OrderCreation');
+								       }}
+								    >
+								      Αγορά ως Επισκέπτης
+								    </button>
+								  )} />}
+							</div>)
 
 
 
@@ -37,25 +91,7 @@ export class CartProducts extends React.Component{
 					</div>
 					<div className="col-xs-12 col-sm-2 col-sm-offset-4 col-md-2 col-md-offset-4 col-lg-2 col-lg-offset-6 text-right but_pos">
 						
-							<div className="checkoutButName">
-								{
-									<Route render={({ history}) => (
-									
-								    <button className="checkoutBut"
-								      type='button'
-								      onClick={() => { 
-								      	history.push('/OrderCreation');
-
-								       }}
-								    >
-								      Αγορά
-								    </button>
-								    
-								  )} />
-
-
-								}
-							</div>
+							{Logged}
 						
 					</div>
 				</div>

@@ -13,9 +13,9 @@ class ProductService {
 	getById(id) {
 		return Net.get(PRODUCT_SERVICE_PATH + '/' + id);
 	}
-	search(searchTerm, page = 1) {
+	search(searchTerm, page = 1,filters) {
 		let url = PRODUCT_SERVICE_PATH + '/search/' + page + '/' + searchTerm; 
-		return Net.get(url);
+		return Net.post(url,filters);
 	}
 	getCartState(){
 		let local = localStorage.getItem('cart_state');

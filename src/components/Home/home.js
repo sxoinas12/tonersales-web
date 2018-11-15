@@ -9,26 +9,6 @@ import Filter from '../helpers/Filters';
 import ProductService from '../Services/ProductService';
 
 
-const filters = [
-  {
-    type: 'includes',
-    name: 'Product Type',
-    field : 'productType', 
-    options: [
-     "Toner",
-     "Samsung" 
-  ]
-},
-  {
-    type: 'includes',
-    name: 'Category',
-    field : 'category',
-    options: [
-    "HP",
-    "Samsung"
-  ]
-  }
-]
 export class Home extends React.Component {
   constructor(props){
     super(props);
@@ -70,10 +50,8 @@ export class Home extends React.Component {
             </div>
           </div>
             <div className="row">
-              <div className="col-xs-6 col-sm-2 col-md-2  col-lg-2 filt">
-                <Filter input={filters}/>
-              </div>
-              <div className="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+              
+              <div className="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
                 <ProductList data = {this.state.list}  />
               </div>
             </div>

@@ -14,6 +14,26 @@ import {Pagination} from '../helpers/pagination';
 import ProductService from '../Services/ProductService';
 
 
+const Filters = [
+  {
+    type: 'includes',
+    name: 'Product Type',
+    field : 'price', 
+    options: [
+     "36.95",
+     "23.56" 
+  ]
+},
+  {
+    type: 'includes',
+    name: 'Category',
+    field : 'category',
+    options: [
+    "HP",
+    "Samsung"
+  ]
+  }
+]
 
 export class Search extends React.Component {
   constructor(props) {
@@ -36,8 +56,9 @@ export class Search extends React.Component {
   }
 
 
-  loadProducts(term,page = 1) {
-    ProductService.search(term, page)
+  loadProducts(term,page = 1,filters) {
+    console.log(filters);
+    ProductService.search(term, page,filters)
     .then((prods) => this.setState({
       list:prods.data,
       pagination:prods.pagination
@@ -85,7 +106,7 @@ export class Search extends React.Component {
   
       <div className="row body">
               <div className="col-xs-6 col-sm-2 col-md-2  col-lg-2 filt">
-                <Filter input={"Filter Input"} />
+                <Filter input={Filters} onChange={(filters)=> this.loadProducts(this.state.search,1,filters)} persistence/>
               </div>
               <div className="col-xs-12 col-sm-10 col-md-10 col-lg-10">
                 <ProductList data = {this.state.list} />

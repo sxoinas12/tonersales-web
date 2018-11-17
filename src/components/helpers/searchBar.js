@@ -24,6 +24,7 @@ class SearchBar extends React.Component {
     });
   }
   Search = (reqBody) =>{
+    
     this.props.handleSubmit(reqBody);
   }
   _handleKeyPress = (e) =>{

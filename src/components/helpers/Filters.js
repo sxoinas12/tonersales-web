@@ -1,5 +1,7 @@
 import React from 'react';
 import './Filters.css';
+import RangeFilter from '../FilterOptions/RangeFilter';
+import IncludeFilterField from '../FilterOptions/IncludeFilter';
 const models = require("../helpers/Models");
 
 // require parser service 
@@ -11,30 +13,27 @@ export default class Filter extends React.Component {
   	constructor(props) {
     	super(props);
     	this.state = {
-    		selected:{}
-   		}
+    		filters: {
+    			// filter_field: options
+    		}
+    	};
    		this._persistence = props.persistence || false;
     }
 
     componentDidMount() {
+    	
     	if(this._persistence)
     		this._load();
+    	this._load();
     }
 
-
+    componentWillUpdate(){
+    //	console.log(this.state)
+    }
 
 
     render() {	
 
-    const filter = {
-    	options:"", // filter options
-    	type:"", // type of search
-    	name:"", // name of the filter in front-end
-    	field:"" // database table name
-    }
-    const selected = {
-    	productType: []
-    }
     const Filters = this.FieldFactory(this.props.input);
     	
     
@@ -52,86 +51,47 @@ export default class Filter extends React.Component {
 	_load() {
 		let local = localStorage.getItem('filters');
 		if(local){
-			let selected = JSON.parse(local);
-			this.setState({selected});
+			let filters = JSON.parse(local);
+			this.setState({filters});
 			if(this.props.onChange)
-				this.props.onChange(selected);
+				this.props.onChange(filters);
 		}
 		
 	}
 	_onUpdate(filter, values) {
-		let selected = {
-			...this.state.selected,
-			[filter]: values
+		console.log("values",filter,values)
+		filter.options = values;
+		let filters = {
+			...this.state.filters,
+		};
+		if ( filter.options.length > 0 ) {
+			filters[filter.field] = filter;
+		} else {
+			delete filters[filter.field];
 		}
+
 		if(this._persistence)
-			this._save(selected);
-		this.setState({selected});
+			this._save(filters);
+		this.setState({
+			filters
+		});
+		let filtersArray = Object.keys(filters).map((key, index) => filters[key]);
+
 		if(this.props.onChange)
-			this.props.onChange(selected);
+			this.props.onChange(filtersArray);
 	}
 
 	FieldFactory(filters) {
 		return filters.map((filter, index) => {
-			let a = this.state.selected[filter.field] || [];
+			let a = (this.state.filters[filter.field] || {}).options || [];
+			
 			switch(filter.type) {
 				case 'includes': 
-					return <IncludeFilterField selected={a} onUpdate={(values) => this._onUpdate(filter.field, values)} name={filter.name} options={filter.options} key={index}/>;
-				case 'equals' : 
-					return '';
+					return <IncludeFilterField selected={a} onUpdate={(values) => this._onUpdate(filter, values)} name={filter.name} options={filter.values} key={index}/>;
+				case 'value_range' : 
+					return <RangeFilter selected={a} onUpdate={(values) => this._onUpdate(filter, values)} name={filter.name} options={filter.values} key={index}/>;
 			}
 		});
 	}
 }
-
-class IncludeFilterField extends React.Component {
-	constructor(props){
-		super(props);
-	}
-	
-	checkFilter = (value, index) =>{
-		let indx = this.props.selected.indexOf(value);
-		let options = this.props.selected;
-		if(indx > -1) {
-			options.splice(indx, 1);
-		} else {
-			options = [...this.props.selected, value]
-		}
-		if(this.props.onUpdate)
-			this.props.onUpdate(options);
-	}
-
-	render(){
-		
-		const options = (this.props.options).map((option,index)=>
-			<Option selected = {this.props.selected.indexOf(option) > -1} value={option} check={(e) => this.checkFilter(option, index)} key={index}  />
-		)
-		return(
-			<div className="row">
-	    			<div className="col-xs-12 ">
-	    				<div className="row">
-	    					<div className="col-xs-12">
-	    					{this.props.name}
-	    					</div>
-	    				</div>
-	    				<div className="row">
-	    					<div className="col-xs-12">
-	    					 <form>
-						     	{options}
-						     </form>
-						   	</div>
-	    				</div>
-	    			</div>
-	    		</div>
-			)
-	}
-}
-const Option = (props)=>
-<div className="radio">
-  <label>
-    <input type="checkbox" name={props.value} checked={props.selected} onChange={props.check}/> {props.value}
-  </label>
-</div>;
-
-
 

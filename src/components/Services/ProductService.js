@@ -13,8 +13,15 @@ class ProductService {
 	getById(id) {
 		return Net.get(PRODUCT_SERVICE_PATH + '/' + id);
 	}
-	search(searchTerm, page = 1,filters) {
-		let url = PRODUCT_SERVICE_PATH + '/search/' + page + '/' + searchTerm; 
+	search(searchTerm, page = 1,filters = []) {
+		let search_filter = {
+			'type':'search',
+			'field':'name',
+			'options':searchTerm
+		}
+		
+		filters.push(search_filter)
+		let url = PRODUCT_SERVICE_PATH + '/search/' + page; 
 		return Net.post(url,filters);
 	}
 	getCartState(){

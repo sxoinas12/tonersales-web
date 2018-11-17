@@ -19,20 +19,26 @@ const Filters = [
     type: 'includes',
     name: 'Product Type',
     field : 'price', 
-    options: [
+    values: [
      "36.95",
-     "23.56" 
-  ]
-},
+       "23.56" 
+    ]
+  },
+  {
+    type: 'value_range',
+    name: 'Περιοχη Τιμων',
+    field : 'price'
+  },
   {
     type: 'includes',
     name: 'Category',
     field : 'category',
-    options: [
+    values: [
     "HP",
     "Samsung"
   ]
   }
+
 ]
 
 export class Search extends React.Component {
@@ -52,18 +58,19 @@ export class Search extends React.Component {
 
 
   _showpages () {
-    console.log(this.state.pages)
+    //console.log(this.state.pages)
   }
 
 
   loadProducts(term,page = 1,filters) {
-    console.log(filters);
+    //console.log("filters",filters); 
     ProductService.search(term, page,filters)
     .then((prods) => this.setState({
       list:prods.data,
       pagination:prods.pagination
     }))
     .then(()=>{
+
       this.props.history.push({
         pathname:'/search/' + term + '/' + page
       })
@@ -106,7 +113,7 @@ export class Search extends React.Component {
   
       <div className="row body">
               <div className="col-xs-6 col-sm-2 col-md-2  col-lg-2 filt">
-                <Filter input={Filters} onChange={(filters)=> this.loadProducts(this.state.search,1,filters)} persistence/>
+                <Filter input={Filters} onChange={(filters)=> this.loadProducts(this.state.search,1,filters)} />
               </div>
               <div className="col-xs-12 col-sm-10 col-md-10 col-lg-10">
                 <ProductList data = {this.state.list} />

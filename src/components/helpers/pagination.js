@@ -13,9 +13,7 @@ export class Pagination extends React.Component {
   
 
     render() {
-    console.log("Pagination");
-    console.log(this.props.pagination);
-    console.log(this.props.pagination.currentPage);
+
    	const currentPage = parseInt(this.props.pagination.currentPage) || 1;
    	const lastPage = parseInt(this.props.pagination.lastPage) || 1;
    	

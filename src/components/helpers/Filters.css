@@ -7,3 +7,28 @@
 .no-padding{
 	padding: 0px;
 }
+
+
+.range_val{
+	width: 38%;
+}
+
+.val_but {
+	padding-top: 0px;
+	margin-bottom: 3px;
+
+margin-left: 10px;
+}
+
+
+
+.min {
+	margin-right: 5px;
+	width: 34%;
+
+}
+.max{
+	margin-right: 5px;
+	width: 34%;
+
+}

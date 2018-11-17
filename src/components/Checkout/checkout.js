@@ -47,7 +47,7 @@ export class Checkout extends React.Component{
 		<div className="row" key={0}>
 		
 			
-          	<button onClick={()=> console.log(this.state)}> Click</button>
+          	
             <div className= "col-xs-12 col-md-3 col-sm-3 title">
               <a href="/"><div className="mini_logo"></div></a>
             </div>

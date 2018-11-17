@@ -21,7 +21,7 @@ class UserService {
 	}
 	getMe() {
 		if(this.token) {
-			return Net.get(USER_SERVICE_PATH + '/me').then((user) => {
+			return Net.get(USER_SERVICE_PATH + '/login').then((user) => {
 				//setToken save!
 				this.user = user;
 				this.save();

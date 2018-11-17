@@ -31,6 +31,7 @@ export default class RangeFilter extends React.Component {
 						<input className="min" value={this.state.min} onChange={(e)=>this.setState({min:e.target.value})}  placeholder="Από €" />
 						<input className="max" value={this.state.max} onChange={(e)=>this.setState({max:e.target.value})}  placeholder="Έως €" />
 						<button className=" val_but btn btn-primary" onClick={() => this._handleSubmit()} > > </button>
+
 				</div>
 			</div>
 		</div>

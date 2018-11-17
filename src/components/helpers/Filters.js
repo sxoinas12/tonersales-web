@@ -2,6 +2,7 @@ import React from 'react';
 import './Filters.css';
 import RangeFilter from '../FilterOptions/RangeFilter';
 import IncludeFilterField from '../FilterOptions/IncludeFilter';
+import ExactFilter from '../FilterOptions/ExactFilter';
 const models = require("../helpers/Models");
 
 // require parser service 
@@ -90,6 +91,8 @@ export default class Filter extends React.Component {
 					return <IncludeFilterField selected={a} onUpdate={(values) => this._onUpdate(filter, values)} name={filter.name} options={filter.values} key={index}/>;
 				case 'value_range' : 
 					return <RangeFilter selected={a} onUpdate={(values) => this._onUpdate(filter, values)} name={filter.name} options={filter.values} key={index}/>;
+				case 'equals' : 
+					return <ExactFilter selected={a} onUpdate={(values) => this._onUpdate(filter, values)} name={filter.name} options={filter.values} key={index}/>;
 			}
 		});
 	}

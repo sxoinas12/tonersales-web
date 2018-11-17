@@ -37,6 +37,15 @@ const Filters = [
     "HP",
     "Samsung"
   ]
+  },
+  {
+    type: 'equals',
+    name: 'Type',
+    field : 'price',
+    values: [
+    "20",
+    "25"
+  ]
   }
 
 ]

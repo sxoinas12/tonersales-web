@@ -9,7 +9,7 @@ import {Settings} from './settings';
 
 
 const Net = require('../helpers/net.js');
-
+const OrderService = require('../Services/OrderService');
 
 
 export class Profile extends React.Component{
@@ -41,14 +41,14 @@ export class Profile extends React.Component{
 
 	submitChanges = (values) =>{
 		
-		let access = localStorage.getItem('entrance_state');
-		access = JSON.parse(access);
+		let token = localStorage.getItem('token');
+	
 		let user = {...this.state.user};
 	
 		try{
-			if(values && access.user.token){
+			if(values && token){
 				
-				Net.post(Net.urls.profile,values,access.user.token)
+				Net.get(Net.urls.profile,values,token)
 				.then((data) =>{
 					user["username"] = data.username;
 					user["email"] = data.email;
@@ -82,7 +82,7 @@ export class Profile extends React.Component{
 
 	logOff = () => {
 
-		      console.log("do i come here")
+		      
 		      this.setState({isLogged:false})
 		      this.props.history.push({
 		      pathname:'/'
@@ -90,11 +90,11 @@ export class Profile extends React.Component{
 	}
 
 	loadfromlocal = () => {
-		let access = localStorage.getItem('entrance_state');
-		access = JSON.parse(access);
-		if(access){
+		let token = localStorage.getItem('token');
+	
+		if(token){
 	   	try{
-		    if(access.user.token){
+		    if(token){
 		      this.setState({isLogged:true});      
 		    }
 		    
@@ -109,14 +109,13 @@ export class Profile extends React.Component{
 	componentWillMount(){
 		
 		this.loadfromlocal();
-		let access = localStorage.getItem('entrance_state');
-			access = JSON.parse(access);
+		let token = localStorage.getItem('token');
 		try{
 			
 			
-			if(access.user.token){
+			if(token){
 				let user = this.state.user
-				Net.get(Net.urls.profile,access.user.token).
+				Net.get(Net.urls.profile,token).
 				then((data)=>{
 					user["username"] = data.username;
 					user["email"] = data.email;		
@@ -131,10 +130,10 @@ export class Profile extends React.Component{
 		}
 
 		try{
-			if(access.user.token){
-				Net.get(Net.urls.myOrders,access.user.token).
+			if(token){
+				Net.post(Net.urls.myOrders).
 				then((data)=>{
-					//console.log(data);
+					//console.log("Orders",data.data);
 					this.setState({orders:data.data})
 				}).catch((e)=>{
 					console.log(e)

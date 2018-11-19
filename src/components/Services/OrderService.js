@@ -1,6 +1,6 @@
 import Net from './NetService.js';
 
-const ORDER_SERVICE_PATH = '/orders';
+const ORDER_SERVICE_PATH = '/Orders/search';
 
 const debug = (e) => {
 	if(true){

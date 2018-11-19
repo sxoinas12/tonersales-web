@@ -27,7 +27,7 @@ export class Orders extends React.Component{
 			};
 			return Net.getId(Net.urls.productsId,prod["item"],token)
 			.then((data)=>{
-				//console.log("Dataa are :", data);
+				
 				product["data"] = data;
 				product["quantity"] = prod["quantity"];
 				order["products"].push(product);
@@ -45,15 +45,14 @@ export class Orders extends React.Component{
 
 
 	trackOrder = () =>{
-		console.log("tracking Order")
+		//console.log("tracking Order")
 	}
 
 	componentWillMount(){
-		console.log(this.props.info)
+		
 		let orders = [];
-		let access = localStorage.getItem('entrance_state');
-		access = JSON.parse(access);
-		//console.log(Net.urls.productsId);
+		let token = localStorage.getItem('token');
+		
 		this.props.info.map((item)=>{
 			let order = {
 			payment_meth_id:"",
@@ -62,7 +61,7 @@ export class Orders extends React.Component{
 			total:"",
 			}
 			let id = [];
-			this.parseItems(order,item,access.user.token)
+			this.parseItems(order,item,token)
 			.then((data)=>{
 				this.setState({
 					orders: [...this.state.orders,order]
@@ -74,16 +73,11 @@ export class Orders extends React.Component{
 			
 		})
 		
-		if(access.user.token){
-			//dada
-
-
-			
-		}	
+		
 	}
 
 	compoentDidMount(){
-		console.log(this.state.orders);
+		//console.log(this.state.orders);
 	}
 
 	render(){

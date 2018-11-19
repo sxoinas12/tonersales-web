@@ -10,7 +10,7 @@ export class Prof extends React.Component{
 		this.state = {
 			focused:true,
 		};
-		//console.log(props)
+		
 		
 	}
 
@@ -26,13 +26,7 @@ export class Prof extends React.Component{
 			<div className="row">
 				<div className="col-xs-12">
 					<div className="row">
-					  <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4 ">
-					  	<h4 className="prof_head">Profile Picture</h4>	
-					    <a href="#" className="thumbnail">
-					    	
-					      <img src="../images/img_avatar.png" className="prof_img"/>
-					    </a>
-					  </div>
+					  
 					  <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 "> 
 						    <div className="row">
 						    	<h4 className="prof_head">Profile info</h4>

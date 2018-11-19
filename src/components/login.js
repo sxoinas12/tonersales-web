@@ -48,6 +48,7 @@ export class Login extends React.Component{
 		e.preventDefault();
 		UserService.login(this.state.email, this.state.password)
 		.then(res => {
+			
 			this.props.onLogin(res);
 			this.props.close();
 		})

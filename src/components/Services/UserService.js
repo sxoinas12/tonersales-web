@@ -21,8 +21,9 @@ class UserService {
 	}
 	getMe() {
 		if(this.token) {
+			//console.log("do i comre here?")
 			return Net.get(USER_SERVICE_PATH + '/login').then((user) => {
-				//setToken save!
+				console.log("resssppp")
 				this.user = user;
 				this.save();
 				return user;
@@ -52,6 +53,7 @@ class UserService {
 		  password
 		}).then((user) => {
 			this.token = user.token;
+			//this.save();
 			return this.getMe();
 		}).catch((err) => {
 			debug(err);

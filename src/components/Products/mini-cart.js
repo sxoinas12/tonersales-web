@@ -144,14 +144,15 @@ export class Mini_Cart extends React.Component {
             </div>
           </div>
         
-        
+      
       </div>
         
       ) :
      (
       <div className="dropdown-content">  
-        <div>
-        Αδειο Καλάθι :(
+        <div className="empty-cart">
+        'Αδειο Καλάθι 
+
         </div>
       </div> 
      

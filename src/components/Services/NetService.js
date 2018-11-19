@@ -27,6 +27,7 @@ class Net {
     }
 
     get(url) {
+       
         return window.fetch(this.baseURL + url, {
             method: 'GET',
             headers:{

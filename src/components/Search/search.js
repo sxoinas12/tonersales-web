@@ -131,8 +131,11 @@ export class Search extends React.Component {
 
        </div>
        
-       <Pagination onLoad ={(page) => this.loadProducts(this.state.search,page)} pagination={this.state.pagination}/>
-       
+       <div className="row pagination-pad">
+         <div className="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center">
+         <Pagination onLoad ={(page) => this.loadProducts(this.state.search,page)} pagination={this.state.pagination}/>
+         </div>
+       </div>
       <div className="row">
         <Footer />
       </div>

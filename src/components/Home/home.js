@@ -22,7 +22,7 @@ export class Home extends React.Component {
   Search = () =>{ 
     ProductService.getHome()
     .then(res => {
-  
+      console.log("res",res)
       this.setState({list:res})
     });
   }

@@ -23,6 +23,15 @@ padding:0;
 }
 
 
+
+.empty-cart{
+    text-align: center;
+    font-style: tahoma;
+    font-weight: bold;
+}
+
+
+
 .cart_size{
 
     height: 30px;

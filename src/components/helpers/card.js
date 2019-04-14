@@ -91,6 +91,36 @@ export class Card extends React.Component {
 
 
 
+<<<<<<< HEAD
+=======
+            }
+
+   stripHtml = (html) =>{
+    
+   var max_len = 15; 
+   var tmp = document.createElement("DIV");
+   tmp.innerHTML = html;
+   let s = tmp.innerText 
+  // s = s.replace(/(^\s*)|(\s*$)/gi,"");
+   s = s.replace(/[ ]{2,}/gi," ");
+   s = s.replace(/[, ]+/g, " ").trim();
+   s = s.replace(/\n /,"\n");
+   let len= s.split(' ').length;
+   let temp;
+   if(len>max_len){
+    let temp = s.split(' ',max_len);
+    temp[max_len] = "...";
+    return temp.join(' ');
+  }
+    else{
+
+   return s;
+}
+  }
+
+
+
+>>>>>>> f26bb790fc38efb509d74da94749d955354d44f2
   openModal() {
     this.setState({modalIsOpen: true});
   }
@@ -113,13 +143,18 @@ export class Card extends React.Component {
     
     
     return (
+<<<<<<< HEAD
          <div className="cont col-xs-12 col-sm-6  col-md-4 col-lg-4 "  >
+=======
+         <div className="cont col-xs-12 col-sm-6  col-md-4 col-lg-3 "  >
+>>>>>>> f26bb790fc38efb509d74da94749d955354d44f2
             <div className="card" styles="max-width: 18rem;">
               <div className="c_img" onClick = { () => this.setState({modalIsOpen:true,sProd:this.props.data})} > </div>
 
               <div  className=" card-body" onClick = { () => this.setState({modalIsOpen:true,sProd:this.props.data})} >
                
                 <div className="ProdName">
+<<<<<<< HEAD
                   <b>'Ονομα:</b> {this.state.name}
                 </div> 
                 <div className="ProdPrice">
@@ -128,15 +163,30 @@ export class Card extends React.Component {
                 
                 <div className="ProdTd"  >
                   <b>Συμβατό:</b>
+=======
+                  Name:{this.state.name}
+                </div> 
+                <div className="ProdPrice">
+                  Price:{this.state.price}
+                </div>
+                
+                <div className="ProdTd"  >
+                  <b>Description:</b>
+>>>>>>> f26bb790fc38efb509d74da94749d955354d44f2
                   <br />
                   {this.stripHtml(this.state.shortdescription)}
                 </div>
                   
                 
               </div>
+<<<<<<< HEAD
                 <div type="button" className="add_but" onClick = {() => this.addProduct(this.state.info)}>
                   Προσθηκη 
                 
+=======
+                <div className="add_but" type="button" onClick = {() => this.addProduct(this.state.info)}>
+                  Προσθηκη 
+>>>>>>> f26bb790fc38efb509d74da94749d955354d44f2
               </div>
               <div className="popup" >
                 <span ref={ref => this.popup = ref} className="popuptext">Προστέθηκε στο καλάθι</span>

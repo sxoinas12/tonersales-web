@@ -120,6 +120,7 @@ export class Search extends React.Component {
       </div>
          
   
+
       <div className="row body">
               <div className="col-xs-6 col-sm-2 col-md-2  col-lg-2 filt">
                 <Filter input={Filters} onChange={(filters)=> this.loadProducts(this.state.search,1,filters)} />
@@ -136,6 +137,12 @@ export class Search extends React.Component {
          <Pagination onLoad ={(page) => this.loadProducts(this.state.search,page)} pagination={this.state.pagination}/>
          </div>
        </div>
+
+      <ProductList data = {this.state.list} />
+           
+  
+
+
       <div className="row">
         <Footer />
       </div>

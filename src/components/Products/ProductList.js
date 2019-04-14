@@ -27,6 +27,7 @@ export class ProductList extends React.Component {
 
     return (
         <div className="row ProdCont">
+
         {nameList}
         </div>
       

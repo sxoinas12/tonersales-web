@@ -40,7 +40,7 @@ export class Footer extends React.Component {
                 <div className="col-sm-4">
                 </div>
                  <div className="col-sm-2">
-                  <h6> <b className="slave">Akis's Slave</b>:  Konstantinos Schoinas</h6>
+                  <h6> <b className="slave">Akis's Punk</b>:  Konstantinos Schoinas</h6>
                 </div>
               </div>
             </div>

@@ -84,10 +84,7 @@ export class Mini_Cart extends React.Component {
     
     let total = this.state.products.reduce((total, item) => total + item.quantity * item.price, 0).toFixed(2);
     const nameList = this.state.products.map((item,index)=>
-            
         <li key={item.id} className="row cart_product">
-        
-          
           <div className="col-xs-6 cart_name">
             {index+1}. {item.name}
           </div>        
@@ -107,7 +104,6 @@ export class Mini_Cart extends React.Component {
             </div>
           </div>
           <div className="col-xs-3 text-right no-padding-left">
-         
             {item.price} €
           </div>
          
@@ -156,8 +152,7 @@ export class Mini_Cart extends React.Component {
         </div>
       </div> 
      
-      )
-     
+     )
 
     return (
     <div  ref="myRef" className="dropdown">

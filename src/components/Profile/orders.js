@@ -12,14 +12,11 @@ export class Orders extends React.Component{
 		};	
 	}
 
-	check = () =>{
-		//console.log(this.state.orders)
-		//console.log("succesfully loaded data from our server")
-	}
+
 
 	parseItems = (order,item,token) =>{
 
-	 		
+	
 		let array = item.products.map((prod)=>{
 			let product = {
 			data:{},
@@ -27,7 +24,6 @@ export class Orders extends React.Component{
 			};
 			return Net.getId(Net.urls.productsId,prod["item"],token)
 			.then((data)=>{
-				
 				product["data"] = data;
 				product["quantity"] = prod["quantity"];
 				order["products"].push(product);
@@ -76,10 +72,6 @@ export class Orders extends React.Component{
 		
 	}
 
-	compoentDidMount(){
-		//console.log(this.state.orders);
-	}
-
 	render(){
 		
 		const Orders = this.state.orders.map((item,index)=>
@@ -90,11 +82,24 @@ export class Orders extends React.Component{
 					</div>
 					<div className="row">
 						<Ord info={item} />
-						<div className="col-lg-3">
-							<b>Shipping Status</b>
-						</div>
-						<div className="col-lg-3">
-							<b>Total: {item.total.toFixed(2)} €</b>
+						<div className="col-lg-6">
+							<table className="table">
+							<thead>
+					        <tr>
+						        <th>Shipping Status</th>
+						        <th>Total</th>
+					      
+					        </tr>
+					    	</thead>
+					    	<tbody>
+					    		<tr key={index}>
+									<td>Shipping detail will get by database</td>
+									<td>{item.total.toFixed(2)} €</td>
+								</tr>
+							
+							</tbody>
+							</table>
+
 						</div>
 					</div>
 				</div>

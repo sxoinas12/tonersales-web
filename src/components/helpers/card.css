@@ -54,8 +54,8 @@
  
 	
 	height: 120px;
-	background-repeat: no-repeat;
-	background-position: center;
+    background-repeat: no-repeat;
+    background-position: center;
 	background-image: url('/images/second.jpg');
 
 }

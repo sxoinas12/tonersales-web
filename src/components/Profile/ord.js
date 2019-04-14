@@ -7,29 +7,15 @@ export class Ord extends React.Component{
 	constructor(props){
 		super(props);
 		
-		this.state = {
-				
-		};
-		
 	}
 
-	componentWillMount(){
-		
-	//	console.log(this.props.info.products)
-	}
-
+	
 	render(){
-
-		const mapQuantity = p => p.quantity;
-		const mapName = p => p.name
-		const mappingFunctionName = p => p.data[0].name;
-		const names = this.props.info.products.map(mappingFunctionName);
-		const quantity = this.props.info.products.map(mapQuantity);
 
 		const prod = this.props.info.products.map((item,index)=>{
 			return(
 				<tr key={index}>
-					<td>{item.data[0].name}</td>
+					<td>{item.data.name}</td>
 					<td>{item.quantity}</td>
 				</tr>
 				)
